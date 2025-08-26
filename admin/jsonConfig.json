@@ -1,0 +1,31 @@
+{
+	"i18n": true,
+	"type": "panel",
+	"items": {
+		"useMQTT": {
+			"type": "checkbox",
+			"label": "useMQTT",
+			"newLine": false
+		},
+		"mqttTopic": {
+			"type": "text",
+			"label": "mqttTopic",
+			"newLine": true
+		},
+		"useWeb": {
+			"type": "checkbox",
+			"label": "useWeb",
+			"newLine": false
+		},
+		"deviceIP": {
+			"type": "text",
+			"label": "deviceIP",
+			"newLine": true
+		},
+		"debug": {
+			"type": "checkbox",
+			"label": "debug",
+			"newLine": false
+		}
+	}
+}

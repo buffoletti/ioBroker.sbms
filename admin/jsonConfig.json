@@ -1,31 +1,36 @@
 {
-	"i18n": true,
-	"type": "panel",
-	"items": {
-		"useMQTT": {
-			"type": "checkbox",
-			"label": "useMQTT",
-			"newLine": false
-		},
-		"mqttTopic": {
-			"type": "text",
-			"label": "mqttTopic",
-			"newLine": true
-		},
-		"useWeb": {
-			"type": "checkbox",
-			"label": "useWeb",
-			"newLine": false
-		},
-		"deviceIP": {
-			"type": "text",
-			"label": "deviceIP",
-			"newLine": true
-		},
-		"debug": {
-			"type": "checkbox",
-			"label": "debug",
-			"newLine": false
-		}
-	}
+    "i18n": true,
+    "type": "panel",
+    "items": {
+        "mqttSection": {
+            "type": "panel",
+            "label": "MQTT Settings",
+            "items": {
+                "useMQTT": { "type": "checkbox", "label": "Use MQTT (requires MQTT Client)" },
+                "mqttTopic": { "type": "text", "label": "Iobroker Object containng MQTT Topic" },
+                "updateInterval": {
+                    "type": "number",
+                    "label": "Update Interval (seconds)",
+                    "default": 10,
+                    "min": 1,
+                    "unit": "s"
+                }
+            }
+        },
+        "webSection": {
+            "type": "panel",
+            "label": "HTML Settings",
+            "items": {
+                "useWeb": { "type": "checkbox", "label": "Use HTML scraping of Raw Data" },
+                "deviceIP": { "type": "text", "label": "Device IP" }
+            }
+        },
+        "debugSection": {
+            "type": "panel",
+            "label": "Debug Settings",
+            "items": {
+                "debug": { "type": "checkbox", "label": "Enable Debug" }
+            }
+        }
+    }
 }

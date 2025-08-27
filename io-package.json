@@ -1,95 +1,88 @@
 {
-  "common": {
-    "name": "sbms",
-    "version": "0.0.1",
-    "news": {
-      "0.0.1": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung",
-        "ru": "Начальная версия",
-        "pt": "lançamento inicial",
-        "nl": "Eerste uitgave",
-        "fr": "Première version",
-        "it": "Versione iniziale",
-        "es": "Versión inicial",
-        "pl": "Pierwsze wydanie",
-        "uk": "Початкова версія",
-        "zh-cn": "首次出版"
-      }
+    "common": {
+        "name": "sbms",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "uk": "Початкова версія",
+                "zh-cn": "首次出版"
+            }
+        },
+        "titleLang": {
+            "en": "SBMS",
+            "de": "SBMS",
+            "ru": "Test-ADPTR",
+            "pt": "teste-adptr",
+            "nl": "test-adptr",
+            "fr": "test de test",
+            "it": "Test-Adptr",
+            "es": "prueba-adptr",
+            "pl": "test-adptr",
+            "uk": "тест-Adptr",
+            "zh-cn": "测试-ADPTR"
+        },
+        "desc": {
+            "en": "test-adapter",
+            "de": "Test-Adapter",
+            "ru": "Тестовый адаптер",
+            "pt": "testador de teste",
+            "nl": "test-adapter",
+            "fr": "adaptateur de test",
+            "it": "Adattatore di prova",
+            "es": "adaptador de prueba",
+            "pl": "Adapter testowy",
+            "uk": "тест-адаптер",
+            "zh-cn": "测试适配器"
+        },
+        "authors": ["Sponkdamonk <asd@asd.de>"],
+        "keywords": ["ioBroker", "template", "Smart Home", "home automation"],
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        },
+        "platform": "Javascript/Node.js",
+        "icon": "test-adapter.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/Sponkdamonk/ioBroker.test-adapter/main/admin/test-adapter.png",
+        "readme": "https://github.com/Sponkdamonk/ioBroker.test-adapter/blob/main/README.md",
+        "loglevel": "info",
+        "tier": 3,
+        "mode": "daemon",
+        "type": "protocols",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "poll",
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=6.0.11"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=7.0.23"
+            }
+        ],
+        "installedFrom": "/opt/iobroker/iobroker.sbms"
     },
-    "titleLang": {
-      "en": "SBMS",
-      "de": "SBMS",
-      "ru": "Test-ADPTR",
-      "pt": "teste-adptr",
-      "nl": "test-adptr",
-      "fr": "test de test",
-      "it": "Test-Adptr",
-      "es": "prueba-adptr",
-      "pl": "test-adptr",
-      "uk": "тест-Adptr",
-      "zh-cn": "测试-ADPTR"
+    "native": {
+        "useMQTT": true,
+        "mqttTopic": "mqtt.0.SBMS0.sbms",
+        "useHtml": false,
+        "deviceIP": "192.168.2.212",
+        "debug": true
     },
-    "desc": {
-      "en": "test-adapter",
-      "de": "Test-Adapter",
-      "ru": "Тестовый адаптер",
-      "pt": "testador de teste",
-      "nl": "test-adapter",
-      "fr": "adaptateur de test",
-      "it": "Adattatore di prova",
-      "es": "adaptador de prueba",
-      "pl": "Adapter testowy",
-      "uk": "тест-адаптер",
-      "zh-cn": "测试适配器"
-    },
-    "authors": [
-      "Sponkdamonk <asd@asd.de>"
-    ],
-    "keywords": [
-      "ioBroker",
-      "template",
-      "Smart Home",
-      "home automation"
-    ],
-    "licenseInformation": {
-      "type": "free",
-      "license": "MIT"
-    },
-    "platform": "Javascript/Node.js",
-    "icon": "test-adapter.png",
-    "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/Sponkdamonk/ioBroker.test-adapter/main/admin/test-adapter.png",
-    "readme": "https://github.com/Sponkdamonk/ioBroker.test-adapter/blob/main/README.md",
-    "loglevel": "info",
-    "tier": 3,
-    "mode": "daemon",
-    "type": "protocols",
-    "compact": true,
-    "connectionType": "local",
-    "dataSource": "poll",
-    "adminUI": {
-      "config": "json"
-    },
-    "dependencies": [
-      {
-        "js-controller": ">=6.0.11"
-      }
-    ],
-    "globalDependencies": [
-      {
-        "admin": ">=7.0.23"
-      }
-    ],
-    "installedFrom": "/opt/iobroker/iobroker.sbms"
-  },
-  "native": {
-    "useMQTT": true,
-    "mqttTopic": "mqtt.0.SBMS0.sbms",
-    "useWeb": false,
-    "deviceIP": "192.168.2.212",
-    "debug": true
-  },
-  "objects": [],
-  "instanceObjects": []
+    "objects": [],
+    "instanceObjects": []
 }

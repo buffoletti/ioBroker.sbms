@@ -3,7 +3,13 @@ async function createNormalStates(adapter) {
         "current.battery": { name: "Battery current", unit: "A", role: "value.current" },
         "current.pv1": { name: "PV1 current", unit: "A", role: "value.current" },
         "current.pv2": { name: "PV2 current", unit: "A", role: "value.current" },
-        "current.load": { name: "Calculated load current", unit: "A", role: "value.current" },
+        "current.load": { name: "Load current", unit: "A", role: "value.current" },
+
+        "power.battery": { name: "Battery Power", unit: "W", role: "value.power" },
+        "power.pv1": { name: "PV1 Power", unit: "W", role: "value.power" },
+        "power.pv2": { name: "PV2 Power", unit: "W", role: "value.power" },
+        "power.load": { name: "Load Power", unit: "W", role: "value.power" },
+
         voltage: { name: "Battery voltage", unit: "V", role: "value.voltage" },
         soc: { name: "State of charge", unit: "%", role: "value.battery" },
         tempInt: { name: "SBMS Internal temperature", unit: "°C", role: "value.temperature" },

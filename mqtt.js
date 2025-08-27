@@ -31,8 +31,7 @@ function init(adapter, topic, debug = false) {
                 adapter.writeState("current.pv2", Math.round(obj.currentMA.pv2 / 10) / 100);
                 let load = 0;
                 load = (obj.currentMA.pv1 + obj.currentMA.pv2 - obj.currentMA.battery) * 0.001;
-                load = Math.round(load * 100) / 100; // 2 decimals
-                adapter.writeState("current.load", load);
+                adapter.writeState("current.load", Math.round(load * 100) / 100);
 
                 lastWrite = now;
 
@@ -57,8 +56,14 @@ function init(adapter, topic, debug = false) {
                     }
                 }
                 voltage /= 1000;
-                voltage = Math.round(voltage * 100) / 100; // round to 2 decimals
-                adapter.writeState("voltage", voltage);
+
+                adapter.writeState("voltage", Math.round(voltage * 100) / 100);
+
+                adapter.writeState("power.battery", Math.round(obj.currentMA.battery * 0.001 * voltage));
+                adapter.writeState("power.pv1", Math.round(obj.currentMA.pv1 * 0.001 * voltage));
+                adapter.writeState("power.pv2", Math.round(obj.currentMA.pv2 * 0.001 * voltage));
+                adapter.writeState("power.load", Math.round(load * voltage));
+
                 adapter.writeState("cells.min", min);
                 adapter.writeState("cells.min.ID", minID);
                 adapter.writeState("cells.max", max);
@@ -110,8 +115,9 @@ function init(adapter, topic, debug = false) {
                     adapter.writeState("mqtt.ad4", obj.ad4);
                     adapter.writeState("mqtt.heat1", obj.heat1);
                     adapter.writeState("mqtt.heat2", obj.heat2);
+
+                    adapter.log.debug(`New SBMS MQTT Message processed: ${state.val}`);
                 }
-                adapter.log.info(`New SBMS MQTT Message processed: ${state.val}`);
             }
         } catch (err) {
             adapter.log.error("Invalid JSON from MQTT: " + err);

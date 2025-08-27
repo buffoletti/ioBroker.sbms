@@ -54,8 +54,6 @@ class SbmsAdapter extends utils.Adapter {
 
         // mqtt aktivieren, falls konfiguriert
         if (this.config.useMQTT) {
-            this.log.info("MQTT topic: " + this.config.mqttTopic);
-
             mqttHandler.init(this, this.config.mqttTopic, this.config.debug); //this.config.debug);
         }
 
@@ -95,16 +93,10 @@ class SbmsAdapter extends utils.Adapter {
     //     }
     // }
 
-    writeState(state, value, source = "main") {
+    writeState(state, value) {
         // Haupt-States
         const base = `sbms.${this.instance}.${state}`;
         this.setState(base, value, true);
-
-        // Debug-States pro Quelle
-        if (this.config.debug && (source === "mqtt" || source === "web")) {
-            const dbgBase = `sbms.${this.instance}.${source}.${state}`;
-            this.setState(dbgBase, value, true);
-        }
     }
 }
 

@@ -11,8 +11,8 @@ async function createMqttDebugStates(adapter) {
         tempInt: { name: "SBMS Internal temperature", unit: "°C", role: "value.temperature" },
         tempExt: { name: "External temperature (if connected)", unit: "°C", role: "value.temperature" },
         //ad2: { name: "ad2", unit: "V", role: "value" }, //undefined
-        ad3: { name: "ad3", unit: "V", role: "value" }, //ADC3
-        ad4: { name: "ad4", unit: "V", role: "value" }, //ADC2
+        ad3: { name: "ADC3", unit: "V", role: "value" }, //ADC3
+        ad4: { name: "ADC2", unit: "V", role: "value" }, //ADC2
         heat1: { name: "heat1", unit: "", role: "value" },
         heat2: { name: "heat2", unit: "", role: "value" }, //actually dualPV Level (first digit) and additional values (sencond and third digit) in th raw encrypted)
         "cellsMV.delta": { name: "Cell delta", unit: "mV", role: "value.voltage" },
@@ -24,25 +24,31 @@ async function createMqttDebugStates(adapter) {
     }
 
     // Flags
-    const flags = [
-        "OV",
-        "OVLK",
-        "UV",
-        "UVLK",
-        "IOT",
-        "COC",
-        "DOC",
-        "DSC",
-        "CELF",
-        "OPEN",
-        "LVC",
-        "ECCF",
-        "CFET",
-        "EOC",
-        "DFET",
-    ];
-    for (const flag of flags) {
-        states[`flags.${flag}`] = { name: `Flag ${flag}`, type: "boolean", role: "indicator" };
+    const flagDescriptions = {
+        OV: "Overvoltage (no error)",
+        OVLK: "Overvoltage Lock",
+        UV: "Undervoltage (no error)",
+        UVLK: "Undervoltage Lock",
+        IOT: "Internal Overtemperature",
+        COC: "Carge Over Current",
+        DOC: "Discharge Over Current",
+        DSC: "Short Circuit",
+        CELF: "Cell Failure",
+        OPEN: "Open Cell Wire",
+        LVC: "Low Voltage Cutoff",
+        ECCF: "ECC Fault",
+        CFET: "Charge FET Enabled",
+        EOC: "End of Charge (may still be charging)",
+        DFET: "Discharge FET Enabled",
+    };
+
+    // Create states with descriptive names
+    for (const [flag, description] of Object.entries(flagDescriptions)) {
+        states[`flags.${flag}`] = {
+            name: description,
+            type: "boolean",
+            role: "indicator",
+        };
     }
 
     for (const [id, def] of Object.entries(states)) {

@@ -14,8 +14,8 @@ async function createNormalStates(adapter) {
         soc: { name: "State of charge", unit: "%", role: "value.battery" },
         tempInt: { name: "SBMS Internal temperature", unit: "°C", role: "value.temperature" },
         tempExt: { name: "Battery temperature (if connected)", unit: "°C", role: "value.temperature" },
-        ad3: { name: "AD3", unit: "V", role: "value" },
-        ad4: { name: "AD4", unit: "V", role: "value" },
+        ad3: { name: "ADC3", unit: "V", role: "value" },
+        ad4: { name: "ADC2", unit: "V", role: "value" },
         "cells.min": { name: "Cell min", unit: "mV", role: "value.voltage" },
         "cells.max": { name: "Cell max", unit: "mV", role: "value.voltage" },
         "cells.min.ID": { name: "Cell ID min", unit: "", role: "value", type: "number" },
@@ -27,25 +27,32 @@ async function createNormalStates(adapter) {
         states[`cells.${i}`] = { name: `Cell ${i}`, unit: "mV", role: "value.voltage" };
     }
 
-    const flags = [
-        "OV",
-        "OVLK",
-        "UV",
-        "UVLK",
-        "IOT",
-        "COC",
-        "DOC",
-        "DSC",
-        "CELF",
-        "OPEN",
-        "LVC",
-        "ECCF",
-        "CFET",
-        "EOC",
-        "DFET",
-    ];
-    for (const flag of flags) {
-        states[`flags.${flag}`] = { name: `Flag ${flag}`, type: "boolean", role: "indicator" };
+    // Flag descriptions
+    const flagDescriptions = {
+        OV: "Overvoltage (no error)",
+        OVLK: "Overvoltage Lock",
+        UV: "Undervoltage (no error)",
+        UVLK: "Undervoltage Lock",
+        IOT: "Internal Overtemperature",
+        COC: "Carge Over Current",
+        DOC: "Discharge Over Current",
+        DSC: "Short Circuit",
+        CELF: "Cell Failure",
+        OPEN: "Open Cell Wire",
+        LVC: "Low Voltage Cutoff",
+        ECCF: "ECC Fault",
+        CFET: "Charge FET Enabled",
+        EOC: "End of Charge (may still be charging)",
+        DFET: "Discharge FET Enabled",
+    };
+
+    // Create states with descriptive names
+    for (const [flag, description] of Object.entries(flagDescriptions)) {
+        states[`flags.${flag}`] = {
+            name: description,
+            type: "boolean",
+            role: "indicator",
+        };
     }
 
     for (const [id, def] of Object.entries(states)) {

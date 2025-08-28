@@ -12,8 +12,8 @@ async function createHtmlDebugStates(adapter) {
         "sbms.tempInt": { name: "SBMS Internal temperature", unit: "°C", role: "value.temperature" },
         "sbms.tempExt": { name: "External temperature (if connected)", unit: "°C", role: "value.temperature" },
         //ad2: { name: "ad2", unit: "V", role: "value" }, //undefined
-        "sbms.ad3": { name: "ad3", unit: "mV", role: "value" }, //ADC3
-        "sbms.ad4": { name: "ad4", unit: "mV", role: "value" }, //ADC2
+        "sbms.ad3": { name: "ADC3", unit: "mV", role: "value" }, //ADC3
+        "sbms.ad4": { name: "ADC2", unit: "mV", role: "value" }, //ADC2
         "sbms.heat1": { name: "heat1", unit: "", role: "value" },
         "sbms.dualPVLevel": { name: "dualPv", unit: "", role: "value" },
         // "sbms.cellsMV.delta": { name: "Cell delta", unit: "mV", role: "value.voltage" },
@@ -24,26 +24,32 @@ async function createHtmlDebugStates(adapter) {
         states[`sbms.cellsMV.${i}`] = { name: `Cell ${i}`, unit: "mV", role: "value.voltage" };
     }
 
-    // Flags
-    const flags = [
-        "OV",
-        "OVLK",
-        "UV",
-        "UVLK",
-        "IOT",
-        "COC",
-        "DOC",
-        "DSC",
-        "CELF",
-        "OPEN",
-        "LVC",
-        "ECCF",
-        "CFET",
-        "EOC",
-        "DFET",
-    ];
-    for (const flag of flags) {
-        states[`sbms.flags.${flag}`] = { name: `Flag ${flag}`, type: "boolean", role: "indicator" };
+    // Flag descriptions
+    const flagDescriptions = {
+        OV: "Overvoltage (no error)",
+        OVLK: "Overvoltage Lock",
+        UV: "Undervoltage (no error)",
+        UVLK: "Undervoltage Lock",
+        IOT: "Internal Overtemperature",
+        COC: "Carge Over Current",
+        DOC: "Discharge Over Current",
+        DSC: "Short Circuit",
+        CELF: "Cell Failure",
+        OPEN: "Open Cell Wire",
+        LVC: "Low Voltage Cutoff",
+        ECCF: "ECC Fault",
+        CFET: "Charge FET Enabled",
+        EOC: "End of Charge (may still be charging)",
+        DFET: "Discharge FET Enabled",
+    };
+
+    // Create states with descriptive names
+    for (const [flag, description] of Object.entries(flagDescriptions)) {
+        states[`sbms.flags.${flag}`] = {
+            name: description,
+            type: "boolean",
+            role: "indicator",
+        };
     }
 
     states["s1.model"] = { name: "SBMS Model", unit: "", role: "value", type: "string" };

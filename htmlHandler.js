@@ -17,8 +17,12 @@ function init(adapter, debug = false) {
 
     // If interval is 0, fetch once per second
     const fetchInterval = interval || 1000;
+    let running = false;
 
     timer = setInterval(async () => {
+        if (running) return; // skip if previous fetch not finished
+        running = true;
+
         try {
             // adapter.log.info(`url: ${url}`);
             const response = await axios.get(url);
@@ -51,7 +55,9 @@ function init(adapter, debug = false) {
 
             const sbms = {};
             sbms.timeStr = dt.toLocaleString();
-            adapter.log.info(`New HTML Scraping Reported Timestamp: ${sbms.timeStr}`);
+            if (debug) {
+                adapter.log.info(`New HTML Scraping with reported Timestamp: ${sbms.timeStr}`);
+            }
             sbms.soc = dcmp(6, 2, sbms_raw);
             sbms.cellsMV = {};
             // sbms.cellsMVmin = dcmp(8, 2, sbms_raw);
@@ -157,6 +163,8 @@ function init(adapter, debug = false) {
             }
         } catch (error) {
             adapter.log.error("Error fetching SBMS rawData: " + error);
+        } finally {
+            running = false;
         }
     }, fetchInterval);
 

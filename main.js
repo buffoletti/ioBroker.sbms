@@ -7,7 +7,7 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
-const mqttHandler = require("./mqtt");
+const mqttHandler = require("./mqttHandler");
 const htmlHandler = require("./html");
 const { createNormalStates } = require("./states");
 const { createMqttDebugStates } = require("./mqttDebugStates");

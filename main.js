@@ -8,7 +8,7 @@
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
 const mqttHandler = require("./mqttHandler");
-const htmlHandler = require("./html");
+const htmlHandler = require("./htmlHandler");
 const { createNormalStates } = require("./states");
 const { createMqttDebugStates } = require("./mqttDebugStates");
 

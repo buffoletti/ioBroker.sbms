@@ -8,12 +8,9 @@
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
 const mqttHandler = require("./mqtt");
-//const webHandler = require("./web");
+const htmlHandler = require("./html");
 const { createNormalStates } = require("./states");
-const { createDebugStates } = require("./mqttDebugStates");
-
-// Load your modules here, e.g.:
-// const fs = require("fs");
+const { createMqttDebugStates } = require("./mqttDebugStates");
 
 class SbmsAdapter extends utils.Adapter {
     /**
@@ -45,10 +42,10 @@ class SbmsAdapter extends utils.Adapter {
         // Debug nur bei Bedarf
         if (this.config.debug) {
             if (this.config.useMQTT) {
-                await createDebugStates(this);
+                await createMqttDebugStates(this);
             }
             if (this.config.useHtml) {
-                await createDebugStates(this);
+                // await createDebugStates(this);
             }
         }
 
@@ -57,10 +54,11 @@ class SbmsAdapter extends utils.Adapter {
             mqttHandler.init(this, this.config.mqttTopic, this.config.debug); //this.config.debug);
         }
 
-        // Webscraping aktivieren, falls konfiguriert
-        // if (this.config.useWeb) {
-        //     webHandler.init(this, this.config.deviceIP, this.config.debug);
-        // }
+        //HTML scraping aktivieren, falls konfiguriert
+        if (this.config.useHtml) {
+            this.log.info("HTML Scraping enabled");
+            htmlHandler.init(this);
+        }
     }
 
     /**

@@ -1,4 +1,4 @@
-async function createDebugStates(adapter) {
+async function createMqttDebugStates(adapter) {
     const source = "mqtt"; // festgelegt, weil diese Datei nur MQTT behandelt
 
     const states = {
@@ -62,4 +62,4 @@ async function createDebugStates(adapter) {
     }
 }
 
-module.exports = { createDebugStates };
+module.exports = { createMqttDebugStates };

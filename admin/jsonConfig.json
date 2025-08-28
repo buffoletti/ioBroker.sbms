@@ -21,7 +21,7 @@
             "type": "panel",
             "label": "HTML Settings",
             "items": {
-                "useWeb": { "type": "checkbox", "label": "Use HTML scraping of Raw Data" },
+                "useHtml": { "type": "checkbox", "label": "Use HTML scraping of Raw Data" },
                 "deviceIP": { "type": "text", "label": "Device IP" }
             }
         },

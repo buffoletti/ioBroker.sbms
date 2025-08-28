@@ -79,7 +79,7 @@
     "native": {
         "useMQTT": true,
         "mqttTopic": "mqtt.0.SBMS0.sbms",
-        "useHtml": false,
+        "useHtml": true,
         "deviceIP": "192.168.2.212",
         "debug": true
     },

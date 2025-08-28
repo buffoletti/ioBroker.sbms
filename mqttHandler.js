@@ -83,19 +83,15 @@ function init(adapter, topic, debug = false) {
                 }
                 // ---- Debug states ----
                 if (debug) {
-                    const mqttTime = obj.time; // {year:25, month:8, day:27, hour:10, minute:56, second:30}
-
-                    // Create a JS Date object
-                    // Note: years in MQTT are 2-digit, so we add 2000
-                    const dt = new Date(
-                        2000 + mqttTime.year,
-                        mqttTime.month - 1, // JS months are 0-based
-                        mqttTime.day,
-                        mqttTime.hour,
-                        mqttTime.minute,
-                        mqttTime.second,
-                    );
-                    adapter.writeState("mqtt.time", dt.toISOString(), true);
+                    // Create a string in YYYY-MM-DD HH:mm:ss format
+                    const timeStr =
+                        `${2000 + obj.time.year}-` +
+                        `${String(obj.time.month).padStart(2, "0")}-` +
+                        `${String(obj.time.day).padStart(2, "0")} ` +
+                        `${String(obj.time.hour).padStart(2, "0")}:` +
+                        `${String(obj.time.minute).padStart(2, "0")}:` +
+                        `${String(obj.time.second).padStart(2, "0")}`;
+                    adapter.writeState("mqtt.timeStr", timeStr, true);
                     adapter.writeState("mqtt.soc", obj.soc);
                     adapter.writeState("mqtt.tempInt", obj.tempInt);
                     adapter.writeState("mqtt.tempExt", obj.tempExt);

@@ -11,6 +11,7 @@ const mqttHandler = require("./mqttHandler");
 const htmlHandler = require("./htmlHandler");
 const { createNormalStates } = require("./states");
 const { createMqttDebugStates } = require("./mqttDebugStates");
+const { createHtmlDebugStates } = require("./htmlDebugStates");
 
 class SbmsAdapter extends utils.Adapter {
     /**
@@ -45,20 +46,47 @@ class SbmsAdapter extends utils.Adapter {
                 await createMqttDebugStates(this);
             }
             if (this.config.useHtml) {
-                // await createDebugStates(this);
+                await createHtmlDebugStates(this);
             }
         }
 
         // mqtt aktivieren, falls konfiguriert
         if (this.config.useMQTT) {
-            mqttHandler.init(this, this.config.mqttTopic, this.config.debug); //this.config.debug);
+            mqttHandler.init(this, this.config.mqttTopic, this.config.debug);
         }
 
         //HTML scraping aktivieren, falls konfiguriert
         if (this.config.useHtml) {
             this.log.info("HTML Scraping enabled");
-            htmlHandler.init(this);
+            htmlHandler.init(this, this.config.debug);
         }
+    }
+
+    /**
+     * Increment a numeric state by 1 (or a custom step).
+     */
+    async incrementState(state, step = 1) {
+        const base = `sbms.${this.instance}.${state}`;
+
+        await this.setObjectNotExistsAsync(base, {
+            type: "state",
+            common: {
+                name: `Counter ${state}`,
+                type: "number",
+                role: "value",
+                unit: "",
+                def: 0,
+                read: true,
+                write: true,
+            },
+            native: {},
+        });
+
+        const current = (await this.getStateAsync(base)) || { val: 0 };
+        const currentValue = Number(current.val) || 0;
+        const newValue = currentValue + step;
+
+        await this.setState(base, { val: newValue, ack: true });
     }
 
     /**

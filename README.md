@@ -13,7 +13,8 @@
 
 ## sbms adapter for ioBroker
 
-Connect to Electrodacus SBMS and make either the MQTT message or the data from the rawPage available as states.
+Connects to Electrodacus SBMS and make either the MQTT message or the data from the rawPage available as states.
+Tested with SBMS0
 
 ## Changelog
 
@@ -24,7 +25,7 @@ Connect to Electrodacus SBMS and make either the MQTT message or the data from t
 
 ### **WORK IN PROGRESS**
 
-- (Sponkdamonk) initial release
+- v0.0.1 initial release
 
 ## License
 

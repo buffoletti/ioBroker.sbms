@@ -2,7 +2,7 @@ async function createMqttDebugStates(adapter) {
     const source = "mqtt"; // festgelegt, weil diese Datei nur MQTT behandelt
 
     const states = {
-        time: { name: "Reported Timestamp of last MQTT message", unit: "", role: "value.time", type: "number" },
+        timeStr: { name: "Reported Timestamp of last MQTT message", unit: "", role: "value", type: "string" },
         "currentMA.battery": { name: "Battery current", unit: "mA", role: "value.current" },
         "currentMA.pv1": { name: "PV1 current", unit: "mA", role: "value.current" },
         "currentMA.pv2": { name: "PV2 current", unit: "mA", role: "value.current" },

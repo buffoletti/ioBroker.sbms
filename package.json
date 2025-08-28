@@ -59,7 +59,11 @@
     "www/",
     "io-package.json",
     "LICENSE",
-    "main.js"
+    "main.js",
+    "states.js",
+    "mqttDebugStates.js",
+    "mqttHandler.js",
+    "html.js"
   ],
   "scripts": {
     "test:js": "mocha --config test/mocharc.custom.json \"{!(node_modules|test)/**/*.test.js,*.test.js,test/**/test!(PackageFiles|Startup).js}\"",

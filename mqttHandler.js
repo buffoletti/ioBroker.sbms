@@ -25,7 +25,7 @@ function init(adapter, topic, debug = false) {
             const obj = JSON.parse(state.val);
             const now = Date.now();
             if (now - lastWrite > updateIntervalMilliSeconds) {
-                // ---- Normal states ----
+                // ---- Normal states  ----
                 adapter.writeState("current.battery", Math.round(obj.currentMA.battery / 10) / 100);
                 adapter.writeState("current.pv1", Math.round(obj.currentMA.pv1 / 10) / 100);
                 adapter.writeState("current.pv2", Math.round(obj.currentMA.pv2 / 10) / 100);

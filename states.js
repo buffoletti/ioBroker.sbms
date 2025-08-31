@@ -16,6 +16,7 @@ async function createNormalStates(adapter) {
         tempExt: { name: "Battery temperature (if connected)", unit: "°C", role: "value.temperature" },
         ad3: { name: "ADC3", unit: "V", role: "value" },
         ad4: { name: "ADC2", unit: "V", role: "value" },
+        heat1: { name: "heat1", unit: "", role: "value" },
         "cells.min": { name: "Cell min", unit: "mV", role: "value.voltage" },
         "cells.max": { name: "Cell max", unit: "mV", role: "value.voltage" },
         "cells.min.ID": { name: "Cell ID min", unit: "", role: "value", type: "number" },
@@ -55,20 +56,53 @@ async function createNormalStates(adapter) {
         };
     }
 
+    await createStatesFromObject(adapter, states, `Creating ${Object.keys(states).length} normal states...`);
+}
+
+async function createHtmlAdditionalStates(adapter) {
+    const states = {};
+    states["parameter.model"] = { name: "SBMS Model", unit: "", role: "value", type: "string" };
+    states["parameter.type"] = { name: "Cell Type (Chemistry)", unit: "", role: "value", type: "number" };
+    states["parameter.capacity"] = { name: "Cell Capacity", unit: "Ah", role: "value.energy", type: "number" };
+    states["parameter.cvmin"] = { name: "Under Voltage Lock", unit: "mV", role: "value.voltage", type: "number" };
+    states["parameter.cvmax"] = { name: "Over Voltage Lock", unit: "mV", role: "value.voltage", type: "number" };
+
+    states["counter.battery"] = { name: "Battery Discharge", unit: "kWh", role: "value.energy", type: "number" };
+    states["counter.pv1"] = { name: "PV1", unit: "kWh", role: "value.energy", type: "number" };
+    states["counter.pv2"] = { name: "PV2", unit: "kWh", role: "value.energy", type: "number" };
+    states["counter.load"] = { name: "Total Load", unit: "kWh", role: "value.energy", type: "number" };
+
+    // Balancing states
+    for (let i = 1; i <= 8; i++) {
+        states[`cells.${i}.balancing`] = { name: `Cell Balancing ${i}`, type: "boolean", role: "indicator" };
+    }
+
+    await createStatesFromObject(adapter, states, `Creating ${Object.keys(states).length} addtional HTML states...`);
+}
+
+async function createStatesFromObject(adapter, states, logMessage) {
+    adapter.log.info(logMessage);
     for (const [id, def] of Object.entries(states)) {
-        await adapter.setObjectNotExistsAsync(id, {
-            type: "state",
-            common: {
-                name: def.name,
-                type: def.type || "number",
-                role: def.role || "value",
-                unit: def.unit || "",
-                read: true,
-                write: false,
-            },
-            native: {},
-        });
+        try {
+            await adapter.setObjectNotExistsAsync(id, {
+                type: "state",
+                common: {
+                    name: def.name,
+                    type: def.type || "number",
+                    role: def.role || "value",
+                    unit: def.unit || "",
+                    read: true,
+                    write: false,
+                },
+                native: {},
+            });
+        } catch (e) {
+            adapter.log.error(`Failed to create state ${id}: ${e.message}`);
+        }
     }
 }
 
-module.exports = { createNormalStates };
+module.exports = {
+    createNormalStates,
+    createHtmlAdditionalStates,
+};

@@ -10,6 +10,7 @@ const utils = require("@iobroker/adapter-core");
 const mqttHandler = require("./mqttHandler");
 const htmlHandler = require("./htmlHandler");
 const { createNormalStates } = require("./states");
+const { createHtmlAdditionalStates } = require("./states");
 const { createMqttDebugStates } = require("./mqttDebugStates");
 const { createHtmlDebugStates } = require("./htmlDebugStates");
 
@@ -58,6 +59,7 @@ class SbmsAdapter extends utils.Adapter {
         //HTML scraping aktivieren, falls konfiguriert
         if (this.config.useHtml) {
             this.log.info("HTML Scraping enabled");
+            await createHtmlAdditionalStates(this);
             htmlHandler.init(this, this.config.debug);
         }
     }

@@ -6,7 +6,7 @@
  * @param {object} sbms - Parsed SBMS object
  */
 function writeCommonStates(adapter, sbms) {
-    // ---- Normal states ----
+    // ---- Normal  states ----
     adapter.writeState("current.battery", Math.round(sbms.currentMA.battery / 10) / 100);
     adapter.writeState("current.pv1", Math.round(sbms.currentMA.pv1 / 10) / 100);
     adapter.writeState("current.pv2", Math.round(sbms.currentMA.pv2 / 10) / 100);
@@ -14,7 +14,7 @@ function writeCommonStates(adapter, sbms) {
     load = (sbms.currentMA.pv1 + sbms.currentMA.pv2 - sbms.currentMA.battery) * 0.001;
     adapter.writeState("current.load", Math.round(load * 100) / 100);
 
-    const voltage = sbms.cellsMV.reduce((sum, v) => sum + v, 0) / 1000;
+    const voltage = Object.values(sbms.cellsMV).reduce((sum, v) => sum + v, 0) / 1000;
 
     adapter.writeState("voltage", Math.round(voltage * 100) / 100);
 
@@ -28,10 +28,12 @@ function writeCommonStates(adapter, sbms) {
     adapter.writeState("tempExt", sbms.tempExt);
     adapter.writeState("ad3", sbms.ad3 / 1000);
     adapter.writeState("ad4", sbms.ad4 / 1000);
-    adapter.writeState("cells.delta", sbms.flags.delta);
-    for (let i = 0; i < sbms.cellsMV.length; i++) {
-        adapter.writeState(`cells.${i + 1}`, sbms.cellsMV[i]);
+    adapter.writeState("heat1", sbms.heat1);
+    // adapter.writeState("cells.delta", sbms.flags.delta);
+    for (let i = 1; i <= Object.keys(sbms.cellsMV).length; i++) {
+        adapter.writeState(`cells.${i}`, sbms.cellsMV[i]);
     }
+
     for (const key in sbms.flags) {
         if (key === "delta") continue;
         adapter.writeState(`flags.${key}`, sbms.flags[key]);

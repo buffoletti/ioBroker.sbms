@@ -1,4 +1,5 @@
 "use strict";
+
 const axios = require("axios");
 const { writeCommonStates } = require("./commonStatesWriter");
 
@@ -8,7 +9,19 @@ function init(adapter, debug = false) {
     adapter.log.info("Initializing SBMS HTML scraping");
     const url = `http://${adapter.config.deviceIP}/rawData`;
 
-    // Determine interval in milliseconds
+    // First scrape once → static + dynamic
+    scrape(adapter, debug).then((parsed) => {
+        if (parsed) {
+            const { s1, xsbms } = parsed;
+            adapter.writeState("parameter.model", s1.model);
+            adapter.writeState("parameter.type", xsbms.type);
+            adapter.writeState("parameter.capacity", xsbms.capacity);
+            adapter.writeState("parameter.cvmin", xsbms.cvmin);
+            adapter.writeState("parameter.cvmax", xsbms.cvmax);
+        }
+    });
+
+    // Determine int erval in milliseconds
     let interval = 10000; // fallback
     if (adapter.config && adapter.config.updateInterval) {
         interval = adapter.config.updateInterval <= 1 ? 0 : adapter.config.updateInterval * 1000;
@@ -25,145 +38,41 @@ function init(adapter, debug = false) {
         running = true;
 
         try {
-            // adapter.log.info(`url: ${url}`);
-            const response = await axios.get(url);
-            const data = response.data;
-            let match = data.match(/var sbms="([^"]+)"/);
-            const sbms_raw = match && match[1] ? match[1].replace(/\\\\/g, "\\") : null; // Replace double backslashes with a single backslash
-            if (!sbms_raw) return;
-            if (!checkIntegrity(sbms_raw)) {
-                // Call the increment method from the adapter instance
-                await adapter.incrementState("html.crcErrorCount");
-                return; // stop further processing
-            }
-            await adapter.incrementState("html.crcSuccessCount");
+            const parsed = await scrape(adapter, debug);
+            if (parsed) {
+                const { sbms, s1, xsbms, s2, eW } = parsed;
+                //WRTING COMMON STATES
+                writeCommonStates(adapter, sbms);
 
-            const sbmsTime = {};
-            sbmsTime.year = dcmp(0, 1, sbms_raw);
-            sbmsTime.month = dcmp(1, 1, sbms_raw);
-            sbmsTime.day = dcmp(2, 1, sbms_raw);
-            sbmsTime.hour = dcmp(3, 1, sbms_raw);
-            sbmsTime.min = dcmp(4, 1, sbms_raw);
-            sbmsTime.sec = dcmp(5, 1, sbms_raw);
-            const dt = new Date(
-                2000 + sbmsTime.year,
-                sbmsTime.month - 1, // JS months are 0-based
-                sbmsTime.day,
-                sbmsTime.hour,
-                sbmsTime.min,
-                sbmsTime.sec,
-            );
+                //WRTING ADDITIONAL STATES
+                for (let i = 1; i <= Object.keys(sbms.cellsMV).length; i++) {
+                    adapter.writeState(`cells.${i}.balancing`, s2.cellsBalancing[i]);
+                }
 
-            const sbms = {};
-            sbms.timeStr = dt.toLocaleString();
-            if (debug) {
-                adapter.log.info(`New HTML Scraping with reported Timestamp: ${sbms.timeStr}`);
-            }
-            sbms.soc = dcmp(6, 2, sbms_raw);
-            sbms.cellsMV = {};
-            // sbms.cellsMVmin = dcmp(8, 2, sbms_raw);
-            // sbms.cellsMVmax = 0;
+                // Only update min/max if NO balancing is active
+                const anyBalancing = Object.values(s2.cellsBalancing).some((b) => b === true);
 
-            for (let i = 0; i < 8; i++) {
-                const cellValue = dcmp(8 + i * 2, 2, sbms_raw);
-                sbms.cellsMV[i + 1] = cellValue;
-            }
-            sbms.tempInt = (dcmp(24, 2, sbms_raw) - 450) / 10;
-            sbms.tempExt = (dcmp(26, 2, sbms_raw) - 450) / 10;
-            sbms.currentMA = {};
-            sbms.currentMA.battery = dcmp(29, 3, sbms_raw) * (sbms_raw.charAt(28) + 1);
-            sbms.currentMA.pv1 = dcmp(32, 3, sbms_raw);
-            sbms.currentMA.pv2 = dcmp(35, 3, sbms_raw);
-            sbms.currentMA.extLoad = dcmp(38, 3, sbms_raw);
-            //sbms.ad2 = dcmp(41, 3, sbms_raw);
-            sbms.ad3 = dcmp(44, 3, sbms_raw);
-            sbms.ad4 = dcmp(47, 3, sbms_raw);
-            sbms.heat1 = dcmp(50, 3, sbms_raw);
-            sbms.dualPVLevel = dcmp(53, 1, sbms_raw);
-            // sbms.zz = dcmp(54,2,sbms_raw);
+                if (!anyBalancing) {
+                    adapter.writeState("cells.min", sbms.cellsMV[s2.cellsMin]);
+                    adapter.writeState("cells.min.ID", s2.cellsMin);
+                    adapter.writeState("cells.max", sbms.cellsMV[s2.cellsMax]);
+                    adapter.writeState("cells.max.ID", s2.cellsMax);
+                    adapter.writeState("cells.delta", sbms.cellsMV[s2.cellsMax] - sbms.cellsMV[s2.cellsMin]);
+                }
 
-            sbms.flags = {};
-            const flagsDec = dcmp(56, 3, sbms_raw);
-            const flagsString = flagsDec.toString(2);
-            const paddedflagsString = flagsString.padStart(14, "0");
-            sbms.flags.OV = paddedflagsString[14] === "1";
-            sbms.flags.OVLK = paddedflagsString[13] === "1";
-            sbms.flags.UV = paddedflagsString[12] === "1";
-            sbms.flags.UVLK = paddedflagsString[11] === "1";
-            sbms.flags.IOT = paddedflagsString[10] === "1";
-            sbms.flags.COC = paddedflagsString[9] === "1";
-            sbms.flags.DOC = paddedflagsString[8] === "1";
-            sbms.flags.DSC = paddedflagsString[7] === "1";
-            sbms.flags.CELF = paddedflagsString[6] === "1";
-            sbms.flags.OPEN = paddedflagsString[5] === "1";
-            sbms.flags.LVC = paddedflagsString[4] === "1";
-            sbms.flags.ECCF = paddedflagsString[3] === "1";
-            sbms.flags.CFET = paddedflagsString[2] === "1";
-            sbms.flags.EOC = paddedflagsString[1] === "1";
-            sbms.flags.DFET = paddedflagsString[0] === "1";
-            // sbms.flags.delta = sbms.cellsMVmax - sbms.cellsMVmin ;
+                adapter.writeState("counter.battery", eW.eBatt / 1000);
+                adapter.writeState("counter.pv1", eW.ePV1 / 1000);
+                adapter.writeState("counter.pv2", eW.ePV2 / 1000);
+                adapter.writeState("counter.load", eW.eLoad / 1000 + eW.eExtLd / 1000);
 
-            /////////////////s2
-            let regex = /var s2=\[(.*?)\];/;
-            match = data.match(regex);
-            const s2_raw = match && match[1] ? match[1] : null;
-            if (!s2_raw) return;
-            const s2_values = s2_raw.split(",").map(Number); // Convert all values to numbers
-            const s2 = { cellsBalancing: {} };
-
-            // Handle cell balancing (first 8 values)
-            for (let i = 0; i < 8; i++) {
-                const cell = !!s2_values[i]; // Convert to boolean
-                s2.cellsBalancing[i + 1] = cell;
-            }
-
-            // Map remaining values → min, max, PV/load flags
-            const keys = ["cellsMin", "cellsMax", "pvOn", "loadOn"];
-            for (let i = 0; i < keys.length; i++) {
-                s2[keys[i]] = i < 2 ? s2_values[8 + i] : !!s2_values[8 + i]; // first 2 numeric, last 2 boolean
-            }
-
-            /////////////////s1
-            regex = /var s1=\[(.*?)\];/;
-            match = data.match(regex);
-            const s1_raw = match && match[1] ? match[1] : null;
-            if (!s1_raw) return;
-            const s1_values = s1_raw.split(",");
-            const s1 = {};
-            s1.model = s1_values[2].replace(/^["']|["']$/g, "").trim();
-
-            /////////////////    eW Counter Wh
-            match = data.match(/var eW="([^"]+)"/);
-            const eW_raw = match && match[1] ? match[1].replace(/\\\\/g, "\\") : null; // Replace double backslashes with a single backslash
-            if (!eW_raw) return;
-            const eW = {};
-            eW.eBatt = dcmp(0 * 6, 6, eW_raw) / 10;
-            eW.ePV1 = dcmp(1 * 6, 6, eW_raw) / 10;
-            eW.ePV2 = dcmp(2 * 6, 6, eW_raw) / 10;
-            eW.eLoad = dcmp(5 * 6, 6, eW_raw) / 10;
-            eW.eExtLd = dcmp(6 * 6, 6, eW_raw) / 10;
-
-            ///////////////////xsbms - Battery details
-            match = data.match(/var xsbms="([^"]+)"/);
-            const xsbms_raw = match && match[1] ? match[1].replace(/\\\\/g, "\\") : null; // Replace double backslashes with a single backslash
-            if (!xsbms_raw) return;
-            const xsbms = {};
-            xsbms.type = dcmp(7, 1, xsbms_raw);
-            xsbms.capacity = dcmp(8, 3, xsbms_raw);
-            xsbms.cvmin = dcmp(5, 2, xsbms_raw);
-            xsbms.cvmax = dcmp(3, 2, xsbms_raw);
-            xsbms.cv = dcmp(0, 3, xsbms_raw);
-
-            //WRTING COMMON STATES
-            writeCommonStates(adapter, sbms);
-
-            //WRTING DEBUG STATES
-            if (debug) {
-                writeStates("html.sbms", sbms);
-                writeStates("html.s1", s1);
-                writeStates("html.s2", s2);
-                writeStates("html.eW", eW);
-                writeStates("html.xsbms", xsbms);
+                //WRTING DEBUG STATES
+                if (debug) {
+                    writeStates("html.sbms", sbms);
+                    writeStates("html.s1", s1);
+                    writeStates("html.s2", s2);
+                    writeStates("html.eW", eW);
+                    writeStates("html.xsbms", xsbms);
+                }
             }
         } catch (error) {
             adapter.log.error("Error fetching SBMS rawData: " + error);
@@ -171,6 +80,143 @@ function init(adapter, debug = false) {
             running = false;
         }
     }, fetchInterval);
+
+    // Helper Scrapping function
+    async function scrape(adapter, debug) {
+        // adapter.log.info(`url: ${url}`);
+        const response = await axios.get(url);
+        const data = response.data;
+        let match = data.match(/var sbms="([^"]+)"/);
+        const sbms_raw = match && match[1] ? match[1].replace(/\\\\/g, "\\") : null; // Replace double backslashes with a single backslash
+        if (!sbms_raw) return;
+        if (!checkIntegrity(sbms_raw)) {
+            // Call the increment method from the adapter instance
+            if (debug) {
+                adapter.log.warn("CRC check failed for HTML data");
+                await adapter.incrementState("html.crcErrorCount");
+            }
+            return; // stop further processing
+        }
+        if (debug) await adapter.incrementState("html.crcSuccessCount");
+
+        const sbmsTime = {};
+        sbmsTime.year = dcmp(0, 1, sbms_raw);
+        sbmsTime.month = dcmp(1, 1, sbms_raw);
+        sbmsTime.day = dcmp(2, 1, sbms_raw);
+        sbmsTime.hour = dcmp(3, 1, sbms_raw);
+        sbmsTime.min = dcmp(4, 1, sbms_raw);
+        sbmsTime.sec = dcmp(5, 1, sbms_raw);
+        const dt = new Date(
+            2000 + sbmsTime.year,
+            sbmsTime.month - 1, // JS months are 0-based
+            sbmsTime.day,
+            sbmsTime.hour,
+            sbmsTime.min,
+            sbmsTime.sec,
+        );
+
+        const sbms = {};
+        sbms.timeStr = dt.toLocaleString();
+        if (debug) {
+            adapter.log.info(`New HTML Scraping with reported Timestamp: ${sbms.timeStr}`);
+        }
+        sbms.soc = dcmp(6, 2, sbms_raw);
+        sbms.cellsMV = {};
+        // sbms.cellsMVmin = dcmp(8, 2, sbms_raw);
+        // sbms.cellsMVmax = 0;
+
+        for (let i = 0; i < 8; i++) {
+            const cellValue = dcmp(8 + i * 2, 2, sbms_raw);
+            sbms.cellsMV[i + 1] = cellValue;
+        }
+        sbms.tempInt = (dcmp(24, 2, sbms_raw) - 450) / 10;
+        sbms.tempExt = (dcmp(26, 2, sbms_raw) - 450) / 10;
+        sbms.currentMA = {};
+        sbms.currentMA.battery = dcmp(29, 3, sbms_raw) * (sbms_raw.charAt(28) + 1);
+        sbms.currentMA.pv1 = dcmp(32, 3, sbms_raw);
+        sbms.currentMA.pv2 = dcmp(35, 3, sbms_raw);
+        sbms.currentMA.extLoad = dcmp(38, 3, sbms_raw);
+        //sbms.ad2 = dcmp(41, 3, sbms_raw);
+        sbms.ad3 = dcmp(44, 3, sbms_raw);
+        sbms.ad4 = dcmp(47, 3, sbms_raw);
+        sbms.heat1 = dcmp(50, 3, sbms_raw);
+        sbms.dualPVLevel = dcmp(53, 1, sbms_raw);
+        // sbms.zz = dcmp(54,2,sbms_raw);
+
+        sbms.flags = {};
+        const flagsDec = dcmp(56, 3, sbms_raw);
+        const flagsString = flagsDec.toString(2);
+        const paddedflagsString = flagsString.padStart(14, "0");
+        sbms.flags.OV = paddedflagsString[14] === "1";
+        sbms.flags.OVLK = paddedflagsString[13] === "1";
+        sbms.flags.UV = paddedflagsString[12] === "1";
+        sbms.flags.UVLK = paddedflagsString[11] === "1";
+        sbms.flags.IOT = paddedflagsString[10] === "1";
+        sbms.flags.COC = paddedflagsString[9] === "1";
+        sbms.flags.DOC = paddedflagsString[8] === "1";
+        sbms.flags.DSC = paddedflagsString[7] === "1";
+        sbms.flags.CELF = paddedflagsString[6] === "1";
+        sbms.flags.OPEN = paddedflagsString[5] === "1";
+        sbms.flags.LVC = paddedflagsString[4] === "1";
+        sbms.flags.ECCF = paddedflagsString[3] === "1";
+        sbms.flags.CFET = paddedflagsString[2] === "1";
+        sbms.flags.EOC = paddedflagsString[1] === "1";
+        sbms.flags.DFET = paddedflagsString[0] === "1";
+        // sbms.flags.delta = sbms.cellsMVmax - sbms.cellsMVmin ;
+
+        /////////////////s2
+        let regex = /var s2=\[(.*?)\];/;
+        match = data.match(regex);
+        const s2_raw = match && match[1] ? match[1] : null;
+        if (!s2_raw) return;
+        const s2_values = s2_raw.split(",").map(Number); // Convert all values to numbers
+        const s2 = { cellsBalancing: {} };
+
+        // Handle cell balancing (first 8 values)
+        for (let i = 0; i < 8; i++) {
+            const cell = !!s2_values[i]; // Convert to boolean
+            s2.cellsBalancing[i + 1] = cell;
+        }
+
+        // Map remaining values → min, max, PV/load flags
+        const keys = ["cellsMax", "cellsMin", "pvOn", "loadOn"];
+        for (let i = 0; i < keys.length; i++) {
+            s2[keys[i]] = i < 2 ? s2_values[8 + i] : !!s2_values[8 + i]; // first 2 numeric, last 2 boolean
+        }
+
+        /////////////////s1
+        regex = /var s1=\[(.*?)\];/;
+        match = data.match(regex);
+        const s1_raw = match && match[1] ? match[1] : null;
+        if (!s1_raw) return;
+        const s1_values = s1_raw.split(",");
+        const s1 = {};
+        s1.model = s1_values[2].replace(/^["']|["']$/g, "").trim();
+
+        /////////////////    eW Counter Wh
+        match = data.match(/var eW="([^"]+)"/);
+        const eW_raw = match && match[1] ? match[1].replace(/\\\\/g, "\\") : null; // Replace double backslashes with a single backslash
+        if (!eW_raw) return;
+        const eW = {};
+        eW.eBatt = dcmp(0 * 6, 6, eW_raw) / 10;
+        eW.ePV1 = dcmp(1 * 6, 6, eW_raw) / 10;
+        eW.ePV2 = dcmp(2 * 6, 6, eW_raw) / 10;
+        eW.eLoad = dcmp(5 * 6, 6, eW_raw) / 10;
+        eW.eExtLd = dcmp(6 * 6, 6, eW_raw) / 10;
+
+        ///////////////////xsbms - Battery details
+        match = data.match(/var xsbms="([^"]+)"/);
+        const xsbms_raw = match && match[1] ? match[1].replace(/\\\\/g, "\\") : null; // Replace double backslashes with a single backslash
+        if (!xsbms_raw) return;
+        const xsbms = {};
+        xsbms.type = dcmp(7, 1, xsbms_raw);
+        xsbms.capacity = dcmp(8, 3, xsbms_raw);
+        xsbms.cvmin = dcmp(5, 2, xsbms_raw);
+        xsbms.cvmax = dcmp(3, 2, xsbms_raw);
+        xsbms.cv = dcmp(0, 3, xsbms_raw);
+
+        return { sbms, s1, xsbms, s2, eW };
+    }
 
     // Helper function to write nested objects recursively
     function writeStates(prefix, obj) {

@@ -1,4 +1,6 @@
-async function createMqttDebugStates(adapter) {
+"use strict";
+
+async function handleMqttDebugStates(adapter) {
     const source = "mqtt"; // festgelegt, weil diese Datei nur MQTT behandelt
 
     const states = {
@@ -51,6 +53,18 @@ async function createMqttDebugStates(adapter) {
         };
     }
 
+    // Delete all objects if debug is false
+    if (!adapter.config.debug) {
+        for (const id of Object.keys(states)) {
+            const fullId = `${source}.${id}`;
+            adapter.delObject(fullId, (err) => {
+                if (err) adapter.log.warn(`Could not delete ${fullId}: ${err}`);
+            });
+        }
+        return; // exit early
+    }
+
+    // Otherwise create states
     for (const [id, def] of Object.entries(states)) {
         const fullId = `${source}.${id}`;
         await adapter.setObjectNotExistsAsync(fullId, {
@@ -68,4 +82,4 @@ async function createMqttDebugStates(adapter) {
     }
 }
 
-module.exports = { createMqttDebugStates };
+module.exports = { handleMqttDebugStates };

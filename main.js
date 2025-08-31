@@ -10,9 +10,9 @@ const utils = require("@iobroker/adapter-core");
 const mqttHandler = require("./mqttHandler");
 const htmlHandler = require("./htmlHandler");
 const { createNormalStates } = require("./states");
-const { createHtmlAdditionalStates } = require("./states");
-const { createMqttDebugStates } = require("./mqttDebugStates");
-const { createHtmlDebugStates } = require("./htmlDebugStates");
+const { handleHtmlAdditionalStates } = require("./states");
+const { handleMqttDebugStates } = require("./mqttDebugStates");
+const { handleHtmlDebugStates } = require("./htmlDebugStates");
 
 class SbmsAdapter extends utils.Adapter {
     /**
@@ -37,29 +37,21 @@ class SbmsAdapter extends utils.Adapter {
         // Initialize your adapter here
         this.log.info("SBMS Adapter starting");
 
-        // States anlegen
-        // Normale States immer anlegen
+        // Normal States
         await createNormalStates(this);
 
-        // Debug nur bei Bedarf
-        if (this.config.debug) {
-            if (this.config.useMQTT) {
-                await createMqttDebugStates(this);
-            }
-            if (this.config.useHtml) {
-                await createHtmlDebugStates(this);
-            }
-        }
+        // Create or delete Debug Additional States
+        await handleMqttDebugStates(this);
+        await handleHtmlDebugStates(this);
+        await handleHtmlAdditionalStates(this);
 
-        // mqtt aktivieren, falls konfiguriert
+        // mqtt enabled
         if (this.config.useMQTT) {
             mqttHandler.init(this, this.config.mqttTopic, this.config.debug);
         }
 
-        //HTML scraping aktivieren, falls konfiguriert
+        // html enabled
         if (this.config.useHtml) {
-            this.log.info("HTML Scraping enabled");
-            await createHtmlAdditionalStates(this);
             htmlHandler.init(this, this.config.debug);
         }
     }
@@ -105,21 +97,6 @@ class SbmsAdapter extends utils.Adapter {
             callback();
         }
     }
-
-    // /**
-    //  * Is called if a subscribed state changes
-    //  * @param {string} id
-    //  * @param {ioBroker.State | null | undefined} state
-    //  */
-    // onStateChange(id, state) {
-    //     if (state) {
-    //         // The state was changed
-    //         this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-    //     } else {
-    //         // The state was deleted
-    //         this.log.info(`state ${id} deleted`);
-    //     }
-    // }
 
     writeState(state, value) {
         // Haupt-States

@@ -1,4 +1,4 @@
-async function createHtmlDebugStates(adapter) {
+async function handleHtmlDebugStates(adapter) {
     const source = "html"; // festgelegt, weil diese Datei nur web scraping behandelt
 
     // sbms variable
@@ -82,6 +82,17 @@ async function createHtmlDebugStates(adapter) {
     states["crcErrorCount"] = { name: "CRC Error Count", unit: "", role: "value", type: "number" };
     states["crcSuccessCount"] = { name: "CRC Success Count", unit: "", role: "value", type: "number" };
 
+    // Delete all objects if debug is false
+    if (!adapter.config.debug) {
+        for (const id of Object.keys(states)) {
+            const fullId = `${source}.${id}`;
+            adapter.delObject(fullId, (err) => {
+                if (err) adapter.log.warn(`Could not delete ${fullId}: ${err}`);
+            });
+        }
+        return; // exit early
+    }
+
     for (const [id, def] of Object.entries(states)) {
         const fullId = `${source}.${id}`;
         await adapter.setObjectNotExistsAsync(fullId, {
@@ -99,4 +110,4 @@ async function createHtmlDebugStates(adapter) {
     }
 }
 
-module.exports = { createHtmlDebugStates };
+module.exports = { handleHtmlDebugStates };

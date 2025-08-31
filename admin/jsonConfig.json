@@ -2,40 +2,56 @@
     "i18n": true,
     "type": "panel",
     "items": {
-        "genaralSection": {
+        "mqttSection": {
             "type": "panel",
-            "label": "General Settings",
+            "label": "MQTT Settings",
             "items": {
-                "updateInterval": {
+                "headerMQTT": {
+                    "type": "header",
+                    "text": "MQTT Settings",
+                    "size": 1
+                },
+                "useMQTT": { "type": "checkbox", "label": "Use MQTT (requires MQTT Client)" },
+                "mqttTopic": { "type": "text", "label": "Iobroker Object containng MQTT Topic" },
+                "mqttUpdateInterval": {
                     "type": "number",
-                    "label": "Update Interval (seconds)",
+                    "label": "Update Interval for MQTT stream (seconds)",
                     "default": 10,
                     "min": 1,
                     "unit": "s"
                 }
             }
         },
-        "mqttSection": {
-            "type": "panel",
-            "label": "MQTT Settings",
-            "items": {
-                "useMQTT": { "type": "checkbox", "label": "Use MQTT (requires MQTT Client)" },
-                "mqttTopic": { "type": "text", "label": "Iobroker Object containng MQTT Topic" }
-            }
-        },
         "webSection": {
             "type": "panel",
             "label": "HTML Settings",
             "items": {
+                "headerHTML": {
+                    "type": "header",
+                    "text": "HTML Settings",
+                    "size": 1
+                },
                 "useHtml": { "type": "checkbox", "label": "Use HTML scraping of Raw Data" },
-                "deviceIP": { "type": "text", "label": "Device IP" }
+                "deviceIP": { "type": "text", "label": "Device IP" },
+                "htmlUpdateInterval": {
+                    "type": "number",
+                    "label": "Update Interval for HTML Stream (seconds)",
+                    "default": 10,
+                    "min": 1,
+                    "unit": "s"
+                }
             }
         },
         "debugSection": {
             "type": "panel",
             "label": "Debug Settings",
             "items": {
-                "debug": { "type": "checkbox", "label": "Enable Debug" }
+                "headerDebug": {
+                    "type": "header",
+                    "text": "Debug Settings",
+                    "size": 1
+                },
+                "debug": { "type": "checkbox", "label": "Enable Debug and write full data set" }
             }
         }
     }

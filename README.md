@@ -11,10 +11,29 @@
 
 **Tests:** ![Test and Release](https://github.com/buffoletti/ioBroker.sbms/workflows/Test%20and%20Release/badge.svg)
 
-## sbms adapter for ioBroker
+## Electrodacus SBMS adapter for ioBroker
 
-Connects to Electrodacus SBMS and make either the MQTT message or the data from the rawPage available as states.
-Tested with SBMS0
+Simple adapter to make data from Electrodacus SBMS available as states from MQTT or the rawPage.
+
+Units and structure was a little customized from original data stream. If debug option is enabled, original data is additionally pushed to sbms.x.mqtt- and sbms.x.mqtt-folders.
+If both options are enabled, basic info is updated from MQTT stream whereas battery parameters and counters from the rawPage. balancing is not put in the general datastructure.
+
+# MQTT
+
+1. Setup MQTT Broker and connect iobroker
+2. Connect SBMS to wifi and MQTT broker
+3. Identify state that receives the SBMS topic (default root/sbms)
+4. In the SBMS adapter name topic in the iobroker format with dots
+5. Adjust Updating intervall (<0s: every update of the topic state is processed)
+
+# rawPage
+
+rawPage has additional infos (battery parameters, counters and balancing)
+
+1. Connect SBMS to wifi
+2. Identify IP and set static (wifi router)
+3. In the SBMS adapter name IP adress
+4. Adjust Updateinterval (smaller than 3s may not feasable)
 
 ## Changelog
 

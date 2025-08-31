@@ -30,8 +30,8 @@ function writeCommonStates(adapter, sbms) {
     adapter.writeState("ad4", sbms.ad4 / 1000);
     adapter.writeState("heat1", sbms.heat1);
     // adapter.writeState("cells.delta", sbms.flags.delta);
-    for (let i = 1; i <= Object.keys(sbms.cellsMV).length; i++) {
-        adapter.writeState(`cells.${i}`, sbms.cellsMV[i]);
+    for (let i = 0; i < sbms.cellsMV.length; i++) {
+        adapter.writeState(`cells.${i + 1}`, sbms.cellsMV[i]);
     }
 
     for (const key in sbms.flags) {

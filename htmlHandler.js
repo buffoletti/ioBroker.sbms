@@ -21,7 +21,7 @@ function init(adapter, debug = false) {
         }
     });
 
-    // Determine int erval in milliseconds
+    // Determine interval in milliseconds
     let interval = 10000; // fallback
     if (adapter.config && adapter.config.updateInterval) {
         interval = adapter.config.updateInterval <= 1 ? 0 : adapter.config.updateInterval * 1000;
@@ -32,6 +32,7 @@ function init(adapter, debug = false) {
     // If interval is 0, fetch once per second
     const fetchInterval = interval || 1000;
     let running = false;
+    let lastTimestamp = null;
 
     timer = setInterval(async () => {
         if (running) return; // skip if previous fetch not finished
@@ -41,23 +42,42 @@ function init(adapter, debug = false) {
             const parsed = await scrape(adapter, debug);
             if (parsed) {
                 const { sbms, s1, xsbms, s2, eW } = parsed;
-                //WRTING COMMON STATES
-                writeCommonStates(adapter, sbms);
 
-                //WRTING ADDITIONAL STATES
-                for (let i = 1; i <= Object.keys(sbms.cellsMV).length; i++) {
-                    adapter.writeState(`cells.${i}.balancing`, s2.cellsBalancing[i]);
+                // Skip processing if timestamp hasn't changed
+                if (sbms.timeStr === lastTimestamp) {
+                    adapter.log.info(`Scraping skipped with reported Timestamp: ${sbms.timeStr}`);
+                    return;
+                }
+                lastTimestamp = sbms.timeStr;
+
+                if (debug) {
+                    adapter.log.info(`New HTML Scraping with reported Timestamp: ${sbms.timeStr}`);
                 }
 
-                // Only update min/max if NO balancing is active
-                const anyBalancing = Object.values(s2.cellsBalancing).some((b) => b === true);
+                if (!adapter.config.useMQTT) {
+                    //WRTING COMMON STATES
+                    writeCommonStates(adapter, sbms);
 
-                if (!anyBalancing) {
-                    adapter.writeState("cells.min", sbms.cellsMV[s2.cellsMin]);
-                    adapter.writeState("cells.min.ID", s2.cellsMin);
-                    adapter.writeState("cells.max", sbms.cellsMV[s2.cellsMax]);
-                    adapter.writeState("cells.max.ID", s2.cellsMax);
-                    adapter.writeState("cells.delta", sbms.cellsMV[s2.cellsMax] - sbms.cellsMV[s2.cellsMin]);
+                    //WRTING BALANCING STATES
+
+                    // Write balancing states only if useHtml and not useMQTT
+                    for (let i = 1; i <= sbms.cellsMV.length; i++) {
+                        adapter.writeState(`cells.${i}.balancing`, s2.cellsBalancing[i]);
+                    }
+
+                    // Only update min/max if NO balancing is active
+                    const anyBalancing = Object.values(s2.cellsBalancing).some((b) => b === true);
+
+                    if (!anyBalancing) {
+                        adapter.writeState("cells.min", sbms.cellsMV[s2.cellsMin - 1]);
+                        adapter.writeState("cells.min.ID", s2.cellsMin);
+                        adapter.writeState("cells.max", sbms.cellsMV[s2.cellsMax - 1]);
+                        adapter.writeState("cells.max.ID", s2.cellsMax);
+                        adapter.writeState(
+                            "cells.delta",
+                            sbms.cellsMV[s2.cellsMax - 1] - sbms.cellsMV[s2.cellsMin - 1],
+                        );
+                    }
                 }
 
                 adapter.writeState("counter.battery", eW.eBatt / 1000);
@@ -117,17 +137,15 @@ function init(adapter, debug = false) {
 
         const sbms = {};
         sbms.timeStr = dt.toLocaleString();
-        if (debug) {
-            adapter.log.info(`New HTML Scraping with reported Timestamp: ${sbms.timeStr}`);
-        }
+
         sbms.soc = dcmp(6, 2, sbms_raw);
-        sbms.cellsMV = {};
+        sbms.cellsMV = [];
         // sbms.cellsMVmin = dcmp(8, 2, sbms_raw);
         // sbms.cellsMVmax = 0;
 
         for (let i = 0; i < 8; i++) {
             const cellValue = dcmp(8 + i * 2, 2, sbms_raw);
-            sbms.cellsMV[i + 1] = cellValue;
+            sbms.cellsMV[i] = cellValue;
         }
         sbms.tempInt = (dcmp(24, 2, sbms_raw) - 450) / 10;
         sbms.tempExt = (dcmp(26, 2, sbms_raw) - 450) / 10;
@@ -224,9 +242,15 @@ function init(adapter, debug = false) {
             const val = obj[key];
             const stateId = `${prefix}.${key}`;
 
-            if (typeof val === "object" && val !== null && !Array.isArray(val)) {
-                // Nested object → recurse
-                writeStates(stateId, val);
+            if (val !== null && typeof val === "object") {
+                if (Array.isArray(val)) {
+                    // Convert array to numbered object temporarily
+                    const numbered = Object.fromEntries(val.map((v, i) => [i + 1, v]));
+                    writeStates(stateId, numbered);
+                } else {
+                    // Nested object → recurse
+                    writeStates(stateId, val);
+                }
             } else {
                 // Primitive value → write state
                 adapter.writeState(stateId, val);

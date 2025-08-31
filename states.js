@@ -59,7 +59,7 @@ async function createNormalStates(adapter) {
     await createStatesFromObject(adapter, states, `Creating ${Object.keys(states).length} normal states...`);
 }
 
-async function createHtmlAdditionalStates(adapter) {
+async function handleHtmlAdditionalStates(adapter) {
     const states = {};
     states["parameter.model"] = { name: "SBMS Model", unit: "", role: "value", type: "string" };
     states["parameter.type"] = { name: "Cell Type (Chemistry)", unit: "", role: "value", type: "number" };
@@ -77,6 +77,29 @@ async function createHtmlAdditionalStates(adapter) {
         states[`cells.${i}.balancing`] = { name: `Cell Balancing ${i}`, type: "boolean", role: "indicator" };
     }
 
+    // Delete all additional states if useHTML is false
+    if (!adapter.config.useHtml) {
+        for (const id of Object.keys(states)) {
+            const fullId = `${id}`;
+            adapter.delObject(fullId, (err) => {
+                if (err) adapter.log.warn(`Could not delete ${fullId}: ${err}`);
+            });
+        }
+        return; // exit early
+    }
+
+    // Delete balancing additional states if useHTML and useMQTT is true
+    if (adapter.config.useHtml && adapter.config.useMQTT) {
+        for (let i = 1; i <= 8; i++) {
+            const fullId = `cells.${i}.balancing`;
+            adapter.delObject(fullId, (err) => {
+                if (err) adapter.log.warn(`Could not delete ${fullId}: ${err}`);
+            });
+        }
+        return; // exit early
+    }
+
+    // Otherwise create states
     await createStatesFromObject(adapter, states, `Creating ${Object.keys(states).length} addtional HTML states...`);
 }
 
@@ -104,5 +127,5 @@ async function createStatesFromObject(adapter, states, logMessage) {
 
 module.exports = {
     createNormalStates,
-    createHtmlAdditionalStates,
+    handleHtmlAdditionalStates,
 };

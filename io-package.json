@@ -5,43 +5,16 @@
         "news": {
             "0.0.1": {
                 "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "uk": "Початкова версія",
-                "zh-cn": "首次出版"
+                "de": "Erstveröffentlichung"
             }
         },
         "titleLang": {
-            "en": "SBMS",
-            "de": "SBMS",
-            "ru": "Test-ADPTR",
-            "pt": "teste-adptr",
-            "nl": "test-adptr",
-            "fr": "test de test",
-            "it": "Test-Adptr",
-            "es": "prueba-adptr",
-            "pl": "test-adptr",
-            "uk": "тест-Adptr",
-            "zh-cn": "测试-ADPTR"
+            "en": "Electrodacus SBMS",
+            "de": "Electrodacus SBMS"
         },
         "desc": {
-            "en": "test-adapter",
-            "de": "Test-Adapter",
-            "ru": "Тестовый адаптер",
-            "pt": "testador de teste",
-            "nl": "test-adapter",
-            "fr": "adaptateur de test",
-            "it": "Adattatore di prova",
-            "es": "adaptador de prueba",
-            "pl": "Adapter testowy",
-            "uk": "тест-адаптер",
-            "zh-cn": "测试适配器"
+            "en": "Adapter to read data from Electrodacus SBMS",
+            "de": "Adapter zum Auslesen von Daten des Electrodacus SBMS"
         },
         "authors": ["Buffoletti <asd@asd.de>"],
         "keywords": ["ioBroker", "template", "Smart Home", "home automation"],
@@ -73,15 +46,15 @@
             {
                 "admin": ">=7.0.23"
             }
-        ],
-        "installedFrom": "/opt/iobroker/iobroker.sbms"
+        ]
     },
     "native": {
-        "updateInterval": 10,
         "useMQTT": true,
         "mqttTopic": "mqtt.0.SBMS0.sbms",
+        "mqttUpdateInterval": 1,
         "useHtml": true,
         "deviceIP": "192.168.2.212",
+        "htmlUpdateInterval": 10,
         "debug": true
     },
     "objects": [],

@@ -2,12 +2,10 @@
     "i18n": true,
     "type": "panel",
     "items": {
-        "mqttSection": {
+        "genaralSection": {
             "type": "panel",
-            "label": "MQTT Settings",
+            "label": "General Settings",
             "items": {
-                "useMQTT": { "type": "checkbox", "label": "Use MQTT (requires MQTT Client)" },
-                "mqttTopic": { "type": "text", "label": "Iobroker Object containng MQTT Topic" },
                 "updateInterval": {
                     "type": "number",
                     "label": "Update Interval (seconds)",
@@ -15,6 +13,14 @@
                     "min": 1,
                     "unit": "s"
                 }
+            }
+        },
+        "mqttSection": {
+            "type": "panel",
+            "label": "MQTT Settings",
+            "items": {
+                "useMQTT": { "type": "checkbox", "label": "Use MQTT (requires MQTT Client)" },
+                "mqttTopic": { "type": "text", "label": "Iobroker Object containng MQTT Topic" }
             }
         },
         "webSection": {

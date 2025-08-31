@@ -50,10 +50,10 @@
             "license": "MIT"
         },
         "platform": "Javascript/Node.js",
-        "icon": "test-adapter.png",
+        "icon": "sbms.png",
         "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/Sponkdamonk/ioBroker.test-adapter/main/admin/test-adapter.png",
-        "readme": "https://github.com/Sponkdamonk/ioBroker.test-adapter/blob/main/README.md",
+        "extIcon": "https://raw.githubusercontent.com/Sponkdamonk/ioBroker.test-adapter/main/admin/sbms.png",
+        "readme": "https://github.com/Sponkdamonk/ioBroker.sbms/blob/main/README.md",
         "loglevel": "info",
         "tier": 3,
         "mode": "daemon",
@@ -77,6 +77,7 @@
         "installedFrom": "/opt/iobroker/iobroker.sbms"
     },
     "native": {
+        "updateInterval": 10,
         "useMQTT": true,
         "mqttTopic": "mqtt.0.SBMS0.sbms",
         "useHtml": true,

@@ -1,5 +1,6 @@
 "use strict";
 const axios = require("axios");
+const { writeCommonStates } = require("./commonStatesWriter");
 
 let timer;
 
@@ -100,7 +101,7 @@ function init(adapter, debug = false) {
             sbms.flags.CFET = paddedflagsString[2] === "1";
             sbms.flags.EOC = paddedflagsString[1] === "1";
             sbms.flags.DFET = paddedflagsString[0] === "1";
-            // sbms.flags.delta = sbms.cellsMVmax - sbms.cellsMVmin;
+            // sbms.flags.delta = sbms.cellsMVmax - sbms.cellsMVmin ;
 
             /////////////////s2
             let regex = /var s2=\[(.*?)\];/;
@@ -152,6 +153,9 @@ function init(adapter, debug = false) {
             xsbms.cvmin = dcmp(5, 2, xsbms_raw);
             xsbms.cvmax = dcmp(3, 2, xsbms_raw);
             xsbms.cv = dcmp(0, 3, xsbms_raw);
+
+            //WRTING COMMON STATES
+            writeCommonStates(adapter, sbms);
 
             //WRTING DEBUG STATES
             if (debug) {

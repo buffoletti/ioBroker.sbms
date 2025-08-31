@@ -55,7 +55,7 @@
         "useHtml": true,
         "deviceIP": "192.168.2.212",
         "htmlUpdateInterval": 10,
-        "debug": true
+        "debug": false
     },
     "objects": [],
     "instanceObjects": []

@@ -97,10 +97,14 @@ async function handleHtmlAdditionalStates(adapter) {
             });
         }
         return; // exit early
+    } else {
+        // Otherwise create states
+        await createStatesFromObject(
+            adapter,
+            states,
+            `Creating ${Object.keys(states).length} addtional HTML states...`,
+        );
     }
-
-    // Otherwise create states
-    await createStatesFromObject(adapter, states, `Creating ${Object.keys(states).length} addtional HTML states...`);
 }
 
 async function createStatesFromObject(adapter, states, logMessage) {

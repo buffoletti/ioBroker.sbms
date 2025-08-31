@@ -43,7 +43,7 @@
             "uk": "тест-адаптер",
             "zh-cn": "测试适配器"
         },
-        "authors": ["Sponkdamonk <asd@asd.de>"],
+        "authors": ["Buffoletti <asd@asd.de>"],
         "keywords": ["ioBroker", "template", "Smart Home", "home automation"],
         "licenseInformation": {
             "type": "free",
@@ -52,8 +52,8 @@
         "platform": "Javascript/Node.js",
         "icon": "sbms.png",
         "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/Sponkdamonk/ioBroker.test-adapter/main/admin/sbms.png",
-        "readme": "https://github.com/Sponkdamonk/ioBroker.sbms/blob/main/README.md",
+        "extIcon": "https://raw.githubusercontent.com/buffoletti/ioBroker.sbms/main/admin/sbms.png",
+        "readme": "https://github.com/buffoletti/ioBroker.sbms/blob/main/README.md",
         "loglevel": "info",
         "tier": 3,
         "mode": "daemon",

@@ -9,7 +9,7 @@
 
 [![NPM](https://nodei.co/npm/iobroker.sbms.png?downloads=true)](https://nodei.co/npm/iobroker.sbms/)
 
-**Tests:** ![Test and Release](https://github.com/Sponkdamonk/ioBroker.sbms/workflows/Test%20and%20Release/badge.svg)
+**Tests:** ![Test and Release](https://github.com/buffoletti/ioBroker.sbms/workflows/Test%20and%20Release/badge.svg)
 
 ## sbms adapter for ioBroker
 
@@ -31,7 +31,7 @@ Tested with SBMS0
 
 MIT License
 
-Copyright (c) 2025 Sponkdamonk <asd@asd.de>
+Copyright (c) 2025 buffoletti <asd@asd.asd>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

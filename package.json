@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "description": "Electrodacus SBMS",
   "author": {
-    "name": "Sponkdamonk",
+    "name": "buffoletti",
     "email": "asd@asd.de"
   },
-  "homepage": "https://github.com/Sponkdamonk/ioBroker.sbms",
+  "homepage": "https://github.com/buffoletti/ioBroker.sbms",
   "license": "MIT",
   "keywords": [
     "ioBroker",
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Sponkdamonk/ioBroker.sbms.git"
+    "url": "https://github.com/buffoletti/ioBroker.sbms.git"
   },
   "engines": {
     "node": ">= 20"
@@ -78,7 +78,7 @@
     "release": "release-script"
   },
   "bugs": {
-    "url": "https://github.com/Sponkdamonk/ioBroker.test-adapter/issues"
+    "url": "https://github.com/buffoletti/ioBroker.sbms/issues"
   },
   "readmeFilename": "README.md"
 }

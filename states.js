@@ -88,6 +88,9 @@ async function handleHtmlAdditionalStates(adapter) {
         return; // exit early
     }
 
+    // Otherwise create states
+    await createStatesFromObject(adapter, states, `Creating ${Object.keys(states).length} addtional HTML states...`);
+
     // Delete balancing additional states if useHTML and useMQTT is true
     if (adapter.config.useHtml && adapter.config.useMQTT) {
         for (let i = 1; i <= 8; i++) {
@@ -96,14 +99,6 @@ async function handleHtmlAdditionalStates(adapter) {
                 if (err) adapter.log.warn(`Could not delete ${fullId}: ${err}`);
             });
         }
-        return; // exit early
-    } else {
-        // Otherwise create states
-        await createStatesFromObject(
-            adapter,
-            states,
-            `Creating ${Object.keys(states).length} addtional HTML states...`,
-        );
     }
 }
 

@@ -14,7 +14,7 @@ function init(adapter, topic, debug = false) {
             adapter.log.info("No rate limit for MQTT messages configured.");
         } else {
             updateIntervalMilliSeconds = adapter.config.mqttUpdateInterval * 1000;
-            adapter.log.info(`Using update interval: ${updateIntervalMilliSeconds} ms`);
+            adapter.log.info(`Using MQTT update interval: ${adapter.config.mqttUpdateInterval} s`);
         }
     }
 

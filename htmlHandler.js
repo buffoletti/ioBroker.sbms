@@ -32,6 +32,7 @@ function init(adapter, debug = false) {
 
     // If interval is 0, fetch once per second
     const fetchInterval = interval || 1000;
+    adapter.log.info(`Using HTML polling interval: ${adapter.config.htmlUpdateInterval} s`);
     let running = false;
     let lastTimestamp = null;
 

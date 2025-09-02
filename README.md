@@ -25,7 +25,7 @@ If both options are enabled, basic info is updated from MQTT stream whereas batt
 2. Connect SBMS to wifi and MQTT broker
 3. Identify state that receives the SBMS topic (default root/sbms)
 4. In the SBMS adapter name topic in the iobroker format with dots
-5. Adjust Updating intervall (<0s: every update of the topic state is processed)
+5. Adjust Updating intervall (<1s: every update of the topic state is processed)
 
 # rawPage
 

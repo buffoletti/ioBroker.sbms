@@ -11,15 +11,30 @@
                     "text": "MQTT Settings",
                     "size": 1
                 },
-                "useMQTT": { "type": "checkbox", "label": "Use MQTT (requires MQTT Client)", "size": "md" },
-                "mqttTopic": { "type": "text", "label": "Iobroker Object containng MQTT Topic" , "size": "md" },
+                "useMQTT": { "type": "checkbox",
+                    "label": "Use MQTT (requires MQTT Client)",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4,
+                    "xl": 4 },
+                "mqttTopic": { "type": "text", "label": "Iobroker Object containng MQTT Topic" ,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4,
+                    "xl": 4 },
                 "mqttUpdateInterval": {
                     "type": "number",
                     "label": "Update Interval for MQTT stream (seconds)",
                     "default": 10,
                     "min": 1,
-                    "unit": "s", 
-                    "size": "md" 
+                    "unit": "s",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4,
+                    "xl": 4
                 }
             }
         },
@@ -32,15 +47,29 @@
                     "text": "HTML Settings",
                     "size": 1
                 },
-                "useHtml": { "type": "checkbox", "label": "Use HTML scraping of Raw Data", "size": "md"  },
-                "deviceIP": { "type": "text", "label": "Device IP", "size": "md"  },
+                "useHtml": { "type": "checkbox", "label": "Use HTML scraping of Raw Data",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4,
+                    "xl": 4 },
+                "deviceIP": { "type": "text", "label": "Device IP",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4,
+                    "xl": 4  },
                 "htmlUpdateInterval": {
                     "type": "number",
                     "label": "Update Interval for HTML Stream (seconds)",
                     "default": 10,
                     "min": 1,
-                    "unit": "s", 
-                    "size": "md" 
+                    "unit": "s",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4,
+                    "xl": 4 
                 }
             }
         },
@@ -53,7 +82,12 @@
                     "text": "Debug Settings",
                     "size": 1
                 },
-                "debug": { "type": "checkbox", "label": "Enable Debug and write full data set", "size": "md"  }
+                "debug": { "type": "checkbox", "label": "Enable Debug and write full data set",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4,
+                    "xl": 4  }
             }
         }
     }

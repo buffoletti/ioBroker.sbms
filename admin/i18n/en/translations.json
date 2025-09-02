@@ -1,5 +1,12 @@
 {
-	"test-adapter adapter settings": "Adapter settings for test-adapter",
-	"option1": "option1",
-	"option2": "option2"
+    "header_mqtt": "MQTT Settings",
+    "label_use_mqtt": "Use MQTT (requires MQTT Client)",
+    "label_mqtt_topic": "IoBroker Object containing MQTT Topic",
+    "label_mqtt_interval": "Update Interval for MQTT stream (seconds)",
+    "header_html": "HTML Settings",
+    "label_use_html": "Use HTML polling of Raw Data",
+    "label_device_ip": "Device IP",
+    "label_html_interval": "Update Interval for HTML Stream (seconds)",
+    "header_debug": "Debug Settings",
+    "label_debug": "Enable Debug and write full data set"
 }

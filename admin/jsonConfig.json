@@ -2,93 +2,104 @@
     "i18n": true,
     "type": "panel",
     "items": {
-        "mqttSection": {
-            "type": "panel",
-            "label": "MQTT Settings",
-            "items": {
-                "headerMQTT": {
-                    "type": "header",
-                    "text": "MQTT Settings",
-                    "size": 1
-                },
-                "useMQTT": { "type": "checkbox",
-                    "label": "Use MQTT (requires MQTT Client)",
-                    "xs": 12,
-                    "sm": 12,
-                    "md": 4,
-                    "lg": 4,
-                    "xl": 4 },
-                "mqttTopic": { "type": "text", "label": "Iobroker Object containng MQTT Topic" ,
-                    "xs": 12,
-                    "sm": 12,
-                    "md": 4,
-                    "lg": 4,
-                    "xl": 4 },
-                "mqttUpdateInterval": {
-                    "type": "number",
-                    "label": "Update Interval for MQTT stream (seconds)",
-                    "default": 10,
-                    "min": 1,
-                    "unit": "s",
-                    "xs": 12,
-                    "sm": 12,
-                    "md": 4,
-                    "lg": 4,
-                    "xl": 4
-                }
-            }
+        "headerMQTT": {
+            "type": "header",
+            "text": "header_mqtt",
+            "size": 2,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
         },
-        "webSection": {
-            "type": "panel",
-            "label": "HTML Settings",
-            "items": {
-                "headerHTML": {
-                    "type": "header",
-                    "text": "HTML Settings",
-                    "size": 1
-                },
-                "useHtml": { "type": "checkbox", "label": "Use HTML scraping of Raw Data",
-                    "xs": 12,
-                    "sm": 12,
-                    "md": 4,
-                    "lg": 4,
-                    "xl": 4 },
-                "deviceIP": { "type": "text", "label": "Device IP",
-                    "xs": 12,
-                    "sm": 12,
-                    "md": 4,
-                    "lg": 4,
-                    "xl": 4  },
-                "htmlUpdateInterval": {
-                    "type": "number",
-                    "label": "Update Interval for HTML Stream (seconds)",
-                    "default": 10,
-                    "min": 1,
-                    "unit": "s",
-                    "xs": 12,
-                    "sm": 12,
-                    "md": 4,
-                    "lg": 4,
-                    "xl": 4 
-                }
-            }
+        "useMQTT": {
+            "type": "checkbox",
+            "label": "label_use_mqtt",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
         },
-        "debugSection": {
-            "type": "panel",
-            "label": "Debug Settings",
-            "items": {
-                "headerDebug": {
-                    "type": "header",
-                    "text": "Debug Settings",
-                    "size": 1
-                },
-                "debug": { "type": "checkbox", "label": "Enable Debug and write full data set",
-                    "xs": 12,
-                    "sm": 12,
-                    "md": 4,
-                    "lg": 4,
-                    "xl": 4  }
-            }
+        "mqttTopic": {
+            "type": "text",
+            "label": "label_mqtt_topic",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
+        },
+        "mqttUpdateInterval": {
+            "type": "number",
+            "label": "label_mqtt_interval",
+            "default": 10,
+            "min": 1,
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
+        },
+        "headerHTML": {
+            "newLine": true,
+            "type": "header",
+            "text": "header_html",
+            "size": 2,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "useHtml": {
+            "type": "checkbox",
+            "label": "label_use_html",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
+        },
+        "deviceIP": {
+            "type": "text",
+            "label": "label_device_ip",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
+        },
+        "htmlUpdateInterval": {
+            "type": "number",
+            "label": "label_html_interval",
+            "default": 10,
+            "min": 1,
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
+        },
+        "headerDebug": {
+            "newLine": true,
+            "type": "header",
+            "text": "header_debug",
+            "size": 2,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "debug": {
+            "type": "checkbox",
+            "label": "label_debug",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
         }
     }
 }

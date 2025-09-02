@@ -1,5 +1,12 @@
 {
-	"test-adapter adapter settings": "Adaptereinstellungen für test-adapter",
-	"option1": "Option1",
-	"option2": "Option2"
+    "header_mqtt": "MQTT Einstellungen",
+    "label_use_mqtt": "MQTT verwenden (benötigt MQTT-Client)",
+    "label_mqtt_topic": "IoBroker-Objekt mit MQTT-Topic",
+    "label_mqtt_interval": "Aktualisierungsintervall für MQTT-Stream (Sekunden)",
+    "header_html": "HTML Einstellungen",
+    "label_use_html": "HTML-Abfrage der Rohdaten verwenden",
+    "label_device_ip": "Geräte-IP",
+    "label_html_interval": "Aktualisierungsintervall für HTML-Stream (Sekunden)",
+    "header_debug": "Debug Einstellungen",
+    "label_debug": "Debug aktivieren und vollständigen Datensatz schreiben"
 }

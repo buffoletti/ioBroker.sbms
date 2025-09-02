@@ -44,7 +44,7 @@ rawPage has additional infos (battery parameters, counters and balancing)
 
 ### **WORK IN PROGRESS**
 
-- v0.0.1 initial release
+- 0.0.1 initial release
 
 ## License
 

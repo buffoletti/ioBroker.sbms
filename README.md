@@ -36,15 +36,12 @@ rawPage has additional infos (battery parameters, counters and balancing)
 4. Adjust Updateinterval (smaller than 3s may not feasable)
 
 ## Changelog
-
 <!--
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
-
-- 0.0.1 initial release
+### 0.0.1 (2025-09-02)
+* Initial Release
 
 ## License
 

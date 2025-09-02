@@ -17,7 +17,7 @@
             "de": "Adapter zum Auslesen von Daten des Electrodacus SBMS"
         },
         "authors": ["Buffoletti <asd@asd.de>"],
-        "keywords": ["ioBroker", "template", "Smart Home", "home automation"],
+        "keywords": ["ioBroker", "SBMS", "Electrodacus", "energy"],
         "licenseInformation": {
             "type": "free",
             "license": "MIT"
@@ -28,6 +28,7 @@
         "extIcon": "https://raw.githubusercontent.com/buffoletti/ioBroker.sbms/main/admin/sbms.png",
         "readme": "https://github.com/buffoletti/ioBroker.sbms/blob/main/README.md",
         "loglevel": "info",
+        "type": "energy",
         "tier": 3,
         "mode": "daemon",
         "type": "protocols",

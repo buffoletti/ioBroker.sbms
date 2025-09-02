@@ -11,14 +11,15 @@
                     "text": "MQTT Settings",
                     "size": 1
                 },
-                "useMQTT": { "type": "checkbox", "label": "Use MQTT (requires MQTT Client)" },
-                "mqttTopic": { "type": "text", "label": "Iobroker Object containng MQTT Topic" },
+                "useMQTT": { "type": "checkbox", "label": "Use MQTT (requires MQTT Client)", "size": "md" },
+                "mqttTopic": { "type": "text", "label": "Iobroker Object containng MQTT Topic" , "size": "md" },
                 "mqttUpdateInterval": {
                     "type": "number",
                     "label": "Update Interval for MQTT stream (seconds)",
                     "default": 10,
                     "min": 1,
-                    "unit": "s"
+                    "unit": "s", 
+                    "size": "md" 
                 }
             }
         },
@@ -31,14 +32,15 @@
                     "text": "HTML Settings",
                     "size": 1
                 },
-                "useHtml": { "type": "checkbox", "label": "Use HTML scraping of Raw Data" },
-                "deviceIP": { "type": "text", "label": "Device IP" },
+                "useHtml": { "type": "checkbox", "label": "Use HTML scraping of Raw Data", "size": "md"  },
+                "deviceIP": { "type": "text", "label": "Device IP", "size": "md"  },
                 "htmlUpdateInterval": {
                     "type": "number",
                     "label": "Update Interval for HTML Stream (seconds)",
                     "default": 10,
                     "min": 1,
-                    "unit": "s"
+                    "unit": "s", 
+                    "size": "md" 
                 }
             }
         },
@@ -51,7 +53,7 @@
                     "text": "Debug Settings",
                     "size": 1
                 },
-                "debug": { "type": "checkbox", "label": "Enable Debug and write full data set" }
+                "debug": { "type": "checkbox", "label": "Enable Debug and write full data set", "size": "md"  }
             }
         }
     }

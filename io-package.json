@@ -17,7 +17,7 @@
             "de": "Adapter zum Auslesen von Daten des Electrodacus SBMS"
         },
         "authors": ["Buffoletti <asd@asd.de>"],
-        "keywords": ["ioBroker", "SBMS", "Electrodacus", "energy"],
+        "keywords": ["SBMS", "Electrodacus", "energy"],
         "licenseInformation": {
             "type": "free",
             "license": "MIT"
@@ -31,7 +31,6 @@
         "type": "energy",
         "tier": 3,
         "mode": "daemon",
-        "type": "protocols",
         "compact": true,
         "connectionType": "local",
         "dataSource": "poll",

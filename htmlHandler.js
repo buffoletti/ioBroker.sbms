@@ -8,6 +8,7 @@ let timer;
 function init(adapter, debug = false) {
     adapter.log.info("Initializing SBMS HTML scraping");
     const url = `http://${adapter.config.deviceIP}/rawData`;
+    const { usePV1, usePV2, useADCX, useHeat1, useTempExt } = adapter.config;
 
     // First scrape once → static + dynamic
     scrape(adapter, debug).then((parsed) => {
@@ -81,9 +82,13 @@ function init(adapter, debug = false) {
                 }
 
                 adapter.writeState("counter.battery", eW.eBatt / 1000);
-                adapter.writeState("counter.pv1", eW.ePV1 / 1000);
-                adapter.writeState("counter.pv2", eW.ePV2 / 1000);
-                adapter.writeState("counter.load", eW.eLoad / 1000 + eW.eExtLd / 1000);
+                if (usePV1) {
+                    adapter.writeState("counter.pv1", eW.ePV1 / 1000);
+                    adapter.writeState("counter.load", eW.eLoad / 1000 + eW.eExtLd / 1000);
+                }
+                if (usePV2) {
+                    adapter.writeState("counter.pv2", eW.ePV2 / 1000);
+                }
 
                 //WRTING DEBUG STATES
                 if (debug) {

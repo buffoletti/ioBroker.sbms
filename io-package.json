@@ -55,7 +55,12 @@
         "useHtml": true,
         "deviceIP": "192.168.2.212",
         "htmlUpdateInterval": 10,
-        "debug": false
+        "debug": false,
+        "usePV1": true,
+        "usePV2": false,
+        "useADCX": false,
+        "useHeat1": false,
+        "useTempExt": true
     },
     "objects": [],
     "instanceObjects": []

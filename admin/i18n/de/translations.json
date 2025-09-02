@@ -7,6 +7,11 @@
     "label_use_html": "HTML-Abfrage der Rohdaten verwenden",
     "label_device_ip": "Geräte-IP",
     "label_html_interval": "Aktualisierungsintervall für HTML-Stream (Sekunden)",
-    "header_debug": "Debug Einstellungen",
-    "label_debug": "Debug aktivieren und vollständigen Datensatz schreiben"
+    "header_additional_settings": "Zusätzliche Einstellungen",
+    "label_debug": "Debug aktivieren und vollständigen Datensatz schreiben (mqtt/html Ordner)",
+    "label_use_pv1": "PV1 Daten lesen",
+    "label_use_pv2": "PV2 Daten lesen (nur SBMS60, SBMS100 & SBMS120)",
+    "label_use_adcx": "Analogeingänge ADC3/ADC2 lesen",
+    "label_use_heat1": "Heat1-Daten lesen",
+    "label_use_temp_ext": "Externe Temperatur lesen (benötigt angeschlossenen Temperatursensor)"
 }

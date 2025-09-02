@@ -7,6 +7,11 @@
     "label_use_html": "Use HTML polling of Raw Data",
     "label_device_ip": "Device IP",
     "label_html_interval": "Update Interval for HTML Stream (seconds)",
-    "header_debug": "Debug Settings",
-    "label_debug": "Enable Debug and write full data set"
+    "header_additional_settings": "Additional Settings",
+    "label_use_pv1": "Read PV1 Data",
+    "label_use_pv2": "Read PV2 Data (SBMS60, SBMS100 & SBMS120 only)",
+    "label_use_adcx": "Read Analog Inputs ADC3/ADC2",
+    "label_use_heat1": "Read Heat1 Data",
+    "label_use_temp_ext": "Read External Temperature (requires connected temperature sensor)",
+    "label_debug": "Enable Debug and write full data set (mqtt/html folder)"
 }

@@ -81,16 +81,61 @@
             "lg": 4,
             "xl": 4
         },
-        "headerDebug": {
+        "headerAdditionalSettings": {
             "newLine": true,
             "type": "header",
-            "text": "header_debug",
+            "text": "header_additional_settings",
             "size": 2,
             "xs": 12,
             "sm": 12,
             "md": 12,
             "lg": 12,
             "xl": 12
+        },
+        "usePV1": {
+            "type": "checkbox",
+            "label": "label_use_pv1",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
+        },
+        "usePV2": {
+            "type": "checkbox",
+            "label": "label_use_pv2",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
+        },
+        "useADCX": {
+            "type": "checkbox",
+            "label": "label_use_adcx",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
+        },
+        "useTempExt": {
+            "type": "checkbox",
+            "label": "label_use_temp_ext",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
+        },
+        "useHeat1": {
+            "type": "checkbox",
+            "label": "label_use_heat1",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
         },
         "debug": {
             "type": "checkbox",

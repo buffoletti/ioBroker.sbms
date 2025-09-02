@@ -8,7 +8,7 @@ let timer;
 function init(adapter, debug = false) {
     adapter.log.info("Initializing SBMS HTML scraping");
     const url = `http://${adapter.config.deviceIP}/rawData`;
-    const { usePV1, usePV2, useADCX, useHeat1, useTempExt } = adapter.config;
+    const { usePV1, usePV2 } = adapter.config;
 
     // First scrape once → static + dynamic
     scrape(adapter, debug).then((parsed) => {

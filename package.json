@@ -10,9 +10,8 @@
   "license": "MIT",
   "keywords": [
     "ioBroker",
-    "template",
-    "Smart Home",
-    "home automation"
+    "SBMS",
+    "Electrodacus"
   ],
   "repository": {
     "type": "git",

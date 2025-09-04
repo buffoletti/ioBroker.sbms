@@ -18,7 +18,19 @@ function init(adapter, topic, debug = false) {
         }
     }
 
-    adapter.subscribeForeignStates(topic);
+    // Check if the topic is a valid state
+    adapter.getForeignState(topic, (err, state) => {
+        if (err) {
+            adapter.log.error(`Error checking state ${topic}: ${err.message}`);
+            return;
+        }
+        if (state === null || state === undefined) {
+            adapter.log.error(`State ${topic} does not exist or is not accessible.`);
+        } else {
+            adapter.log.info(`State ${topic} exists. Subscribing...`);
+        }
+        adapter.subscribeForeignStates(topic);
+    });
 
     adapter.on("stateChange", (id, state) => {
         if (!state || !state.val || id !== topic) return;
@@ -98,8 +110,13 @@ function init(adapter, topic, debug = false) {
     });
 }
 
-function cleanup() {
-    // ggf. hier MQTT unsubscribe / cleanup
+function cleanup(adapter) {
+    try {
+        adapter.unsubscribeForeignStates(); // unsubscribes all
+        adapter.log.info("Unsubscribed from all states.");
+    } catch (err) {
+        adapter.log.warn("Failed to unsubscribe from states: " + err.message);
+    }
 }
 
 module.exports = {

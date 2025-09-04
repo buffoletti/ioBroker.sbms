@@ -90,7 +90,7 @@ class SbmsAdapter extends utils.Adapter {
     onUnload(callback) {
         try {
             this.log.info("SBMS Adapter shutting down...");
-            if (mqttHandler.cleanup) mqttHandler.cleanup();
+            if (mqttHandler.cleanup) mqttHandler.cleanup(this);
             //if (webHandler.cleanup) webHandler.cleanup();
             callback();
         } catch (e) {

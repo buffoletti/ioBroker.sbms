@@ -83,7 +83,7 @@ async function handleHtmlDebugStates(adapter) {
     states["crcSuccessCount"] = { name: "CRC Success Count", unit: "", role: "value", type: "number" };
 
     // Delete all objects if debug is false
-    if (!adapter.config.debug) {
+    if (!adapter.config.fullMessage || !adapter.config.htmlDebug) {
         for (const id of Object.keys(states)) {
             const fullId = `${source}.${id}`;
             adapter.delObject(fullId, (err) => {

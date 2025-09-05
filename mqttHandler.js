@@ -70,8 +70,8 @@ function init(adapter, topic, debug = false) {
                 adapter.writeState("cells.max.ID", maxID);
                 adapter.writeState("cells.delta", sbms.flags.delta);
 
-                // ---- Debug states ----
-                if (debug) {
+                // ---- Full Messages states ----
+                if (adapter.config.fullMessage) {
                     // Create a string in YYYY-MM-DD HH:mm:ss format
                     const timeStr =
                         `${2000 + sbms.time.year}-` +
@@ -101,7 +101,9 @@ function init(adapter, topic, debug = false) {
                     adapter.writeState("mqtt.heat1", sbms.heat1);
                     adapter.writeState("mqtt.heat2", sbms.heat2);
 
-                    adapter.log.info(`New SBMS MQTT Message processed: ${state.val}`);
+                    if (debug) {
+                        adapter.log.info(`New SBMS MQTT Message processed: ${state.val}`);
+                    }
                 }
             }
         } catch (err) {

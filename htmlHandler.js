@@ -39,14 +39,11 @@ async function init(adapter, debug = false) {
     // Determine interval in milliseconds
     let interval = 10000; // fallback
     if (adapter.config && adapter.config.htmlUpdateInterval) {
-        interval = adapter.config.htmlUpdateInterval <= 1 ? 0 : adapter.config.htmlUpdateInterval * 1000;
+        interval = adapter.config.htmlUpdateInterval <= 1 ? 1000 : adapter.config.htmlUpdateInterval * 1000;
     }
+    adapter.log.info(`Using HTML polling interval: ${interval / 1000} s`);
 
     if (timer) clearInterval(timer);
-
-    // If interval is 0, fetch once per second
-    const fetchInterval = interval || 1000;
-    adapter.log.info(`Using HTML polling interval: ${fetchInterval / 1000} s`);
     let running = false;
     let lastTimestamp = null;
 
@@ -61,9 +58,10 @@ async function init(adapter, debug = false) {
 
                 // Skip processing if timestamp hasn't changed
                 if (sbms.timeStr === lastTimestamp) {
-                    adapter.log.info(`Scraping skipped with reported Timestamp: ${sbms.timeStr}`);
+                    if (debug) {
+                        adapter.log.info(`Scraping skipped with reported Timestamp: ${sbms.timeStr}`);
+                    }
                     running = false;
-
                     return;
                 }
                 lastTimestamp = sbms.timeStr;
@@ -79,7 +77,7 @@ async function init(adapter, debug = false) {
         } finally {
             running = false;
         }
-    }, fetchInterval);
+    }, interval);
 
     // process first scrape
     function processFirstScrape(parsed) {
@@ -126,8 +124,8 @@ async function init(adapter, debug = false) {
             adapter.writeState("counter.pv2", eW.ePV2 / 1000);
         }
 
-        //WRTING DEBUG STATES
-        if (debug) {
+        //WRTING FULL MESSAGES STATES
+        if (adapter.config.fullMessage) {
             writeStates("html.sbms", sbms);
             writeStates("html.s1", s1);
             writeStates("html.s2", s2);

@@ -53,8 +53,8 @@ async function handleMqttDebugStates(adapter) {
         };
     }
 
-    // Delete all objects if debug is false
-    if (!adapter.config.debug) {
+    // Delete all objects if full message is false
+    if (!adapter.config.fullMessage || !adapter.config.useMQTT) {
         for (const id of Object.keys(states)) {
             const fullId = `${source}.${id}`;
             adapter.delObject(fullId, (err) => {

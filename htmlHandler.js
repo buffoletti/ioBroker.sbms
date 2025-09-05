@@ -141,8 +141,8 @@ async function init(adapter, debug = false) {
                 backoffDelay = 1000; // reset on success
                 return parsed;
             } catch (err) {
-                adapter.log.error("Error fetching/parsing SBMS rawData: " + err);
-                adapter.log.warn(`Retrying scrape in ${attemptDelay / 1000}s...`);
+                adapter.log.warn("Error fetching/parsing SBMS rawData: " + err);
+                adapter.log.info(`Retrying scrape in ${attemptDelay / 1000}s...`);
 
                 // Wait before next attempt
                 await new Promise((resolve) => setTimeout(resolve, attemptDelay));

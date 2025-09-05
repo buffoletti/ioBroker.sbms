@@ -28,7 +28,7 @@ If both options are enabled, basic info is updated from MQTT stream whereas batt
 
 # rawPage
 
-rawPage has additional infos (battery parameters, counters and balancing)
+rawPage has additional infos (eg. counters and balancing)
 
 1. Connect SBMS to wifi
 2. Identify IP and set static (wifi router)

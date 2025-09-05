@@ -16,6 +16,7 @@
 Simple adapter to make data from [Electrodacus SBMS](https://electrodacus.com/) available as states from MQTT or the rawPage.
 
 Units and structure was a little customized from original data stream. If full message option is enabled, original data is additionally pushed to sbms.x.mqtt- and sbms.x.mqtt-folders.
+
 If both options are enabled, basic info is updated from MQTT stream whereas battery parameters and counters from the rawPage. balancing is not put in the general datastructure.
 
 # MQTT
@@ -33,7 +34,7 @@ rawPage has additional infos (eg. counters and balancing)
 1. Connect SBMS to wifi
 2. Identify IP and set static (wifi router)
 3. In the SBMS adapter name IP adress
-4. Adjust Updateinterval (1s is not reliable)
+4. Adjust Updateinterval (<2s is not reliable)
 
 ## Changelog
 

@@ -68,9 +68,9 @@ async function init(adapter, debug = false) {
                 }
                 lastTimestamp = sbms.timeStr;
 
-                // if (debug) {
-                adapter.log.info(`New HTML Scraping with reported Timestamp: ${sbms.timeStr}`);
-                // }
+                if (debug) {
+                    adapter.log.info(`New HTML Scraping with reported Timestamp: ${sbms.timeStr}`);
+                }
 
                 processRepeatScrapes(sbms, s1, xsbms, s2, eW);
             }

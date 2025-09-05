@@ -3,8 +3,8 @@
 const axios = require("axios");
 const { writeCommonStates } = require("./commonStatesWriter");
 
-let backoffDelay = 1000; // Start with 1 second
-const maxBackoffDelay = 300000; // Cap at 5 minutes
+let backoffDelay = 2000; // Start
+const maxBackoffDelay = 10 * 60 * 1000; // Cap
 
 let timer;
 

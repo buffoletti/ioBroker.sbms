@@ -24,12 +24,7 @@ async function init(adapter, debug = false) {
     try {
         const parsed = await scrape(adapter, debug);
         if (parsed) {
-            const { s1, xsbms } = parsed;
-            adapter.writeState("parameter.model", s1.model);
-            adapter.writeState("parameter.type", xsbms.type);
-            adapter.writeState("parameter.capacity", xsbms.capacity);
-            adapter.writeState("parameter.cvmin", xsbms.cvmin);
-            adapter.writeState("parameter.cvmax", xsbms.cvmax);
+            processFirstScrape(parsed);
 
             adapter.log.info("First scrape successful. Starting polling loop...");
         } else {
@@ -77,50 +72,7 @@ async function init(adapter, debug = false) {
                 adapter.log.info(`New HTML Scraping with reported Timestamp: ${sbms.timeStr}`);
                 // }
 
-                if (!adapter.config.useMQTT) {
-                    //WRTING COMMON STATES
-                    writeCommonStates(adapter, sbms);
-
-                    //WRTING BALANCING STATES
-
-                    // Write balancing states only if useHtml and not useMQTT
-                    for (let i = 1; i <= sbms.cellsMV.length; i++) {
-                        adapter.writeState(`cells.${i}.balancing`, s2.cellsBalancing[i]);
-                    }
-
-                    // Only update min/max if NO balancing is active
-                    const anyBalancing = Object.values(s2.cellsBalancing).some((b) => b === true);
-
-                    if (!anyBalancing) {
-                        adapter.writeState("cells.min", sbms.cellsMV[s2.cellsMin - 1]);
-                        adapter.writeState("cells.min.ID", s2.cellsMin);
-                        adapter.writeState("cells.max", sbms.cellsMV[s2.cellsMax - 1]);
-                        adapter.writeState("cells.max.ID", s2.cellsMax);
-                        adapter.writeState(
-                            "cells.delta",
-                            sbms.cellsMV[s2.cellsMax - 1] - sbms.cellsMV[s2.cellsMin - 1],
-                        );
-                    }
-                }
-
-                //MINIMUM HTML STATES
-                adapter.writeState("counter.battery", eW.eBatt / 1000);
-                if (usePV1) {
-                    adapter.writeState("counter.pv1", eW.ePV1 / 1000);
-                    adapter.writeState("counter.load", eW.eLoad / 1000 + eW.eExtLd / 1000);
-                }
-                if (usePV2) {
-                    adapter.writeState("counter.pv2", eW.ePV2 / 1000);
-                }
-
-                //WRTING DEBUG STATES
-                if (debug) {
-                    writeStates("html.sbms", sbms);
-                    writeStates("html.s1", s1);
-                    writeStates("html.s2", s2);
-                    writeStates("html.eW", eW);
-                    writeStates("html.xsbms", xsbms);
-                }
+                processRepeatScrapes(sbms, s1, xsbms, s2, eW);
             }
         } catch (error) {
             adapter.log.error("Error fetching SBMS rawData: " + error);
@@ -128,6 +80,61 @@ async function init(adapter, debug = false) {
             running = false;
         }
     }, fetchInterval);
+
+    // process first scrape
+    function processFirstScrape(parsed) {
+        const { s1, xsbms } = parsed;
+        adapter.writeState("parameter.model", s1.model);
+        adapter.writeState("parameter.type", xsbms.type);
+        adapter.writeState("parameter.capacity", xsbms.capacity);
+        adapter.writeState("parameter.cvmin", xsbms.cvmin);
+        adapter.writeState("parameter.cvmax", xsbms.cvmax);
+    }
+
+    // process repeat scrapes
+    function processRepeatScrapes(sbms, s1, xsbms, s2, eW) {
+        if (!adapter.config.useMQTT) {
+            //WRTING COMMON STATES
+            writeCommonStates(adapter, sbms);
+
+            //WRTING BALANCING STATES
+
+            // Write balancing states only if useHtml and not useMQTT
+            for (let i = 1; i <= sbms.cellsMV.length; i++) {
+                adapter.writeState(`cells.${i}.balancing`, s2.cellsBalancing[i]);
+            }
+
+            // Only update min/max if NO balancing is active
+            const anyBalancing = Object.values(s2.cellsBalancing).some((b) => b === true);
+
+            if (!anyBalancing) {
+                adapter.writeState("cells.min", sbms.cellsMV[s2.cellsMin - 1]);
+                adapter.writeState("cells.min.ID", s2.cellsMin);
+                adapter.writeState("cells.max", sbms.cellsMV[s2.cellsMax - 1]);
+                adapter.writeState("cells.max.ID", s2.cellsMax);
+                adapter.writeState("cells.delta", sbms.cellsMV[s2.cellsMax - 1] - sbms.cellsMV[s2.cellsMin - 1]);
+            }
+        }
+
+        //MINIMUM HTML STATES
+        adapter.writeState("counter.battery", eW.eBatt / 1000);
+        if (usePV1) {
+            adapter.writeState("counter.pv1", eW.ePV1 / 1000);
+            adapter.writeState("counter.load", eW.eLoad / 1000 + eW.eExtLd / 1000);
+        }
+        if (usePV2) {
+            adapter.writeState("counter.pv2", eW.ePV2 / 1000);
+        }
+
+        //WRTING DEBUG STATES
+        if (debug) {
+            writeStates("html.sbms", sbms);
+            writeStates("html.s1", s1);
+            writeStates("html.s2", s2);
+            writeStates("html.eW", eW);
+            writeStates("html.xsbms", xsbms);
+        }
+    }
 
     // Helper Scrapping function
     async function scrape(adapter, debug) {

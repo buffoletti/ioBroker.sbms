@@ -3,7 +3,7 @@
 const axios = require("axios");
 const { writeCommonStates } = require("./commonStatesWriter");
 
-let backoffDelay = 2000; // Start
+let backoffDelay = 1000; // Start
 const maxBackoffDelay = 10 * 60 * 1000; // Cap
 
 let timer;
@@ -22,7 +22,7 @@ async function init(adapter, debug = false) {
 
     // first scrape must succeed before starting interval
     try {
-        const parsed = await scrapeWithRetry(adapter, debug);
+        const parsed = await scrape(adapter, debug);
         if (parsed) {
             const { s1, xsbms } = parsed;
             adapter.writeState("parameter.model", s1.model);
@@ -60,7 +60,7 @@ async function init(adapter, debug = false) {
         running = true;
 
         try {
-            const parsed = await scrapeWithRetry(adapter, debug);
+            const parsed = await scrape(adapter, debug);
             if (parsed) {
                 const { sbms, s1, xsbms, s2, eW } = parsed;
 
@@ -73,9 +73,9 @@ async function init(adapter, debug = false) {
                 }
                 lastTimestamp = sbms.timeStr;
 
-                if (debug) {
-                    adapter.log.info(`New HTML Scraping with reported Timestamp: ${sbms.timeStr}`);
-                }
+                // if (debug) {
+                adapter.log.info(`New HTML Scraping with reported Timestamp: ${sbms.timeStr}`);
+                // }
 
                 if (!adapter.config.useMQTT) {
                     //WRTING COMMON STATES
@@ -128,28 +128,6 @@ async function init(adapter, debug = false) {
             running = false;
         }
     }, fetchInterval);
-
-    async function scrapeWithRetry(adapter, debug) {
-        let attemptDelay = backoffDelay; // start with 1s
-        const maxDelay = 300000; // 5 minutes
-        const keepRetrying = true;
-
-        while (keepRetrying) {
-            try {
-                // Single scrape attempt without retry inside
-                const parsed = await scrape(adapter, debug);
-                backoffDelay = 1000; // reset on success
-                return parsed;
-            } catch (err) {
-                adapter.log.warn("Error fetching/parsing SBMS rawData: " + err);
-                adapter.log.info(`Retrying scrape in ${attemptDelay / 1000}s...`);
-
-                // Wait before next attempt
-                await new Promise((resolve) => setTimeout(resolve, attemptDelay));
-                attemptDelay = Math.min(attemptDelay * 2, maxDelay); // exponential backoff
-            }
-        }
-    }
 
     // Helper Scrapping function
     async function scrape(adapter, debug) {
@@ -287,10 +265,10 @@ async function init(adapter, debug = false) {
 
             return { sbms, s1, xsbms, s2, eW };
         } catch (error) {
-            adapter.log.error("Error fetching/parsing SBMS rawData: " + error);
+            adapter.log.warn("Error fetching/parsing SBMS rawData: " + error);
 
             // Trigger backoff retry
-            adapter.log.warn(`Retrying scrape in ${backoffDelay / 1000}s...`);
+            adapter.log.info(`Retrying scrape in ${backoffDelay / 1000}s...`);
 
             return new Promise((resolve) => {
                 setTimeout(async () => {

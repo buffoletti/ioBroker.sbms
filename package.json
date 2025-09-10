@@ -1,7 +1,7 @@
 {
   "name": "iobroker.sbms",
   "version": "0.0.1",
-  "description": "Electrodacus SBMS",
+  "description": "ioBroker Adapter for Electrodacus SBMS",
   "author": {
     "name": "buffoletti",
     "email": "asd@asd.de"

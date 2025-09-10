@@ -2,6 +2,34 @@
     "i18n": true,
     "type": "panel",
     "items": {
+        "headerSerialport": {
+            "type": "header",
+            "text": "header_serialport",
+            "size": 2,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "useSerialport": {
+            "type": "checkbox",
+            "label": "label_use_serialport",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
+        },
+        "serialportPath": {
+            "type": "text",
+            "label": "label_serialport_path",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
+        },
         "headerMQTT": {
             "type": "header",
             "text": "header_mqtt",

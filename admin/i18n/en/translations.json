@@ -1,4 +1,7 @@
 {
+    "header_serialport": "Serial Port",
+    "label_serialport_path": "Path of Serial Port (/dev/serial/by-id/...)",
+    "label_use_serialport": "Serial Port (requires serial interface)",
     "header_mqtt": "MQTT Settings",
     "label_use_mqtt": "Use MQTT (requires MQTT Client)",
     "label_mqtt_topic": "IoBroker Object containing MQTT Topic",

@@ -7,12 +7,12 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
-const mqttHandler = require("./mqttHandler");
-const htmlHandler = require("./htmlHandler");
-const { createNormalStates } = require("./states");
-const { handleHtmlAdditionalStates } = require("./states");
-const { handleMqttDebugStates } = require("./mqttDebugStates");
-const { handleHtmlDebugStates } = require("./htmlDebugStates");
+const mqttHandler = require("./lib/mqtt/handler");
+const htmlHandler = require("./lib/html/handler");
+const { createNormalStates } = require("./lib/states");
+const { handleHtmlAdditionalStates } = require("./lib/states");
+const { handleMqttDebugStates } = require("./lib/mqtt/debugStates");
+const { handleHtmlDebugStates } = require("./lib/html/debugStates");
 
 class SbmsAdapter extends utils.Adapter {
     /**

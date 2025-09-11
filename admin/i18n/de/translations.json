@@ -3,6 +3,7 @@
     "label_use_serial": "Serielle Schnittstelle verwenden (benötigt serielle Schnittstelle)",
     "label_serial_port": "Pfad zum seriellen Port (/dev/serial/by-id/...)",
     "label_serial_baudrate": "Baudrate der seriellen Schnittstelle (Standard mit Wifi 921600)",
+    "label_serial_update_intervall": "Update Intervall für Daten vom Serial Port (Sekunden)",
     "header_mqtt": "MQTT",
     "label_use_mqtt": "MQTT verwenden (benötigt MQTT-Client)",
     "label_mqtt_topic": "IoBroker-Objekt mit MQTT-Topic",

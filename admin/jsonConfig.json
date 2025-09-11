@@ -21,9 +21,19 @@
             "lg": 4,
             "xl": 4
         },
+        "serialUpdateInterval": {
+            "type": "text",
+            "label": "label_serial_update_intervall",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
+        },
         "serialPortPath": {
             "type": "text",
             "label": "label_serial_port",
+            "newLine": true,
             "xs": 12,
             "sm": 12,
             "md": 4,
@@ -58,20 +68,21 @@
             "lg": 4,
             "xl": 4
         },
-        "mqttTopic": {
-            "type": "text",
-            "label": "label_mqtt_topic",
+        "mqttUpdateInterval": {
+            "type": "number",
+            "label": "label_mqtt_interval",
+            "default": 10,
+            "min": 1,
             "xs": 12,
             "sm": 12,
             "md": 4,
             "lg": 4,
             "xl": 4
         },
-        "mqttUpdateInterval": {
-            "type": "number",
-            "label": "label_mqtt_interval",
-            "default": 10,
-            "min": 1,
+        "mqttTopic": {
+            "type": "text",
+            "label": "label_mqtt_topic",
+            "newLine": true,
             "xs": 12,
             "sm": 12,
             "md": 4,

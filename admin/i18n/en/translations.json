@@ -1,7 +1,7 @@
 {
     "header_serial": "Serial Port / USB",
     "label_use_serial": "Serial Port (requires serial interface)",
-    "label_serial_port": "Path of Serial Port (/dev/serial/by-id/...)",
+    "label_serial_port": "Serial Port (/dev/serial/by-id/...)",
     "label_serial_baudrate": "Baudrate of Serial Port (standard with Wifi 921600)",
     "label_serial_update_intervall": "Update Interval for Serial Port Data Stream (seconds)",
     "header_mqtt": "MQTT Settings",

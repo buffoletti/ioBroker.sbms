@@ -30,7 +30,7 @@
             "lg": 4,
             "xl": 4
         },
-        "serialPortPath": {
+        "serialPort": {
             "type": "text",
             "label": "label_serial_port",
             "newLine": true,
@@ -40,8 +40,8 @@
             "lg": 4,
             "xl": 4
         },
-        "serialBaudrate": {
-            "type": "text",
+        "serialBaudRate": {
+            "type": "number",
             "label": "label_serial_baudrate",
             "xs": 12,
             "sm": 12,

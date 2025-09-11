@@ -13,11 +13,22 @@
 
 ## Electrodacus SBMS adapter for ioBroker
 
-Simple adapter to make data from [Electrodacus SBMS](https://electrodacus.com/) available as states from MQTT or the rawData html page.
+Simple adapter to make data from [Electrodacus SBMS](https://electrodacus.com/) available as states from MQTT, the rawData html page or the serial port.
 
-Units and structure was a little customized from original data stream. If full message option is enabled, original data is additionally pushed to sbms.x.mqtt- and sbms.x.mqtt-folders.
+Units and structure was a little customized from original data stream. If full message option is enabled, original data is additionally pushed to sbms.x.mqtt/html/serial folders.
 
-If both options are enabled, basic info is updated from MQTT stream whereas battery parameters and counters from the rawPage. balancing is not put in the general datastructure.
+# Serial POrt
+
+1. In SBMS check Baudrate (default 921600 with Wifi activated, if not reliable deactived wifi and reduce Baudrate)
+2. Connect host to SBMS USB (or use USB to Serial Adapter and connect diretly if you dont have Wifi Extension Board)
+3. On host ddentify serial port with `ls /dev/serial/by-id`
+4. Configure in the adapter admin page accordingly
+5. Adjust Updating intervall (1s: full stream is processed)
+
+Notes:
+
+- Wifi / MQTT
+- If Serial Port is configured, MQTT and HTML is deactived.
 
 # MQTT
 
@@ -35,6 +46,8 @@ rawData html page has additional infos (eg. counters and balancing)
 2. Identify IP and set static (wifi router)
 3. In the SBMS adapter name IP adress
 4. Adjust Updateinterval (<2s is not reliable)
+
+If MQTT and HTML options are enabled, basic info is updated from MQTT stream whereas battery parameters and counters from the rawPage. balancing is not put in the general datastructure.
 
 ## Changelog
 

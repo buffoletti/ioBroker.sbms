@@ -49,16 +49,16 @@ class SbmsAdapter extends utils.Adapter {
         // serial enabled
         if (this.config.useSerial) {
             serialHandler.init(this, this.config.debug);
-        }
+        } else {
+            // mqtt enabled
+            if (this.config.useMQTT) {
+                mqttHandler.init(this, this.config.mqttTopic, this.config.debug);
+            }
 
-        // mqtt enabled
-        if (this.config.useMQTT) {
-            mqttHandler.init(this, this.config.mqttTopic, this.config.debug);
-        }
-
-        // html enabled
-        if (this.config.useHtml) {
-            htmlHandler.init(this, this.config.debug);
+            // html enabled
+            if (this.config.useHtml) {
+                htmlHandler.init(this, this.config.debug);
+            }
         }
     }
 

@@ -7,6 +7,7 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
+const serialHandler = require("./lib/handler/serial");
 const mqttHandler = require("./lib/handler/mqtt");
 const htmlHandler = require("./lib/handler/html");
 const { createNormalStates } = require("./lib/states");
@@ -44,6 +45,11 @@ class SbmsAdapter extends utils.Adapter {
         await handleDebugStates(this, "html");
         await handleDebugStates(this, "serial");
         await handleHtmlAdditionalStates(this);
+
+        // serial enabled
+        if (this.config.useSerial) {
+            serialHandler.init(this, this.config.debug);
+        }
 
         // mqtt enabled
         if (this.config.useMQTT) {

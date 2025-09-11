@@ -7,12 +7,11 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
-const mqttHandler = require("./lib/mqtt/handler");
-const htmlHandler = require("./lib/html/handler");
+const mqttHandler = require("./lib/handler/mqtt");
+const htmlHandler = require("./lib/handler/html");
 const { createNormalStates } = require("./lib/states");
 const { handleHtmlAdditionalStates } = require("./lib/states");
-const { handleMqttDebugStates } = require("./lib/mqtt/debugStates");
-const { handleHtmlDebugStates } = require("./lib/html/debugStates");
+const { handleDebugStates, handleMqttDebugStates } = require("./lib/debugStates");
 
 class SbmsAdapter extends utils.Adapter {
     /**
@@ -42,7 +41,8 @@ class SbmsAdapter extends utils.Adapter {
 
         // Create or delete Debug Additional States
         await handleMqttDebugStates(this);
-        await handleHtmlDebugStates(this);
+        await handleDebugStates(this, "html");
+        await handleDebugStates(this, "serial");
         await handleHtmlAdditionalStates(this);
 
         // mqtt enabled

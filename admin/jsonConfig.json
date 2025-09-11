@@ -2,9 +2,9 @@
     "i18n": true,
     "type": "panel",
     "items": {
-        "headerSerialport": {
+        "headerSerial": {
             "type": "header",
-            "text": "header_serialport",
+            "text": "header_serial",
             "size": 2,
             "xs": 12,
             "sm": 12,
@@ -12,18 +12,27 @@
             "lg": 12,
             "xl": 12
         },
-        "useSerialport": {
+        "useSerial": {
             "type": "checkbox",
-            "label": "label_use_serialport",
+            "label": "label_use_serial",
             "xs": 12,
             "sm": 12,
             "md": 4,
             "lg": 4,
             "xl": 4
         },
-        "serialportPath": {
+        "serialPortPath": {
             "type": "text",
-            "label": "label_serialport_path",
+            "label": "label_serial_port",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
+        },
+        "serialBaudrate": {
+            "type": "text",
+            "label": "label_serial_baudrate",
             "xs": 12,
             "sm": 12,
             "md": 4,

@@ -49,6 +49,9 @@
         ]
     },
     "native": {
+        "useSerial": false,
+        "serialPort": "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0",
+        "serialBaudRate": 921600,
         "useMQTT": true,
         "mqttTopic": "mqtt.0.SBMS0.sbms",
         "mqttUpdateInterval": 1,

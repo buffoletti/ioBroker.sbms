@@ -1,7 +1,8 @@
 {
-    "header_serialport": "Serial Port",
-    "label_serialport_path": "Pfad zum seriellen Port (/dev/serial/by-id/...)",
-    "label_use_serialport": "Serielle Schnittstelle verwenden (benötigt serielle Schnittstelle)",
+    "header_serial": "Serial Port / USB",
+    "label_use_serial": "Serielle Schnittstelle verwenden (benötigt serielle Schnittstelle)",
+    "label_serial_port": "Pfad zum seriellen Port (/dev/serial/by-id/...)",
+    "label_serial_baudrate": "Baudrate der seriellen Schnittstelle (Standard mit Wifi 921600)",
     "header_mqtt": "MQTT",
     "label_use_mqtt": "MQTT verwenden (benötigt MQTT-Client)",
     "label_mqtt_topic": "IoBroker-Objekt mit MQTT-Topic",

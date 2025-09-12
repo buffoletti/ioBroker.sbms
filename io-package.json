@@ -4,10 +4,6 @@
     "version": "0.1.2",
     "news": {
       "0.1.2": {
-        "en": "connection info for all methods added",
-        "de": "Connection Info für alle Methoden ergänzt"
-      },
-      "0.1.1": {
         "en": "Serial Port ergänzt",
         "de": "Serial Port added"
       },

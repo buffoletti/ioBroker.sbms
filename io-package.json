@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "sbms",
-        "version": "0.1.0",
+        "version": "0.1.1",
         "news": {
+            "0.1.1": {
+                "en": "Serial Port ergänzt",
+                "de": "Serial Port added"
+            },
             "0.0.1": {
                 "en": "initial release",
                 "de": "Erstveröffentlichung"
@@ -49,6 +53,10 @@
         ]
     },
     "native": {
+        "useSerial": false,
+        "serialPort": "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0",
+        "serialBaudRate": 921600,
+        "serialUpdateInterval": 10,
         "useMQTT": false,
         "mqttTopic": "mqtt.0.SBMS0.sbms",
         "mqttUpdateInterval": 1,

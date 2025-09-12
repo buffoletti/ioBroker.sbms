@@ -1,104 +1,98 @@
 {
-  "common": {
-    "name": "sbms",
-    "version": "0.1.2",
-    "news": {
-      "0.1.2": {
-        "en": "Serial Port ergänzt",
-        "de": "Serial Port added"
-      },
-      "0.0.1": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung"
-      }
+    "common": {
+        "name": "sbms",
+        "version": "0.1.2",
+        "news": {
+            "0.1.2": {
+                "en": "Serial Port ergänzt",
+                "de": "Serial Port added"
+            },
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung"
+            }
+        },
+        "titleLang": {
+            "en": "Electrodacus SBMS",
+            "de": "Electrodacus SBMS"
+        },
+        "desc": {
+            "en": "Adapter to read data from Electrodacus SBMS",
+            "de": "Adapter zum Auslesen von Daten des Electrodacus SBMS"
+        },
+        "authors": ["Buffoletti <info@buffoletti.de>"],
+        "keywords": ["SBMS", "Electrodacus", "energy"],
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        },
+        "platform": "Javascript/Node.js",
+        "icon": "sbms.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/buffoletti/ioBroker.sbms/main/admin/sbms.png",
+        "readme": "https://github.com/buffoletti/ioBroker.sbms/blob/main/README.md",
+        "loglevel": "info",
+        "type": "energy",
+        "tier": 3,
+        "mode": "daemon",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "poll",
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=6.0.11"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=7.6.17"
+            }
+        ]
     },
-    "titleLang": {
-      "en": "Electrodacus SBMS",
-      "de": "Electrodacus SBMS"
+    "native": {
+        "useSerial": false,
+        "serialPort": "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0",
+        "serialBaudRate": 921600,
+        "serialUpdateInterval": 10,
+        "useMQTT": false,
+        "mqttTopic": "mqtt.0.SBMS0.sbms",
+        "mqttUpdateInterval": 1,
+        "useHtml": false,
+        "deviceIP": "192.168.2.212",
+        "htmlUpdateInterval": 10,
+        "fullMessage": false,
+        "debug": false,
+        "usePV1": true,
+        "usePV2": false,
+        "useADCX": false,
+        "useHeat1": false,
+        "useTempExt": true
     },
-    "desc": {
-      "en": "Adapter to read data from Electrodacus SBMS",
-      "de": "Adapter zum Auslesen von Daten des Electrodacus SBMS"
-    },
-    "authors": [
-      "Buffoletti <info@buffoletti.de>"
-    ],
-    "keywords": [
-      "SBMS",
-      "Electrodacus",
-      "energy"
-    ],
-    "licenseInformation": {
-      "type": "free",
-      "license": "MIT"
-    },
-    "platform": "Javascript/Node.js",
-    "icon": "sbms.png",
-    "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/buffoletti/ioBroker.sbms/main/admin/sbms.png",
-    "readme": "https://github.com/buffoletti/ioBroker.sbms/blob/main/README.md",
-    "loglevel": "info",
-    "type": "energy",
-    "tier": 3,
-    "mode": "daemon",
-    "compact": true,
-    "connectionType": "local",
-    "dataSource": "poll",
-    "adminUI": {
-      "config": "json"
-    },
-    "dependencies": [
-      {
-        "js-controller": ">=6.0.11"
-      }
-    ],
-    "globalDependencies": [
-      {
-        "admin": ">=7.0.23"
-      }
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "name": "Connection indicator",
+                "type": "boolean",
+                "role": "indicator.connected",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
     ]
-  },
-  "native": {
-    "useSerial": false,
-    "serialPort": "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0",
-    "serialBaudRate": 921600,
-    "serialUpdateInterval": 10,
-    "useMQTT": false,
-    "mqttTopic": "mqtt.0.SBMS0.sbms",
-    "mqttUpdateInterval": 1,
-    "useHtml": false,
-    "deviceIP": "192.168.2.212",
-    "htmlUpdateInterval": 10,
-    "fullMessage": false,
-    "debug": false,
-    "usePV1": true,
-    "usePV2": false,
-    "useADCX": false,
-    "useHeat1": false,
-    "useTempExt": true
-  },
-  "objects": [],
-  "instanceObjects": [
-    {
-      "_id": "info",
-      "type": "channel",
-      "common": {
-        "name": "Information"
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.connection",
-      "type": "state",
-      "common": {
-        "name": "Connection indicator",
-        "type": "boolean",
-        "role": "indicator.connected",
-        "read": true,
-        "write": false,
-        "def": false
-      },
-      "native": {}
-    }
-  ]
 }

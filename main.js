@@ -50,6 +50,9 @@ class SbmsAdapter extends utils.Adapter {
         if (this.config.useSerial) {
             serialHandler.init(this, this.config.debug);
         } else {
+            // serial not enabled
+            this.setState("info.connection", { val: null, ack: true });
+
             // mqtt enabled
             if (this.config.useMQTT) {
                 mqttHandler.init(this, this.config.mqttTopic, this.config.debug);
@@ -97,7 +100,8 @@ class SbmsAdapter extends utils.Adapter {
         try {
             this.log.info("SBMS Adapter shutting down...");
             if (mqttHandler.cleanup) mqttHandler.cleanup(this);
-            //if (webHandler.cleanup) webHandler.cleanup();
+            if (htmlHandler.cleanup) htmlHandler.cleanup();
+            if (serialHandler.cleanup) serialHandler.cleanup(this);
             callback();
         } catch (e) {
             callback();

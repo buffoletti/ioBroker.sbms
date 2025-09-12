@@ -4,7 +4,7 @@
   "description": "ioBroker Adapter for Electrodacus SBMS",
   "author": {
     "name": "buffoletti",
-    "email": "asd@asd.de"
+    "email": "info@buffoletti.de"
   },
   "homepage": "https://github.com/buffoletti/ioBroker.sbms",
   "license": "MIT",

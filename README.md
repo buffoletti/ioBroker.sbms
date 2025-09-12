@@ -58,7 +58,7 @@ If MQTT and HTML options are enabled, basic info is updated from MQTT stream whe
 	### **WORK IN PROGRESS**
 -->
 
-### 0.1.1 (2025-09-12)
+### 0.1.2 (2025-09-12)
 
 - Added Serial Port
 
@@ -70,7 +70,7 @@ If MQTT and HTML options are enabled, basic info is updated from MQTT stream whe
 
 MIT License
 
-Copyright (c) 2025 buffoletti <asd@asd.asd>
+Copyright (c) 2025 buffoletti <info@buffoletti.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -49,10 +49,10 @@
         ]
     },
     "native": {
-        "useMQTT": true,
+        "useMQTT": false,
         "mqttTopic": "mqtt.0.SBMS0.sbms",
         "mqttUpdateInterval": 1,
-        "useHtml": true,
+        "useHtml": false,
         "deviceIP": "192.168.2.212",
         "htmlUpdateInterval": 10,
         "fullMessage": false,

@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "sbms",
-        "version": "0.0.1",
+        "version": "0.1.0",
         "news": {
             "0.0.1": {
                 "en": "initial release",
@@ -16,7 +16,7 @@
             "en": "Adapter to read data from Electrodacus SBMS",
             "de": "Adapter zum Auslesen von Daten des Electrodacus SBMS"
         },
-        "authors": ["Buffoletti <asd@asd.de>"],
+        "authors": ["Buffoletti <info@buffoletti.de>"],
         "keywords": ["SBMS", "Electrodacus", "energy"],
         "licenseInformation": {
             "type": "free",
@@ -63,6 +63,20 @@
         "useHeat1": false,
         "useTempExt": true
     },
-    "objects": [],
+    "objects": [
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "name": "Connection indicator",
+                "type": "boolean",
+                "role": "indicator.connected",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ],
     "instanceObjects": []
 }

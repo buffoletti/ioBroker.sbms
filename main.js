@@ -7,12 +7,12 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
-const mqttHandler = require("./mqttHandler");
-const htmlHandler = require("./htmlHandler");
-const { createNormalStates } = require("./states");
-const { handleHtmlAdditionalStates } = require("./states");
-const { handleMqttDebugStates } = require("./mqttDebugStates");
-const { handleHtmlDebugStates } = require("./htmlDebugStates");
+const serialHandler = require("./lib/handler/serial");
+const mqttHandler = require("./lib/handler/mqtt");
+const htmlHandler = require("./lib/handler/html");
+const { createNormalStates } = require("./lib/states");
+const { handleHtmlAdditionalStates } = require("./lib/states");
+const { handleDebugStates, handleMqttDebugStates } = require("./lib/debugStates");
 
 class SbmsAdapter extends utils.Adapter {
     /**
@@ -42,17 +42,26 @@ class SbmsAdapter extends utils.Adapter {
 
         // Create or delete Debug Additional States
         await handleMqttDebugStates(this);
-        await handleHtmlDebugStates(this);
+        await handleDebugStates(this, "html");
+        await handleDebugStates(this, "serial");
         await handleHtmlAdditionalStates(this);
 
-        // mqtt enabled
-        if (this.config.useMQTT) {
-            mqttHandler.init(this, this.config.mqttTopic, this.config.debug);
-        }
+        // serial enabled
+        if (this.config.useSerial) {
+            serialHandler.init(this, this.config.debug);
+        } else {
+            // serial not enabled
+            this.setState("info.connection", { val: null, ack: true });
 
-        // html enabled
-        if (this.config.useHtml) {
-            htmlHandler.init(this, this.config.debug);
+            // mqtt enabled
+            if (this.config.useMQTT) {
+                mqttHandler.init(this, this.config.mqttTopic, this.config.debug);
+            }
+
+            // html enabled
+            if (this.config.useHtml) {
+                htmlHandler.init(this, this.config.debug);
+            }
         }
     }
 
@@ -91,7 +100,8 @@ class SbmsAdapter extends utils.Adapter {
         try {
             this.log.info("SBMS Adapter shutting down...");
             if (mqttHandler.cleanup) mqttHandler.cleanup(this);
-            //if (webHandler.cleanup) webHandler.cleanup();
+            if (htmlHandler.cleanup) htmlHandler.cleanup();
+            if (serialHandler.cleanup) serialHandler.cleanup(this);
             callback();
         } catch (e) {
             callback();

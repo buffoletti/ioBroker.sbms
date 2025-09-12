@@ -1,4 +1,9 @@
 {
+    "header_serial": "Serial Port / USB",
+    "label_use_serial": "Serial Port (requires serial interface)",
+    "label_serial_port": "Serial Port (/dev/serial/by-id/...)",
+    "label_serial_baudrate": "Baudrate of Serial Port (standard with Wifi 921600)",
+    "label_serial_update_intervall": "Update Interval for Serial Port Data Stream (seconds)",
     "header_mqtt": "MQTT Settings",
     "label_use_mqtt": "Use MQTT (requires MQTT Client)",
     "label_mqtt_topic": "IoBroker Object containing MQTT Topic",

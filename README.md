@@ -17,17 +17,19 @@ Simple adapter to make data from [Electrodacus SBMS](https://electrodacus.com/) 
 
 Units and structure was a little customized from original data stream. If full message option is enabled, original data is additionally pushed to sbms.x.mqtt/html/serial folders.
 
-# Serial POrt
+In any of the 3 methods, I found that even with 1s Update Intervals, often only every 2s new data is provided as can be seen on the sbms.time.second field, so thats the maximum to be expected.
 
-1. In SBMS check Baudrate (default 921600 with Wifi activated, if not reliable deactived wifi and reduce Baudrate)
+# Serial Port / USB with Wifi Extension Board
+
+1. In SBMS check Baudrate (fixed to 921600 with Wifi activated)
 2. Connect host to SBMS USB (or use USB to Serial Adapter and connect diretly if you dont have Wifi Extension Board)
-3. On host ddentify serial port with `ls /dev/serial/by-id`
+3. On host identify serial port with `ls /dev/serial/by-id`
 4. Configure in the adapter admin page accordingly
 5. Adjust Updating intervall (1s: full stream is processed)
 
 Notes:
 
-- Wifi / MQTT
+- SBMS manual says the baudrate 921.6k may not be reliable. Its currently not supported to use the USART Data Log stream with reduced baurate.
 - If Serial Port is configured, MQTT and HTML is deactived.
 
 # MQTT
@@ -45,7 +47,7 @@ rawData html page has additional infos (eg. counters and balancing)
 1. Connect SBMS to wifi
 2. Identify IP and set static (wifi router)
 3. In the SBMS adapter name IP adress
-4. Adjust Updateinterval (<2s is not reliable)
+4. Adjust Updateinterval
 
 If MQTT and HTML options are enabled, basic info is updated from MQTT stream whereas battery parameters and counters from the rawPage. balancing is not put in the general datastructure.
 
@@ -55,6 +57,10 @@ If MQTT and HTML options are enabled, basic info is updated from MQTT stream whe
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### 0.1.1 (2025-09-12)
+
+- Added Serial Port
 
 ### 0.0.1 (2025-09-02)
 

@@ -1,8 +1,6 @@
 const iobrokerConfig = require("@iobroker/eslint-config");
 
-module.exports = [
-    {
-        ignores: ["dist/**", "build/**", "node_modules/**"],
-    },
+module.exports = {
     ...iobrokerConfig,
-];
+    ignorePatterns: ["dist/**", "build/**", "node_modules/**"], // replaces .eslintignore
+};

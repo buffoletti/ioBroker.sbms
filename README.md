@@ -19,7 +19,7 @@ Units and structure was a little customized from original data stream. If full m
 
 In any of the 3 methods, I found that even with 1s Update Intervals, often only every 2s new data is provided as can be seen on the sbms.time.second field, so thats the maximum to be expected.
 
-# Serial Port / USB with Wifi Extension Board
+### Serial Port / USB with Wifi Extension Board
 
 1. In SBMS check Baudrate (fixed to 921600 with Wifi activated)
 2. Connect host to SBMS USB (or use USB to Serial Adapter and connect diretly if you dont have Wifi Extension Board)
@@ -32,7 +32,7 @@ Notes:
 - SBMS manual says the baudrate 921.6k may not be reliable. Its currently not supported to use the USART Data Log stream with reduced baurate.
 - If Serial Port is configured, MQTT and HTML is deactived.
 
-# MQTT
+### MQTT
 
 1. Setup MQTT Broker and connect iobroker
 2. Connect SBMS to wifi and MQTT broker
@@ -40,7 +40,7 @@ Notes:
 4. In the SBMS adapter configuration name topic in the iobroker format with dots
 5. Adjust Updating intervall (1s: every update of the topic state is processed)
 
-# rawData
+### rawData
 
 rawData html page has additional infos (eg. counters and balancing)
 
@@ -57,6 +57,10 @@ If MQTT and HTML options are enabled, basic info is updated from MQTT stream whe
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### 0.2.0 (2025-09-13)
+
+- New object tree structure for info/parameters, flags and balancing
 
 ### 0.1.2 (2025-09-12)
 

@@ -1,11 +1,15 @@
 {
     "common": {
         "name": "sbms",
-        "version": "0.1.2",
+        "version": "0.2.0",
         "news": {
+            "0.2.0": {
+                "en": "Breaking: New object tree structure for info/parameters, flags and balancing",
+                "de": "Breaking: Neue Objekt Baum Struktur für info/parameters, flags und balancing"
+            },
             "0.1.2": {
-                "en": "Serial Port ergänzt",
-                "de": "Serial Port added"
+                "en": "Serial Port added",
+                "de": "Serial Port ergänzt"
             },
             "0.0.1": {
                 "en": "initial release",

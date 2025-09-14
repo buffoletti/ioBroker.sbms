@@ -17,11 +17,11 @@ Simple adapter to make data from [Electrodacus SBMS](https://electrodacus.com/) 
 
 Units and structure was a little customized from original data stream. If full message option is enabled, original data is additionally pushed to sbms.x.mqtt/html/serial folders.
 
-In any of the 3 methods, I found that even with 1s Update Intervals, often only every 2s new data is provided as can be seen on the sbms.time.second field, so thats the maximum to be expected.
+In any of the 3 methods with WIFI enabled, I found that even with 1s Update Intervals, often only every 2s new data is provided as can be seen on the sbms.time.second field, so thats the maximum to be expected. To get consistent 1s Updates use Serial Port and the on SBMS set USART Data Log Option to 1. This way, counters and balancing info is not accesible.
 
 ### Serial Port / USB with Wifi Extension Board
 
-1. In SBMS check Baudrate (fixed to 921600 with Wifi activated)
+1. In SBMS check Baudrate (fixed to 921600 with Wifi activated) and USART Data Log Option.
 2. Connect host to SBMS USB (or use USB to Serial Adapter and connect diretly if you dont have Wifi Extension Board)
 3. On host identify serial port with `ls /dev/serial/by-id`
 4. Configure in the adapter admin page accordingly
@@ -29,7 +29,7 @@ In any of the 3 methods, I found that even with 1s Update Intervals, often only 
 
 Notes:
 
-- SBMS manual says the baudrate 921.6k may not be reliable. Its currently not supported to use the USART Data Log stream with reduced baurate.
+- SBMS manual says the baudrate 921.6k may not be reliable.
 - If Serial Port is configured, MQTT and HTML is deactived.
 
 ### MQTT

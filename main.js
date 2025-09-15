@@ -11,7 +11,7 @@ const serialHandler = require("./lib/handler/serial");
 const mqttHandler = require("./lib/handler/mqtt");
 const htmlHandler = require("./lib/handler/html");
 const { createNormalStates } = require("./lib/states");
-const { handleHtmlAdditionalStates } = require("./lib/states");
+const { handleExtendedStates } = require("./lib/states");
 const { handleDebugStates, handleMqttDebugStates } = require("./lib/debugStates");
 
 class SbmsAdapter extends utils.Adapter {
@@ -44,7 +44,7 @@ class SbmsAdapter extends utils.Adapter {
         await handleMqttDebugStates(this);
         await handleDebugStates(this, "html");
         await handleDebugStates(this, "serial");
-        await handleHtmlAdditionalStates(this);
+        await handleExtendedStates(this);
 
         // serial enabled
         if (this.config.useSerial) {

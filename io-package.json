@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "sbms",
-        "version": "0.2.0",
+        "version": "0.3.0",
         "news": {
+            "0.3.0": {
+                "en": "Support for USART Data Log added",
+                "de": "Unterstützung für USART Data Log hinzugefügt"
+            },
             "0.2.0": {
                 "en": "Breaking: New object tree structure for info/parameters, flags and balancing",
                 "de": "Breaking: Neue Objekt Baum Struktur für info/parameters, flags und balancing"

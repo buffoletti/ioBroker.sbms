@@ -60,6 +60,10 @@ If MQTT and HTML options are enabled, basic info is updated from MQTT stream whe
 	### **WORK IN PROGRESS**
 -->
 
+### 0.3.0 (2025-09-15)
+
+- Support for USART Data Log Optin added
+
 ### 0.2.0 (2025-09-13)
 
 - New object tree structure for info/parameters, flags and balancing

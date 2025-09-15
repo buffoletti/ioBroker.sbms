@@ -19,9 +19,11 @@ Units and structure was a little customized from original data stream. If full m
 
 In any of the 3 methods with WIFI enabled, I found that even with 1s Update Intervals, often only every 2s new data is provided as can be seen on the sbms.time.second field, so thats the maximum to be expected. To get consistent 1s Updates use Serial Port and the on SBMS set USART Data Log Option to 1. This way, counters and balancing info is not accesible.
 
+Tested on SBMS0 only.
+
 ### Serial Port / USB with Wifi Extension Board
 
-1. In SBMS check Baudrate (fixed to 921600 with Wifi activated) and USART Data Log Option.
+1. In SBMS check Baudrate (fixed to 921600 with Wifi activated)
 2. Connect host to SBMS USB (or use USB to Serial Adapter and connect diretly if you dont have Wifi Extension Board)
 3. On host identify serial port with `ls /dev/serial/by-id`
 4. Configure in the adapter admin page accordingly
@@ -30,7 +32,7 @@ In any of the 3 methods with WIFI enabled, I found that even with 1s Update Inte
 Notes:
 
 - SBMS manual says the baudrate 921.6k may not be reliable.
-- If Serial Port is configured, MQTT and HTML is deactived.
+- If Serial Port is configured in Adapter admin, MQTT and HTML is deactived.
 
 ### MQTT
 
@@ -40,7 +42,7 @@ Notes:
 4. In the SBMS adapter configuration name topic in the iobroker format with dots
 5. Adjust Updating intervall (1s: every update of the topic state is processed)
 
-### rawData
+### rawData Html Page
 
 rawData html page has additional infos (eg. counters and balancing)
 

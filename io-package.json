@@ -5,31 +5,91 @@
         "news": {
             "0.3.0": {
                 "en": "Support for USART Data Log added",
-                "de": "Unterstützung für USART Data Log hinzugefügt"
+                "de": "Unterstützung für USART Data Log hinzugefügt",
+                "ru": "Поддержка журнала данных USART добавлена",
+                "pt": "Suporte para o Log de dados do USART adicionado",
+                "nl": "Ondersteuning voor USART -gegevenslogboek toegevoegd",
+                "fr": "Prise en charge du journal de données USART ajouté",
+                "it": "Supporto per il registro dati USART aggiunto",
+                "es": "Soporte para el registro de datos de USART agregado",
+                "pl": "Obsługa dodanego dziennika danych USART",
+                "uk": "Підтримка додавання журналу даних USART",
+                "zh-cn": "支持USART数据日志添加"
             },
             "0.2.0": {
                 "en": "Breaking: New object tree structure for info/parameters, flags and balancing",
-                "de": "Breaking: Neue Objekt Baum Struktur für info/parameters, flags und balancing"
+                "de": "Breaking: Neue Objekt Baum Struktur für info/parameters, flags und balancing",
+                "ru": "Перерыв: Новая структура дерева объектов для информации/параметров, флагов и балансировки",
+                "pt": "Quebra: nova estrutura de árvore de objeto para informações/parâmetros, bandeiras e balanceamento",
+                "nl": "BREAKING: nieuwe objectboomstructuur voor info/parameters, vlaggen en balanceren",
+                "fr": "Rompe: Nouvelle structure d'arbre d'objet pour les informations / paramètres, les drapeaux et l'équilibrage",
+                "it": "Breaking: nuova struttura dell'albero degli oggetti per informazioni/parametri, bandiere e bilanciamento",
+                "es": "Breaking: nueva estructura de árbol de objetos para información/parámetros, banderas y equilibrio",
+                "pl": "Łamanie: Nowa struktura drzewa obiektów dla informacji/parametrów, flag i równoważenia",
+                "uk": "Розрив: Нова структура дерев об'єктів для інформації/параметрів, прапорів та балансування",
+                "zh-cn": "破裂：信息/参数，标志和平衡的新对象树结构"
             },
             "0.1.2": {
                 "en": "Serial Port added",
-                "de": "Serial Port ergänzt"
+                "de": "Serial Port ergänzt",
+                "ru": "Последовательный порт добавлен",
+                "pt": "Porta serial adicionada",
+                "nl": "Seriële poort toegevoegd",
+                "fr": "Port série ajouté",
+                "it": "Porta seriale aggiunta",
+                "es": "Puerto serie agregado",
+                "pl": "Dodano port szeregowy",
+                "uk": "Серійний порт додав",
+                "zh-cn": "添加了串行端口"
             },
             "0.0.1": {
                 "en": "initial release",
-                "de": "Erstveröffentlichung"
+                "de": "Erstveröffentlichung",
+                "ru": "Первоначальный выпуск",
+                "pt": "liberação inicial",
+                "nl": "eerste release",
+                "fr": "libération initiale",
+                "it": "Rilascio iniziale",
+                "es": "lanzamiento inicial",
+                "pl": "Początkowe wydanie",
+                "uk": "Початковий випуск",
+                "zh-cn": "初始版本"
             }
         },
         "titleLang": {
             "en": "Electrodacus SBMS",
-            "de": "Electrodacus SBMS"
+            "de": "Electrodacus SBMS",
+            "ru": "Electrodacus SBMS",
+            "pt": "Electrodacus sbms",
+            "nl": "Electrodacus SBMS",
+            "fr": "Electrodacus SBMS",
+            "it": "Electrodacus SBMS",
+            "es": "Electrodacus SBMS",
+            "pl": "Elektrodakus SBMS",
+            "uk": "Електродакус СБМ",
+            "zh-cn": "电量SBM"
         },
         "desc": {
             "en": "Adapter to read data from Electrodacus SBMS",
-            "de": "Adapter zum Auslesen von Daten des Electrodacus SBMS"
+            "de": "Adapter zum Auslesen von Daten des Electrodacus SBMS",
+            "ru": "Адаптер для чтения данных из Electrodacus SBMS",
+            "pt": "Adaptador para ler dados do Electrodacus SBMS",
+            "nl": "Adapter om gegevens van Electrodacus SBM's te lezen",
+            "fr": "Adaptateur pour lire les données d'Electrodacus SBMS",
+            "it": "Adattatore per leggere i dati da Electrodacus SBMS",
+            "es": "Adaptador para leer datos de Electrodacus SBMS",
+            "pl": "Adapter do odczytu danych z elektrodakusa SBMS",
+            "uk": "Адаптер для читання даних з SBMS Electrodacus",
+            "zh-cn": "适配器读取来自Eartodacus SBM的数据"
         },
-        "authors": ["Buffoletti <info@buffoletti.de>"],
-        "keywords": ["SBMS", "Electrodacus", "energy"],
+        "authors": [
+            "Buffoletti <info@buffoletti.de>"
+        ],
+        "keywords": [
+            "SBMS",
+            "Electrodacus",
+            "energy"
+        ],
         "licenseInformation": {
             "type": "free",
             "license": "MIT"

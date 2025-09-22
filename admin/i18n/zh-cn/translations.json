@@ -1,0 +1,23 @@
+{
+    "header_serial": "串行端口 / USB",
+    "label_use_serial": "串行端口（需要串行接口）",
+    "label_serial_port": "串行端口（/dev/serial/by-id/...）",
+    "label_serial_baudrate": "串行端口的波德（WiFi 921600标准）",
+    "label_serial_update_intervall": "串行端口数据流的更新间隔（秒）",
+    "header_mqtt": "MQTT设置",
+    "label_use_mqtt": "使用MQTT（需要MQTT客户端）",
+    "label_mqtt_topic": "包含MQTT主题的iObroker对象",
+    "label_mqtt_interval": "MQTT流的更新间隔（秒）",
+    "header_html": "HTML设置",
+    "label_use_html": "使用原始数据的HTML轮询",
+    "label_device_ip": "设备IP",
+    "label_html_interval": "HTML流的更新间隔（秒）",
+    "header_additional_settings": "其他设置",
+    "label_use_pv1": "阅读PV1数据",
+    "label_use_pv2": "读取PV2数据（仅SBMS60，SBMS100和SBMS120）",
+    "label_use_adcx": "阅读模拟输入ADC3/ADC2",
+    "label_use_heat1": "读取Heat1数据",
+    "label_use_temp_ext": "读取外部温度（需要连接的温度传感器）",
+    "label_debug": "启用调试消息（适配器日志将非常完整！）",
+    "label_full_message": "编写完整的数据集（MQTT/HTML/串行文件夹）"
+}

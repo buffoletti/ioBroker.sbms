@@ -1,0 +1,23 @@
+{
+    "header_serial": "Port en série / USB",
+    "label_use_serial": "Port série (nécessite une interface série)",
+    "label_serial_port": "Port série (/ dev / série / by-id / ...)",
+    "label_serial_baudrate": "Baudrate du port série (standard avec WiFi 921600)",
+    "label_serial_update_intervall": "Mettre à jour l'intervalle pour le flux de données du port série (secondes)",
+    "header_mqtt": "Paramètres MQTT",
+    "label_use_mqtt": "Utilisez MQTT (nécessite un client MQTT)",
+    "label_mqtt_topic": "Objet ioBroker contenant un sujet MQTT",
+    "label_mqtt_interval": "Mettre à jour l'intervalle pour le flux MQTT (secondes)",
+    "header_html": "Paramètres HTML",
+    "label_use_html": "Utiliser le sondage HTML des données brutes",
+    "label_device_ip": "IP de périphérique",
+    "label_html_interval": "Mettre à jour l'intervalle pour HTML Stream (secondes)",
+    "header_additional_settings": "Paramètres supplémentaires",
+    "label_use_pv1": "Lire les données PV1",
+    "label_use_pv2": "Lire les données PV2 (SBMS60, SBMS100 et SBMS120 uniquement)",
+    "label_use_adcx": "Lire les entrées analogiques ADC3 / ADC2",
+    "label_use_heat1": "Lire les données Heat1",
+    "label_use_temp_ext": "Lire la température externe (nécessite un capteur de température connecté)",
+    "label_debug": "Activer les messages de débogage (le journal des adaptateurs sera très plein!)",
+    "label_full_message": "Écrivez un ensemble de données complet (dossier MQTT / HTML / série)"
+}

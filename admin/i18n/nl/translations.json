@@ -1,0 +1,23 @@
+{
+    "header_serial": "Seriële poort / USB",
+    "label_use_serial": "Seriële poort (vereist seriële interface)",
+    "label_serial_port": "Seriële poort (/dev/serial/by-id/...)",
+    "label_serial_baudrate": "Baudrate of Serial Port (standaard met WiFi 921600)",
+    "label_serial_update_intervall": "Update interval voor Serial Port Data Stream (seconden)",
+    "header_mqtt": "MQTT -instellingen",
+    "label_use_mqtt": "Gebruik MQTT (vereist MQTT -client)",
+    "label_mqtt_topic": "IOBROKER -object met MQTT -onderwerp",
+    "label_mqtt_interval": "Update interval voor MQTT -stream (seconden)",
+    "header_html": "HTML -instellingen",
+    "label_use_html": "Gebruik HTML -polling van onbewerkte gegevens",
+    "label_device_ip": "Apparaat IP",
+    "label_html_interval": "Update interval voor HTML -stream (seconden)",
+    "header_additional_settings": "Aanvullende instellingen",
+    "label_use_pv1": "Lees PV1 -gegevens",
+    "label_use_pv2": "Lees PV2 -gegevens (SBMS60, SBMS100 & SBMS120 alleen)",
+    "label_use_adcx": "Lees analoge ingangen ADC3/ADC2",
+    "label_use_heat1": "Lees warmte1 -gegevens",
+    "label_use_temp_ext": "Lees externe temperatuur (vereist aangesloten temperatuursensor)",
+    "label_debug": "Debug -berichten inschakelen (adapterlogboek is erg vol!)",
+    "label_full_message": "Schrijf volledige gegevensset (MQTT/HTML/seriële map)"
+}

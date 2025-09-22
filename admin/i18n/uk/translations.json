@@ -1,0 +1,23 @@
+{
+    "header_serial": "Серійний порт / USB",
+    "label_use_serial": "Серійний порт (вимагає послідовного інтерфейсу)",
+    "label_serial_port": "Серійний порт (/dev/serial/by-id/...)",
+    "label_serial_baudrate": "Бодрат послідовного порту (стандарт з Wi -Fi 921600)",
+    "label_serial_update_intervall": "Інтервал оновлення для потоку даних послідовного порту (секунди)",
+    "header_mqtt": "Налаштування MQTT",
+    "label_use_mqtt": "Використовуйте MQTT (вимагає клієнта MQTT)",
+    "label_mqtt_topic": "Об'єкт iObroker, що містить тему MQTT",
+    "label_mqtt_interval": "Інтервал оновлення для потоку MQTT (секунди)",
+    "header_html": "Налаштування HTML",
+    "label_use_html": "Використовуйте HTML опитування необроблених даних",
+    "label_device_ip": "IP пристрою",
+    "label_html_interval": "Інтервал оновлення для потоку HTML (секунди)",
+    "header_additional_settings": "Додаткові налаштування",
+    "label_use_pv1": "Прочитайте дані PV1",
+    "label_use_pv2": "Прочитайте дані PV2 (лише SBMS60, SBMS100 & SBMS120)",
+    "label_use_adcx": "Прочитайте аналогові входи ADC3/ADC2",
+    "label_use_heat1": "Прочитайте дані тепла1",
+    "label_use_temp_ext": "Прочитайте зовнішню температуру (вимагає підключеного датчика температури)",
+    "label_debug": "Увімкнути повідомлення про налагодження (журнал адаптера буде дуже повним!)",
+    "label_full_message": "Напишіть повний набір даних (MQTT/HTML/Серійна папка)"
+}

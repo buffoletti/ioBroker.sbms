@@ -1,0 +1,23 @@
+{
+    "header_serial": "Port szeregowy / USB",
+    "label_use_serial": "Port szeregowy (wymaga interfejsu szeregowego)",
+    "label_serial_port": "Port szeregowy (/dev/serial/by-id/...)",
+    "label_serial_baudrate": "Baudrat portu szeregowego (standard z Wi -Fi 921600)",
+    "label_serial_update_intervall": "Interwał aktualizacji strumienia danych portu szeregowego (sekundy)",
+    "header_mqtt": "Ustawienia MQTT",
+    "label_use_mqtt": "Użyj MQTT (wymaga klienta MQTT)",
+    "label_mqtt_topic": "Obiekt IOBRoker zawierający temat MQTT",
+    "label_mqtt_interval": "Interwał aktualizacji dla strumienia MQTT (sekundy)",
+    "header_html": "Ustawienia HTML",
+    "label_use_html": "Użyj ankiety surowych danych HTML",
+    "label_device_ip": "Urządzenie IP",
+    "label_html_interval": "Interwał aktualizacji dla strumienia HTML (sekundy)",
+    "header_additional_settings": "Dodatkowe ustawienia",
+    "label_use_pv1": "Przeczytaj dane PV1",
+    "label_use_pv2": "Przeczytaj dane PV2 (SBMS60, SBMS100 i SBMS120)",
+    "label_use_adcx": "Odczyt wejścia analogowe ADC3/ADC2",
+    "label_use_heat1": "Przeczytaj dane Heat1",
+    "label_use_temp_ext": "Odczytaj temperaturę zewnętrzną (wymaga połączonego czujnika temperatury)",
+    "label_debug": "Włącz wiadomości debugowe (dziennik adaptera będzie bardzo pełny!)",
+    "label_full_message": "Napisz pełny zestaw danych (folder MQTT/HTML/"
+}

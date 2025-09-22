@@ -1,0 +1,23 @@
+{
+    "header_serial": "Porta em série / USB",
+    "label_use_serial": "Porta serial (requer interface serial)",
+    "label_serial_port": "Porta serial (/dev/serial/by-id/...)",
+    "label_serial_baudrate": "Baudrate da porta serial (padrão com WiFi 921600)",
+    "label_serial_update_intervall": "Intervalo de atualização para fluxo de dados de porta serial (segundos)",
+    "header_mqtt": "Configurações MQTT",
+    "label_use_mqtt": "Use MQTT (requer cliente MQTT)",
+    "label_mqtt_topic": "Objeto iobroker contendo tópico MQTT",
+    "label_mqtt_interval": "Intervalo de atualização para o fluxo MQTT (segundos)",
+    "header_html": "Configurações HTML",
+    "label_use_html": "Use a pesquisa HTML de dados brutos",
+    "label_device_ip": "IP do dispositivo",
+    "label_html_interval": "Intervalo de atualização para fluxo HTML (segundos)",
+    "header_additional_settings": "Configurações adicionais",
+    "label_use_pv1": "Leia dados PV1",
+    "label_use_pv2": "Leia os dados PV2 (SBMS60, SBMS100 e SBMS120)",
+    "label_use_adcx": "Leia entradas analógicas ADC3/ADC2",
+    "label_use_heat1": "Leia os dados do calor1",
+    "label_use_temp_ext": "Leia a temperatura externa (requer sensor de temperatura conectada)",
+    "label_debug": "Ativar mensagens de depuração (o log do adaptador estará muito cheio!)",
+    "label_full_message": "Escreva o conjunto de dados completo (pasta MQTT/HTML/serial)"
+}

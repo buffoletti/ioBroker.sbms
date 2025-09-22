@@ -1,0 +1,23 @@
+{
+    "header_serial": "Серийный порт / USB",
+    "label_use_serial": "Последовательный порт (требует последовательного интерфейса)",
+    "label_serial_port": "Последовательный порт (/dev/serial/by-id/...)",
+    "label_serial_baudrate": "Baudrate серийного порта (стандарт с Wi -Fi 921600)",
+    "label_serial_update_intervall": "Интервал обновления для потока данных последовательного порта (секунд)",
+    "header_mqtt": "Настройки MQTT",
+    "label_use_mqtt": "Используйте MQTT (требует клиента MQTT)",
+    "label_mqtt_topic": "Объект iobroker, содержащий тему MQTT",
+    "label_mqtt_interval": "Интервал обновления для потока MQTT (секунды)",
+    "header_html": "Настройки HTML",
+    "label_use_html": "Используйте HTML -опрос необработанных данных",
+    "label_device_ip": "Устройство IP",
+    "label_html_interval": "Интервал обновления для HTML -потока (секунд)",
+    "header_additional_settings": "Дополнительные настройки",
+    "label_use_pv1": "Прочитайте данные PV1",
+    "label_use_pv2": "Читать данные PV2 (только SBMS60, SBMS100 и SBMS120)",
+    "label_use_adcx": "Прочитайте аналоговые входы ADC3/ADC2",
+    "label_use_heat1": "Читать данные HEAT1",
+    "label_use_temp_ext": "Читать внешнюю температуру (требует подключенного датчика температуры)",
+    "label_debug": "Включить сообщения отладки (журнал адаптера будет очень полным!)",
+    "label_full_message": "Напишите полный набор данных (MQTT/HTML/Serial Polder)"
+}

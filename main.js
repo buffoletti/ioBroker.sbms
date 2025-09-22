@@ -107,12 +107,6 @@ class SbmsAdapter extends utils.Adapter {
             callback();
         }
     }
-
-    writeState(state, value) {
-        // Haupt-States
-        const base = `sbms.${this.instance}.${state}`;
-        this.setState(base, value, true);
-    }
 }
 
 if (require.main !== module) {

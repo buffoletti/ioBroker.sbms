@@ -18,6 +18,5 @@
     "label_use_adcx": "Odczyt wejścia analogowe ADC3/ADC2",
     "label_use_heat1": "Przeczytaj dane Heat1",
     "label_use_temp_ext": "Odczytaj temperaturę zewnętrzną (wymaga połączonego czujnika temperatury)",
-    "label_debug": "Włącz wiadomości debugowe (dziennik adaptera będzie bardzo pełny!)",
     "label_full_message": "Napisz pełny zestaw danych (folder MQTT/HTML/"
 }

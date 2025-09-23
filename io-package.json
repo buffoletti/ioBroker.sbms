@@ -82,14 +82,8 @@
             "uk": "Адаптер для читання даних з SBMS Electrodacus",
             "zh-cn": "适配器读取来自Eartodacus SBM的数据"
         },
-        "authors": [
-            "Buffoletti <info@buffoletti.de>"
-        ],
-        "keywords": [
-            "SBMS",
-            "Electrodacus",
-            "energy"
-        ],
+        "authors": ["Buffoletti <info@buffoletti.de>"],
+        "keywords": ["SBMS", "Electrodacus", "energy"],
         "licenseInformation": {
             "type": "free",
             "license": "MIT"
@@ -132,7 +126,6 @@
         "deviceIP": "192.168.2.212",
         "htmlUpdateInterval": 10,
         "fullMessage": false,
-        "debug": false,
         "usePV1": true,
         "usePV2": false,
         "useADCX": false,

@@ -18,6 +18,5 @@
     "label_use_adcx": "Lea las entradas analógicas ADC3/ADC2",
     "label_use_heat1": "Leer datos de Heat1",
     "label_use_temp_ext": "Leer temperatura externa (requiere sensor de temperatura conectado)",
-    "label_debug": "Habilitar mensajes de depuración (¡el registro del adaptador estará muy lleno!)",
     "label_full_message": "Escriba un conjunto de datos completo (MQTT/HTML/Carpeta Serial)"
 }

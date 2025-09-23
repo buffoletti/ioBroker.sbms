@@ -18,6 +18,5 @@
     "label_use_adcx": "Read Analog Inputs ADC3/ADC2",
     "label_use_heat1": "Read Heat1 Data",
     "label_use_temp_ext": "Read External Temperature (requires connected temperature sensor)",
-    "label_debug": "Enable Debug messages (Adapter log will be very full!)",
     "label_full_message": "Write full data set (mqtt/html/serial folder)"
 }

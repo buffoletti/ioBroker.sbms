@@ -14,7 +14,6 @@
     "label_html_interval": "Aktualisierungsintervall für HTML-Stream (Sekunden)",
     "header_additional_settings": "Zusätzliche Einstellungen",
     "label_full_message": "Vollständigen Datensatz schreiben (mqtt/html/serial Ordner)",
-    "label_debug": "Debugmessages aktivieren (Adapter-Log wird sehr voll!)",
     "label_use_pv1": "PV1 Daten lesen",
     "label_use_pv2": "PV2 Daten lesen (nur SBMS60, SBMS100 & SBMS120)",
     "label_use_adcx": "Analogeingänge ADC3/ADC2 lesen",

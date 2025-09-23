@@ -48,19 +48,19 @@ class SbmsAdapter extends utils.Adapter {
 
         // serial enabled
         if (this.config.useSerial) {
-            serialHandler.init(this, this.config.debug);
+            serialHandler.init(this);
         } else {
             // serial not enabled
             this.setState("info.connection", { val: null, ack: true });
 
             // mqtt enabled
             if (this.config.useMQTT) {
-                mqttHandler.init(this, this.config.mqttTopic, this.config.debug);
+                mqttHandler.init(this, this.config.mqttTopic);
             }
 
             // html enabled
             if (this.config.useHtml) {
-                htmlHandler.init(this, this.config.debug);
+                htmlHandler.init(this);
             }
         }
     }
@@ -106,12 +106,6 @@ class SbmsAdapter extends utils.Adapter {
         } catch (e) {
             callback();
         }
-    }
-
-    writeState(state, value) {
-        // Haupt-States
-        const base = `sbms.${this.instance}.${state}`;
-        this.setState(base, value, true);
     }
 }
 

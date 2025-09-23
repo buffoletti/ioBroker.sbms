@@ -18,6 +18,5 @@
     "label_use_adcx": "Lees analoge ingangen ADC3/ADC2",
     "label_use_heat1": "Lees warmte1 -gegevens",
     "label_use_temp_ext": "Lees externe temperatuur (vereist aangesloten temperatuursensor)",
-    "label_debug": "Debug -berichten inschakelen (adapterlogboek is erg vol!)",
     "label_full_message": "Schrijf volledige gegevensset (MQTT/HTML/seriële map)"
 }

@@ -10,8 +10,7 @@ const utils = require('@iobroker/adapter-core');
 const serialHandler = require('./lib/handler/serial');
 const mqttHandler = require('./lib/handler/mqtt');
 const htmlHandler = require('./lib/handler/html');
-const { createNormalStates } = require('./lib/states');
-const { handleExtendedStates } = require('./lib/states');
+const { createNormalStates, handleExtendedStates } = require('./lib/states');
 const { handleDebugStates, handleMqttDebugStates } = require('./lib/debugStates');
 
 class SbmsAdapter extends utils.Adapter {

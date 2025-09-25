@@ -60,6 +60,16 @@ If MQTT and HTML options are enabled, basic info is updated from MQTT stream whe
 	### **WORK IN PROGRESS**
 -->
 
+### 0.4.0 (2025-09-25)
+
+Review add to latest:
+- Breaking: Object Tree (cells.min > cells.min.voltage, cells.max.ID > cells.maxID)
+- added multilanguage support
+- fix connection watchdog intervals, change to adapter.intervals, safe ui intervals
+- cleaning: devDependencies, object tree, eslint 9
+- debug logs changed to iobroker standard
+
+
 ### 0.3.0 (2025-09-15)
 
 - Support for USART Data Log Optin added

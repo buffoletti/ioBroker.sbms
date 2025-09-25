@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "sbms",
-        "version": "0.3.0",
+        "version": "0.4.0",
         "news": {
+            "0.4.0": {
+                "en": "- Breaking: Object Tree (cells.min > cells.min.voltage, cells.max.ID > cells.maxID)\n- added multilanguage support\n- fix connection watchdog intervals, change to adapter.intervals, safe ui intervals\n- cleaning: devDependencies, object tree, eslint 9\n- debug logs changed to iobroker standard",
+                "de": "- Brechung: Objektbaum (Cells.min> cells.min.voltage, Cells.max.id> cells.maxid)\n- Support mit mehrreicher Support hinzugefügt\n- Verbindungswächterintervalle beheben, wechseln Sie in Adapter.intervals, sichere UI -Intervalle\n- Reinigung: DevDependenzen, Objektbaum, Eslint 9\n- Debug -Protokolle wurden in den IOBROKER -Standard geändert",
+                "ru": "- Разрыв: дерево объекта (cells.min> cells.min. -voltage, cells.max.id> cells.maxid)\n- Добавлена ​​поддержка с несколькими языками\n- Исправить интервалы наблюдения за соединением, переход на адаптер. Intervals, безопасные интервалы пользовательского интерфейса\n- Очистка: DevDependencies, Object Tree, Eslint 9\n- Журналы отладки изменились на стандарт iobroker",
+                "pt": "- quebra: árvore de objeto (células\n- Adicionado suporte multilanguage\n- Corrija intervalos de vigilância de conexão, alteração para adaptador.intervals, intervalos de interface do usuário seguros\n- Limpeza: DevDependências, Árvore de Objetos, Eslint 9\n- Os logs de depuração foram alterados para o padrão do iobroker",
+                "nl": "- Breaking: Object Tree (Cells.min> Cells.min.Voltage, Cells.Max.id> Cells.Maxid)\n- Multilanguage -ondersteuning toegevoegd\n- Repareer de verbindingswaakhondintervallen, wijzig naar adapter.intervals, veilige UI -intervallen\n- Reiniging: DevDependencies, Object Tree, Eslint 9\n- Debug -logboeken gewijzigd in IOBROKER -standaard",
+                "fr": "- Breaking: Object Tree (Cells.min> cells.min.coltage, Cells.max.id> Cells.Maxid)\n- Ajout du support multiples\n- Correction des intervalles de surveillance de la connexion, passez à l'adaptateur.Intervals, intervalles d'interface utilisateur sûrs\n- Nettoyage: DevDependces, Arbre d'objet, Eslint 9\n- Les journaux de débogage sont modifiés en norme IOBRoker",
+                "it": "- Breaking: Object Tree (cells.min> cellshmin.tenge, cells.max.id> cells.maxid)\n- Aggiunto supporto multilingua\n- Correggi intervalli di controllo della connessione, modifica in Adapter.Intervals, intervalli di utente sicuri\n- Pulizia: Devdipendence, Object Tree, EsLint 9\n- Registri di debug cambiati in standard IoBroker",
+                "es": "- Breaking: Object Tree (cells.min > cells.min.voltage, cells.max.ID > cells.maxID)\n- Soporte multilenguaje agregado\n- Arregle los intervalos de vigilancia de la conexión, cambiar a adaptador. Intervals, intervalos de interfaz de usuario seguros\n- Limpieza: Devdependencias, árbol de objetos, Eslint 9\n- Los registros de depuración se cambiaron a Iobroker Standard",
+                "pl": "- Breaking: Object Tree (Cells.min> Cells.min.voltage, Cells.max.id> Cells.maxId)\n- Dodano wsparcie wieloboczne\n- Napraw przedziały nadzorujące połączenie, zmień na adapter\n- Czyszczenie: devdependencje, drzewo obiektowe, Eslint 9\n- Dzienniki debugowania zmienione na standard IOBRAKER",
+                "uk": "- Розрив: Об'єктне дерево (Cells.min> cells.min.voltage, cells.max.id> cells.maxid)\n- Додана багатомовна підтримка\n- Виправити інтервали для сторожового періоду підключення, змініть на адаптер.інтервали, безпечні інтервали інтерфейсу інтерфейсу\n- Чистка: DevDependences, Tebute Tree, ESLINT 9\n- Журнали налагодження змінилися на стандарт iObroker",
+                "zh-cn": " - 断裂：对象树（Cells.min> Cells.min.min.twoltage，Cells.max.id> Cells.maxid）\n - 添加了多语言支持\n - 修复连接看门狗间隔，更改为Adapter.intervals，安全的UI间隔\n - 清洁：依赖性，对象树，Eslint 9\n - 调试日志更改为iObroker标准"
+            },
             "0.3.0": {
                 "en": "Support for USART Data Log added",
                 "de": "Unterstützung für USART Data Log hinzugefügt",
@@ -82,8 +95,14 @@
             "uk": "Адаптер для читання даних з SBMS Electrodacus",
             "zh-cn": "适配器读取来自Eartodacus SBM的数据"
         },
-        "authors": ["Buffoletti <info@buffoletti.de>"],
-        "keywords": ["SBMS", "Electrodacus", "energy"],
+        "authors": [
+            "Buffoletti <info@buffoletti.de>"
+        ],
+        "keywords": [
+            "SBMS",
+            "Electrodacus",
+            "energy"
+        ],
         "licenseInformation": {
             "type": "free",
             "license": "MIT"

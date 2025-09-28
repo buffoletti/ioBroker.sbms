@@ -3,6 +3,19 @@
         "name": "sbms",
         "version": "0.4.0",
         "news": {
+            "0.4.1": {
+                "en": "- fix: negative loads when using non-pv chargers",
+                "de": "- Fix: Negative Lasten bei Verwendung von Nicht-PV-Ladegeräten",
+                "ru": "- Исправление: отрицательные нагрузки при использовании не-PV Chargers",
+                "pt": "- Correção: cargas negativas ao usar carregadores não-PV",
+                "nl": "- Fix: negatieve belastingen bij het gebruik van niet-PV-laders",
+                "fr": "- Correction: charges négatives lors de l'utilisation de chargeurs non PV",
+                "it": "- Correzione: carichi negativi quando si utilizzano caricabatterie non PV",
+                "es": "- Corrección: cargas negativas cuando se usan cargadores que no son PV",
+                "pl": "- Poprawka: obciążenia ujemne podczas korzystania z ładowarek bez PV",
+                "uk": "- Виправлення: Негативні навантаження при використанні зарядних пристроїв, які не є ПВ",
+                "zh-cn": " - 修复：使用非PV充电器时负载负载"
+            },
             "0.4.0": {
                 "en": "- Breaking: Object Tree (cells.min > cells.min.voltage, cells.max.ID > cells.maxID)\n- added multilanguage support\n- fix connection watchdog intervals, change to adapter.intervals, safe ui intervals\n- cleaning: devDependencies, object tree, eslint 9\n- debug logs changed to iobroker standard",
                 "de": "- Brechung: Objektbaum (Cells.min> cells.min.voltage, Cells.max.id> cells.maxid)\n- Support mit mehrreicher Support hinzugefügt\n- Verbindungswächterintervalle beheben, wechseln Sie in Adapter.intervals, sichere UI -Intervalle\n- Reinigung: DevDependenzen, Objektbaum, Eslint 9\n- Debug -Protokolle wurden in den IOBROKER -Standard geändert",

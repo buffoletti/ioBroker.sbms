@@ -1,191 +1,204 @@
 {
-    "common": {
-        "name": "sbms",
-        "version": "0.4.1",
-        "news": {
-            "0.4.1": {
-                "en": "- fix: negative loads when using non-pv chargers",
-                "de": "- Fix: Negative Lasten bei Verwendung von Nicht-PV-Ladegeräten",
-                "ru": "- Исправление: отрицательные нагрузки при использовании не-PV Chargers",
-                "pt": "- Correção: cargas negativas ao usar carregadores não-PV",
-                "nl": "- Fix: negatieve belastingen bij het gebruik van niet-PV-laders",
-                "fr": "- Correction: charges négatives lors de l'utilisation de chargeurs non PV",
-                "it": "- Correzione: carichi negativi quando si utilizzano caricabatterie non PV",
-                "es": "- Corrección: cargas negativas cuando se usan cargadores que no son PV",
-                "pl": "- Poprawka: obciążenia ujemne podczas korzystania z ładowarek bez PV",
-                "uk": "- Виправлення: Негативні навантаження при використанні зарядних пристроїв, які не є ПВ",
-                "zh-cn": " - 修复：使用非PV充电器时负载负载"
-            },
-            "0.4.0": {
-                "en": "- Breaking: Object Tree (cells.min > cells.min.voltage, cells.max.ID > cells.maxID)\n- added multilanguage support\n- fix connection watchdog intervals, change to adapter.intervals, safe ui intervals\n- cleaning: devDependencies, object tree, eslint 9\n- debug logs changed to iobroker standard",
-                "de": "- Brechung: Objektbaum (Cells.min> cells.min.voltage, Cells.max.id> cells.maxid)\n- Support mit mehrreicher Support hinzugefügt\n- Verbindungswächterintervalle beheben, wechseln Sie in Adapter.intervals, sichere UI -Intervalle\n- Reinigung: DevDependenzen, Objektbaum, Eslint 9\n- Debug -Protokolle wurden in den IOBROKER -Standard geändert",
-                "ru": "- Разрыв: дерево объекта (cells.min> cells.min. -voltage, cells.max.id> cells.maxid)\n- Добавлена ​​поддержка с несколькими языками\n- Исправить интервалы наблюдения за соединением, переход на адаптер. Intervals, безопасные интервалы пользовательского интерфейса\n- Очистка: DevDependencies, Object Tree, Eslint 9\n- Журналы отладки изменились на стандарт iobroker",
-                "pt": "- quebra: árvore de objeto (células\n- Adicionado suporte multilanguage\n- Corrija intervalos de vigilância de conexão, alteração para adaptador.intervals, intervalos de interface do usuário seguros\n- Limpeza: DevDependências, Árvore de Objetos, Eslint 9\n- Os logs de depuração foram alterados para o padrão do iobroker",
-                "nl": "- Breaking: Object Tree (Cells.min> Cells.min.Voltage, Cells.Max.id> Cells.Maxid)\n- Multilanguage -ondersteuning toegevoegd\n- Repareer de verbindingswaakhondintervallen, wijzig naar adapter.intervals, veilige UI -intervallen\n- Reiniging: DevDependencies, Object Tree, Eslint 9\n- Debug -logboeken gewijzigd in IOBROKER -standaard",
-                "fr": "- Breaking: Object Tree (Cells.min> cells.min.coltage, Cells.max.id> Cells.Maxid)\n- Ajout du support multiples\n- Correction des intervalles de surveillance de la connexion, passez à l'adaptateur.Intervals, intervalles d'interface utilisateur sûrs\n- Nettoyage: DevDependces, Arbre d'objet, Eslint 9\n- Les journaux de débogage sont modifiés en norme IOBRoker",
-                "it": "- Breaking: Object Tree (cells.min> cellshmin.tenge, cells.max.id> cells.maxid)\n- Aggiunto supporto multilingua\n- Correggi intervalli di controllo della connessione, modifica in Adapter.Intervals, intervalli di utente sicuri\n- Pulizia: Devdipendence, Object Tree, EsLint 9\n- Registri di debug cambiati in standard IoBroker",
-                "es": "- Breaking: Object Tree (cells.min > cells.min.voltage, cells.max.ID > cells.maxID)\n- Soporte multilenguaje agregado\n- Arregle los intervalos de vigilancia de la conexión, cambiar a adaptador. Intervals, intervalos de interfaz de usuario seguros\n- Limpieza: Devdependencias, árbol de objetos, Eslint 9\n- Los registros de depuración se cambiaron a Iobroker Standard",
-                "pl": "- Breaking: Object Tree (Cells.min> Cells.min.voltage, Cells.max.id> Cells.maxId)\n- Dodano wsparcie wieloboczne\n- Napraw przedziały nadzorujące połączenie, zmień na adapter\n- Czyszczenie: devdependencje, drzewo obiektowe, Eslint 9\n- Dzienniki debugowania zmienione na standard IOBRAKER",
-                "uk": "- Розрив: Об'єктне дерево (Cells.min> cells.min.voltage, cells.max.id> cells.maxid)\n- Додана багатомовна підтримка\n- Виправити інтервали для сторожового періоду підключення, змініть на адаптер.інтервали, безпечні інтервали інтерфейсу інтерфейсу\n- Чистка: DevDependences, Tebute Tree, ESLINT 9\n- Журнали налагодження змінилися на стандарт iObroker",
-                "zh-cn": " - 断裂：对象树（Cells.min> Cells.min.min.twoltage，Cells.max.id> Cells.maxid）\n - 添加了多语言支持\n - 修复连接看门狗间隔，更改为Adapter.intervals，安全的UI间隔\n - 清洁：依赖性，对象树，Eslint 9\n - 调试日志更改为iObroker标准"
-            },
-            "0.3.0": {
-                "en": "Support for USART Data Log added",
-                "de": "Unterstützung für USART Data Log hinzugefügt",
-                "ru": "Поддержка журнала данных USART добавлена",
-                "pt": "Suporte para o Log de dados do USART adicionado",
-                "nl": "Ondersteuning voor USART -gegevenslogboek toegevoegd",
-                "fr": "Prise en charge du journal de données USART ajouté",
-                "it": "Supporto per il registro dati USART aggiunto",
-                "es": "Soporte para el registro de datos de USART agregado",
-                "pl": "Obsługa dodanego dziennika danych USART",
-                "uk": "Підтримка додавання журналу даних USART",
-                "zh-cn": "支持USART数据日志添加"
-            },
-            "0.2.0": {
-                "en": "Breaking: New object tree structure for info/parameters, flags and balancing",
-                "de": "Breaking: Neue Objekt Baum Struktur für info/parameters, flags und balancing",
-                "ru": "Перерыв: Новая структура дерева объектов для информации/параметров, флагов и балансировки",
-                "pt": "Quebra: nova estrutura de árvore de objeto para informações/parâmetros, bandeiras e balanceamento",
-                "nl": "BREAKING: nieuwe objectboomstructuur voor info/parameters, vlaggen en balanceren",
-                "fr": "Rompe: Nouvelle structure d'arbre d'objet pour les informations / paramètres, les drapeaux et l'équilibrage",
-                "it": "Breaking: nuova struttura dell'albero degli oggetti per informazioni/parametri, bandiere e bilanciamento",
-                "es": "Breaking: nueva estructura de árbol de objetos para información/parámetros, banderas y equilibrio",
-                "pl": "Łamanie: Nowa struktura drzewa obiektów dla informacji/parametrów, flag i równoważenia",
-                "uk": "Розрив: Нова структура дерев об'єктів для інформації/параметрів, прапорів та балансування",
-                "zh-cn": "破裂：信息/参数，标志和平衡的新对象树结构"
-            },
-            "0.1.2": {
-                "en": "Serial Port added",
-                "de": "Serial Port ergänzt",
-                "ru": "Последовательный порт добавлен",
-                "pt": "Porta serial adicionada",
-                "nl": "Seriële poort toegevoegd",
-                "fr": "Port série ajouté",
-                "it": "Porta seriale aggiunta",
-                "es": "Puerto serie agregado",
-                "pl": "Dodano port szeregowy",
-                "uk": "Серійний порт додав",
-                "zh-cn": "添加了串行端口"
-            },
-            "0.0.1": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Первоначальный выпуск",
-                "pt": "liberação inicial",
-                "nl": "eerste release",
-                "fr": "libération initiale",
-                "it": "Rilascio iniziale",
-                "es": "lanzamiento inicial",
-                "pl": "Początkowe wydanie",
-                "uk": "Початковий випуск",
-                "zh-cn": "初始版本"
-            }
-        },
-        "titleLang": {
-            "en": "Electrodacus SBMS",
-            "de": "Electrodacus SBMS",
-            "ru": "Electrodacus SBMS",
-            "pt": "Electrodacus sbms",
-            "nl": "Electrodacus SBMS",
-            "fr": "Electrodacus SBMS",
-            "it": "Electrodacus SBMS",
-            "es": "Electrodacus SBMS",
-            "pl": "Elektrodakus SBMS",
-            "uk": "Електродакус СБМ",
-            "zh-cn": "电量SBM"
-        },
-        "desc": {
-            "en": "Adapter to read data from Electrodacus SBMS",
-            "de": "Adapter zum Auslesen von Daten des Electrodacus SBMS",
-            "ru": "Адаптер для чтения данных из Electrodacus SBMS",
-            "pt": "Adaptador para ler dados do Electrodacus SBMS",
-            "nl": "Adapter om gegevens van Electrodacus SBM's te lezen",
-            "fr": "Adaptateur pour lire les données d'Electrodacus SBMS",
-            "it": "Adattatore per leggere i dati da Electrodacus SBMS",
-            "es": "Adaptador para leer datos de Electrodacus SBMS",
-            "pl": "Adapter do odczytu danych z elektrodakusa SBMS",
-            "uk": "Адаптер для читання даних з SBMS Electrodacus",
-            "zh-cn": "适配器读取来自Eartodacus SBM的数据"
-        },
-        "authors": [
-            "Buffoletti <info@buffoletti.de>"
-        ],
-        "keywords": [
-            "SBMS",
-            "Electrodacus",
-            "energy"
-        ],
-        "licenseInformation": {
-            "type": "free",
-            "license": "MIT"
-        },
-        "platform": "Javascript/Node.js",
-        "icon": "sbms.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/buffoletti/ioBroker.sbms/main/admin/sbms.png",
-        "readme": "https://github.com/buffoletti/ioBroker.sbms/blob/main/README.md",
-        "loglevel": "info",
-        "type": "energy",
-        "tier": 3,
-        "mode": "daemon",
-        "compact": true,
-        "connectionType": "local",
-        "dataSource": "poll",
-        "adminUI": {
-            "config": "json"
-        },
-        "dependencies": [
-            {
-                "js-controller": ">=6.0.11"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=7.6.17"
-            }
-        ]
+  "common": {
+    "name": "sbms",
+    "version": "0.4.2",
+    "news": {
+      "0.4.2": {
+        "en": "Dependencies",
+        "de": "Abhängigkeiten",
+        "ru": "Зависимости",
+        "pt": "Dependência",
+        "nl": "Afhankelijkheden",
+        "fr": "Dépendances",
+        "it": "Dipendenze",
+        "es": "Dependencias",
+        "pl": "Zależności",
+        "uk": "Залежність",
+        "zh-cn": "依赖关系"
+      },
+      "0.4.1": {
+        "en": "- fix: negative loads when using non-pv chargers",
+        "de": "- Fix: Negative Lasten bei Verwendung von Nicht-PV-Ladegeräten",
+        "ru": "- Исправление: отрицательные нагрузки при использовании не-PV Chargers",
+        "pt": "- Correção: cargas negativas ao usar carregadores não-PV",
+        "nl": "- Fix: negatieve belastingen bij het gebruik van niet-PV-laders",
+        "fr": "- Correction: charges négatives lors de l'utilisation de chargeurs non PV",
+        "it": "- Correzione: carichi negativi quando si utilizzano caricabatterie non PV",
+        "es": "- Corrección: cargas negativas cuando se usan cargadores que no son PV",
+        "pl": "- Poprawka: obciążenia ujemne podczas korzystania z ładowarek bez PV",
+        "uk": "- Виправлення: Негативні навантаження при використанні зарядних пристроїв, які не є ПВ",
+        "zh-cn": " - 修复：使用非PV充电器时负载负载"
+      },
+      "0.4.0": {
+        "en": "- Breaking: Object Tree (cells.min > cells.min.voltage, cells.max.ID > cells.maxID)\n- added multilanguage support\n- fix connection watchdog intervals, change to adapter.intervals, safe ui intervals\n- cleaning: devDependencies, object tree, eslint 9\n- debug logs changed to iobroker standard",
+        "de": "- Brechung: Objektbaum (Cells.min> cells.min.voltage, Cells.max.id> cells.maxid)\n- Support mit mehrreicher Support hinzugefügt\n- Verbindungswächterintervalle beheben, wechseln Sie in Adapter.intervals, sichere UI -Intervalle\n- Reinigung: DevDependenzen, Objektbaum, Eslint 9\n- Debug -Protokolle wurden in den IOBROKER -Standard geändert",
+        "ru": "- Разрыв: дерево объекта (cells.min> cells.min. -voltage, cells.max.id> cells.maxid)\n- Добавлена ​​поддержка с несколькими языками\n- Исправить интервалы наблюдения за соединением, переход на адаптер. Intervals, безопасные интервалы пользовательского интерфейса\n- Очистка: DevDependencies, Object Tree, Eslint 9\n- Журналы отладки изменились на стандарт iobroker",
+        "pt": "- quebra: árvore de objeto (células\n- Adicionado suporte multilanguage\n- Corrija intervalos de vigilância de conexão, alteração para adaptador.intervals, intervalos de interface do usuário seguros\n- Limpeza: DevDependências, Árvore de Objetos, Eslint 9\n- Os logs de depuração foram alterados para o padrão do iobroker",
+        "nl": "- Breaking: Object Tree (Cells.min> Cells.min.Voltage, Cells.Max.id> Cells.Maxid)\n- Multilanguage -ondersteuning toegevoegd\n- Repareer de verbindingswaakhondintervallen, wijzig naar adapter.intervals, veilige UI -intervallen\n- Reiniging: DevDependencies, Object Tree, Eslint 9\n- Debug -logboeken gewijzigd in IOBROKER -standaard",
+        "fr": "- Breaking: Object Tree (Cells.min> cells.min.coltage, Cells.max.id> Cells.Maxid)\n- Ajout du support multiples\n- Correction des intervalles de surveillance de la connexion, passez à l'adaptateur.Intervals, intervalles d'interface utilisateur sûrs\n- Nettoyage: DevDependces, Arbre d'objet, Eslint 9\n- Les journaux de débogage sont modifiés en norme IOBRoker",
+        "it": "- Breaking: Object Tree (cells.min> cellshmin.tenge, cells.max.id> cells.maxid)\n- Aggiunto supporto multilingua\n- Correggi intervalli di controllo della connessione, modifica in Adapter.Intervals, intervalli di utente sicuri\n- Pulizia: Devdipendence, Object Tree, EsLint 9\n- Registri di debug cambiati in standard IoBroker",
+        "es": "- Breaking: Object Tree (cells.min > cells.min.voltage, cells.max.ID > cells.maxID)\n- Soporte multilenguaje agregado\n- Arregle los intervalos de vigilancia de la conexión, cambiar a adaptador. Intervals, intervalos de interfaz de usuario seguros\n- Limpieza: Devdependencias, árbol de objetos, Eslint 9\n- Los registros de depuración se cambiaron a Iobroker Standard",
+        "pl": "- Breaking: Object Tree (Cells.min> Cells.min.voltage, Cells.max.id> Cells.maxId)\n- Dodano wsparcie wieloboczne\n- Napraw przedziały nadzorujące połączenie, zmień na adapter\n- Czyszczenie: devdependencje, drzewo obiektowe, Eslint 9\n- Dzienniki debugowania zmienione na standard IOBRAKER",
+        "uk": "- Розрив: Об'єктне дерево (Cells.min> cells.min.voltage, cells.max.id> cells.maxid)\n- Додана багатомовна підтримка\n- Виправити інтервали для сторожового періоду підключення, змініть на адаптер.інтервали, безпечні інтервали інтерфейсу інтерфейсу\n- Чистка: DevDependences, Tebute Tree, ESLINT 9\n- Журнали налагодження змінилися на стандарт iObroker",
+        "zh-cn": " - 断裂：对象树（Cells.min> Cells.min.min.twoltage，Cells.max.id> Cells.maxid）\n - 添加了多语言支持\n - 修复连接看门狗间隔，更改为Adapter.intervals，安全的UI间隔\n - 清洁：依赖性，对象树，Eslint 9\n - 调试日志更改为iObroker标准"
+      },
+      "0.3.0": {
+        "en": "Support for USART Data Log added",
+        "de": "Unterstützung für USART Data Log hinzugefügt",
+        "ru": "Поддержка журнала данных USART добавлена",
+        "pt": "Suporte para o Log de dados do USART adicionado",
+        "nl": "Ondersteuning voor USART -gegevenslogboek toegevoegd",
+        "fr": "Prise en charge du journal de données USART ajouté",
+        "it": "Supporto per il registro dati USART aggiunto",
+        "es": "Soporte para el registro de datos de USART agregado",
+        "pl": "Obsługa dodanego dziennika danych USART",
+        "uk": "Підтримка додавання журналу даних USART",
+        "zh-cn": "支持USART数据日志添加"
+      },
+      "0.2.0": {
+        "en": "Breaking: New object tree structure for info/parameters, flags and balancing",
+        "de": "Breaking: Neue Objekt Baum Struktur für info/parameters, flags und balancing",
+        "ru": "Перерыв: Новая структура дерева объектов для информации/параметров, флагов и балансировки",
+        "pt": "Quebra: nova estrutura de árvore de objeto para informações/parâmetros, bandeiras e balanceamento",
+        "nl": "BREAKING: nieuwe objectboomstructuur voor info/parameters, vlaggen en balanceren",
+        "fr": "Rompe: Nouvelle structure d'arbre d'objet pour les informations / paramètres, les drapeaux et l'équilibrage",
+        "it": "Breaking: nuova struttura dell'albero degli oggetti per informazioni/parametri, bandiere e bilanciamento",
+        "es": "Breaking: nueva estructura de árbol de objetos para información/parámetros, banderas y equilibrio",
+        "pl": "Łamanie: Nowa struktura drzewa obiektów dla informacji/parametrów, flag i równoważenia",
+        "uk": "Розрив: Нова структура дерев об'єктів для інформації/параметрів, прапорів та балансування",
+        "zh-cn": "破裂：信息/参数，标志和平衡的新对象树结构"
+      },
+      "0.1.2": {
+        "en": "Serial Port added",
+        "de": "Serial Port ergänzt",
+        "ru": "Последовательный порт добавлен",
+        "pt": "Porta serial adicionada",
+        "nl": "Seriële poort toegevoegd",
+        "fr": "Port série ajouté",
+        "it": "Porta seriale aggiunta",
+        "es": "Puerto serie agregado",
+        "pl": "Dodano port szeregowy",
+        "uk": "Серійний порт додав",
+        "zh-cn": "添加了串行端口"
+      },
+      "0.0.1": {
+        "en": "initial release",
+        "de": "Erstveröffentlichung",
+        "ru": "Первоначальный выпуск",
+        "pt": "liberação inicial",
+        "nl": "eerste release",
+        "fr": "libération initiale",
+        "it": "Rilascio iniziale",
+        "es": "lanzamiento inicial",
+        "pl": "Początkowe wydanie",
+        "uk": "Початковий випуск",
+        "zh-cn": "初始版本"
+      }
     },
-    "native": {
-        "useSerial": false,
-        "serialPort": "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0",
-        "serialBaudRate": 921600,
-        "serialUpdateInterval": 10,
-        "useMQTT": false,
-        "mqttTopic": "mqtt.0.SBMS0.sbms",
-        "mqttUpdateInterval": 1,
-        "useHtml": false,
-        "deviceIP": "192.168.2.212",
-        "htmlUpdateInterval": 10,
-        "fullMessage": false,
-        "usePV1": true,
-        "usePV2": false,
-        "useADCX": false,
-        "useHeat1": false,
-        "useTempExt": true
+    "titleLang": {
+      "en": "Electrodacus SBMS",
+      "de": "Electrodacus SBMS",
+      "ru": "Electrodacus SBMS",
+      "pt": "Electrodacus sbms",
+      "nl": "Electrodacus SBMS",
+      "fr": "Electrodacus SBMS",
+      "it": "Electrodacus SBMS",
+      "es": "Electrodacus SBMS",
+      "pl": "Elektrodakus SBMS",
+      "uk": "Електродакус СБМ",
+      "zh-cn": "电量SBM"
     },
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "info",
-            "type": "channel",
-            "common": {
-                "name": "Adapter and Battery Information"
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.connection",
-            "type": "state",
-            "common": {
-                "name": "Adapter Connection indicator",
-                "type": "boolean",
-                "role": "indicator.connected",
-                "read": true,
-                "write": false,
-                "def": false
-            },
-            "native": {}
-        }
+    "desc": {
+      "en": "Adapter to read data from Electrodacus SBMS",
+      "de": "Adapter zum Auslesen von Daten des Electrodacus SBMS",
+      "ru": "Адаптер для чтения данных из Electrodacus SBMS",
+      "pt": "Adaptador para ler dados do Electrodacus SBMS",
+      "nl": "Adapter om gegevens van Electrodacus SBM's te lezen",
+      "fr": "Adaptateur pour lire les données d'Electrodacus SBMS",
+      "it": "Adattatore per leggere i dati da Electrodacus SBMS",
+      "es": "Adaptador para leer datos de Electrodacus SBMS",
+      "pl": "Adapter do odczytu danych z elektrodakusa SBMS",
+      "uk": "Адаптер для читання даних з SBMS Electrodacus",
+      "zh-cn": "适配器读取来自Eartodacus SBM的数据"
+    },
+    "authors": [
+      "Buffoletti <info@buffoletti.de>"
+    ],
+    "keywords": [
+      "SBMS",
+      "Electrodacus",
+      "energy"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "icon": "sbms.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/buffoletti/ioBroker.sbms/main/admin/sbms.png",
+    "readme": "https://github.com/buffoletti/ioBroker.sbms/blob/main/README.md",
+    "loglevel": "info",
+    "type": "energy",
+    "tier": 3,
+    "mode": "daemon",
+    "compact": true,
+    "connectionType": "local",
+    "dataSource": "poll",
+    "adminUI": {
+      "config": "json"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=6.0.11"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=7.6.17"
+      }
     ]
+  },
+  "native": {
+    "useSerial": false,
+    "serialPort": "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0",
+    "serialBaudRate": 921600,
+    "serialUpdateInterval": 10,
+    "useMQTT": false,
+    "mqttTopic": "mqtt.0.SBMS0.sbms",
+    "mqttUpdateInterval": 1,
+    "useHtml": false,
+    "deviceIP": "192.168.2.212",
+    "htmlUpdateInterval": 10,
+    "fullMessage": false,
+    "usePV1": true,
+    "usePV2": false,
+    "useADCX": false,
+    "useHeat1": false,
+    "useTempExt": true
+  },
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": "Adapter and Battery Information"
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "name": "Adapter Connection indicator",
+        "type": "boolean",
+        "role": "indicator.connected",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    }
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "iobroker.sbms",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "ioBroker Adapter for Electrodacus SBMS",
   "author": {
     "name": "buffoletti",

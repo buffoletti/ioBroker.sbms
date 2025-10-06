@@ -60,6 +60,10 @@ If MQTT and HTML options are enabled, basic info is updated from MQTT stream whe
 	### **WORK IN PROGRESS**
 -->
 
+## **WORK IN PROGRESS**
+
+-   Dependencies
+
 ### 0.4.1 (2025-09-28)
 - fix: negative loads when using non-pv chargers
 

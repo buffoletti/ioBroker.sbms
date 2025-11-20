@@ -55,10 +55,9 @@ If MQTT and HTML options are enabled, basic info is updated from MQTT stream whe
 
 ## Changelog
 
-<!--
-	Placeholder for the next version (at the beginning of the line):
-	### **WORK IN PROGRESS**
--->
+### **WORK IN PROGRESS**
+- update release workflow and npm trusted publishing
+
 ### 0.4.2 (2025-10-06)
 
 - Dependencies

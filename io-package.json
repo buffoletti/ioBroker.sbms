@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sbms",
-    "version": "0.4.2",
+    "version": "0.4.3",
     "news": {
+      "0.4.3": {
+        "en": "update release workflow and npm trusted publishing",
+        "de": "update release workflow und npm vertrauenswürdige veröffentlichung",
+        "ru": "рабочий процесс выпуска обновлений и доверенная публикация npm",
+        "pt": "atualizar fluxo de trabalho de lançamento e publicação confiável npm",
+        "nl": "update release workflow en npm vertrouwd publiceren",
+        "fr": "mettre à jour le flux de travail de publication et la publication fiable de npm",
+        "it": "aggiornamento flusso di lavoro di rilascio e npm pubblicazione attendibile",
+        "es": "actualización de flujo de trabajo y publicación de confianza npm",
+        "pl": "aktualizacja przepływu informacji i zaufanych publikacji npm",
+        "uk": "оновлення релізу робочого процесу та npm довірена публікація",
+        "zh-cn": "更新发布工作流程和 npm 可信发布"
+      },
       "0.4.2": {
         "en": "Dependencies",
         "de": "Abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "Dodano port szeregowy",
         "uk": "Серійний порт додав",
         "zh-cn": "添加了串行端口"
-      },
-      "0.0.1": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung",
-        "ru": "Первоначальный выпуск",
-        "pt": "liberação inicial",
-        "nl": "eerste release",
-        "fr": "libération initiale",
-        "it": "Rilascio iniziale",
-        "es": "lanzamiento inicial",
-        "pl": "Początkowe wydanie",
-        "uk": "Початковий випуск",
-        "zh-cn": "初始版本"
       }
     },
     "titleLang": {

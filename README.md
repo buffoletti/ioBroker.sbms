@@ -93,7 +93,7 @@ Review add to latest:
 
 MIT License
 
-Copyright (c) 2025 buffoletti <info@buffoletti.de>
+Copyright (c) 2025-2026 buffoletti <info@buffoletti.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

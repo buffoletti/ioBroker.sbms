@@ -59,6 +59,9 @@ If MQTT and HTML options are enabled, basic info is updated from MQTT stream whe
     ### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+- (copilot) Adapter requires node.js >= 22 now
+
 ### 0.4.3 (2025-11-20)
 - update release workflow and npm trusted publishing
 - dev Depencies

@@ -89,6 +89,8 @@ Review add to latest:
 ### 0.0.1 (2025-09-02)
 - Initial Release
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 
 MIT License
